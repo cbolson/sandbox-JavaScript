@@ -1,2 +1,2 @@
 # vscode-tests
-my viscose tests
+my VS Code tests
