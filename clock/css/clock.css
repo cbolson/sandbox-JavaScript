@@ -1,0 +1,94 @@
+:root {
+  --bg-face: rgb(2, 70, 70);
+  --clr-hands: rgb(255, 255, 255);
+  --clr-seconds: red;
+  --clr-numbers: rgb(255, 255, 255);
+  --br-face: rgba(255, 255, 255, 1);
+  --bg-face-outline: var(--bg-face);
+  --spc-numbers: 0.5em;
+  --fs-numbers: 1.4em;
+}
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+body {
+  background: #eee;
+  margin: 0;
+  height: 100vh;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clock {
+  width: 300px;
+  aspect-ratio: 1;
+  background-color: var(--bg-face);
+  border-radius: 50%;
+  position: relative;
+  border: 3px solid var(--br-face);
+  outline: 2px solid var(--bg-face-outline);
+  box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.5);
+}
+.numbers > * {
+  color: var(--clr-numbers);
+  position: absolute;
+  font-size: var(--fs-numbers, 2em);
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
+}
+.num-twelve {
+  top: var(--spc-numbers);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.num-three {
+  right: var(--spc-numbers);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.num-six {
+  bottom: var(--spc-numbers);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.num-nine {
+  left: var(--spc-numbers);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hands {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hands::before {
+  content: "";
+  width: 2em;
+  aspect-ratio: 1;
+  background-color: var(--bg-face);
+  border: 2px solid white;
+  border-radius: 1in;
+  z-index: 4;
+}
+.hands > div {
+  background-color: var(--clr-hands);
+  width: 10px;
+  position: absolute;
+  height: 100px;
+  transform-origin: bottom center;
+  bottom: 50%;
+  border-radius: 10px;
+}
+.hands .hand-hour {
+  height: 70px;
+  rotate: 45deg;
+}
+.hands .hand-sec {
+  rotate: -45deg;
+  width: 5px;
+  background-color: var(--clr-seconds);
+}
