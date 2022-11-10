@@ -5,6 +5,17 @@ Changes:
 - separate large function into smaller functions
 - move hour hand to position between numbers to reflect minutes (dev)
 */
+// place numbers around clock face
+const elNumbers = document.querySelectorAll(".numbers li");
+
+elNumbers.forEach((number, index) => {
+  // calculate degrees
+  const degrees = (360 / 12) * index;
+  console.log(degrees);
+
+  number.style.transform = `rotate(${degrees}deg) translate(100px)`;
+  //transform:rotate(46deg) translate(251px) rotate(-46deg);
+});
 
 const elHour = document.querySelector(".hand-hour");
 const elMin = document.querySelector(".hand-min");

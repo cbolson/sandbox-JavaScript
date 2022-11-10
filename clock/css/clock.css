@@ -7,6 +7,7 @@
   --bg-face-outline: var(--bg-face);
   --spc-numbers: 0.5em;
   --fs-numbers: 1.4em;
+  --clock-size: 300px;
 }
 *,
 ::before,
@@ -23,7 +24,7 @@ body {
   align-items: center;
 }
 .clock {
-  width: 300px;
+  width: var(--clock-size, 200px);
   aspect-ratio: 1;
   background-color: var(--bg-face);
   border-radius: 50%;
@@ -39,7 +40,21 @@ body {
   font-weight: 500;
   text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
 }
-.num-twelve {
+.numbers ol {
+  counter-reset: item;
+  list-style-type: none;
+}
+.numbers li {
+  counter-increment: item;
+  transform-origin: bottom center;
+}
+/* .numbers li:nth-child(1){
+transform();
+} */
+li:before {
+  content: counter(item) "";
+}
+/* .num-twelve {
   top: var(--spc-numbers);
   left: 50%;
   transform: translateX(-50%);
@@ -58,7 +73,7 @@ body {
   left: var(--spc-numbers);
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 .hands {
   height: 100%;
   display: flex;
