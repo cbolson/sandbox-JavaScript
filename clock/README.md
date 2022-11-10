@@ -1,6 +1,4 @@
-# clock
-
-Simple HTML + CSS + JavaScript clock
+# HTML + CSS + JavaScript clock
 
 Source: https://www.youtube.com/watch?v=DzSLUdJWrEQ&t=6999s
 
