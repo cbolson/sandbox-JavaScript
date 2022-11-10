@@ -8,6 +8,7 @@
   --spc-numbers: 0.5em;
   --fs-numbers: 1.4em;
   --clock-size: 300px;
+  --num-distance:120px;
 }
 *,
 ::before,
@@ -33,20 +34,27 @@ body {
   outline: 2px solid var(--bg-face-outline);
   box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.5);
 }
+
 .numbers > * {
+  counter-reset: item;
   color: var(--clr-numbers);
-  position: absolute;
   font-size: var(--fs-numbers, 2em);
   font-weight: 500;
   text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
-}
-.numbers ol {
-  counter-reset: item;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
 .numbers li {
   counter-increment: item;
-  transform-origin: bottom center;
+  transform-origin: center center;
+  position: absolute;
 }
 /* .numbers li:nth-child(1){
 transform();
