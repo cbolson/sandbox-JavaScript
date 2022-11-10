@@ -3,7 +3,10 @@
 Simple HTML + CSS + JavaScript clock
 
 Source: https://www.youtube.com/watch?v=DzSLUdJWrEQ&t=6999s
+
 Date : 2022-11-09
+
+Date mod : 2022-11-10
 
 Changes:
 
