@@ -11,15 +11,17 @@ const elMin = document.querySelector(".hand-min");
 const elSec = document.querySelector(".hand-sec");
 
 function updateClock() {
+  // get current date and time
   const currentDate = new Date();
 
+  // get hours, mins and seconds from current date
   const curHour = currentDate.getHours();
   const curMin = currentDate.getMinutes();
   const curSec = currentDate.getSeconds();
 
-  const degHour = (curHour / 12) * 360; // this needs to calculate the real position between the hour - TO DO
-  const degMin = (curMin / 60) * 360;
-  const degSec = (curSec / 60) * 360;
+  const degMin = (curMin / 60) * 360; // minute position
+  const degSec = (curSec / 60) * 360; // seconds position
+  const degHour = (curHour * 360) / 12 + degMin / 12; // hour position to be betwween numbers according to minutes
 
   moveHand(elHour, degHour);
   moveHand(elMin, degMin);
