@@ -7,8 +7,12 @@ Changes:
 - place 12 numbers around the clock face (could be a var to define which we want to show)
 */
 
-// place numbers around clock face
 const elNumbers = document.querySelectorAll(".numbers li");
+const elHour = document.querySelector(".hand-hour");
+const elMin = document.querySelector(".hand-min");
+const elSec = document.querySelector(".hand-sec");
+
+// place numbers around clock face
 function placeNumbers() {
   /*
 next step is to add li elements dynamically
@@ -17,7 +21,7 @@ next step is to add li elements dynamically
   elNumbers.forEach((number, index) => {
     // calculate degrees
     const degrees = (360 / 12) * index + 300; // adding 300 to avoid double negatives
-    console.log(`${index} -${degrees}`);
+    // console.log(`${index} -${degrees}`);
     // rotate each number
     number.style.transform = `
       rotate(${degrees}deg) 
@@ -26,10 +30,7 @@ next step is to add li elements dynamically
   });
 }
 
-const elHour = document.querySelector(".hand-hour");
-const elMin = document.querySelector(".hand-min");
-const elSec = document.querySelector(".hand-sec");
-
+// update clock every second with current time
 function updateClock() {
   // get current date and time
   const currentDate = new Date();
@@ -41,7 +42,7 @@ function updateClock() {
 
   const degMin = (curMin / 60) * 360; // minute position
   const degSec = (curSec / 60) * 360; // seconds position
-  const degHour = (curHour * 360) / 12 + degMin / 12; // hour position to be betwween numbers according to minutes
+  const degHour = (curHour * 360) / 12 + degMin / 12; // hour position to be between numbers according to minutes
 
   moveHand(elHour, degHour);
   moveHand(elMin, degMin);

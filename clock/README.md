@@ -6,7 +6,7 @@ Date : 2022-11-09
 
 Date mod : 2022-11-10
 
-Changes:
+Changes made to original source:
 
 - separate large function into smaller functions
 - move hour hand to position between numbers to reflect minutes (dev)

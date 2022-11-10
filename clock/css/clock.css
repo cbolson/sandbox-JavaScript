@@ -8,7 +8,7 @@
   --spc-numbers: 0.5em;
   --fs-numbers: 1.4em;
   --clock-size: 300px;
-  --num-distance:120px;
+  --num-distance: 120px;
 }
 *,
 ::before,
@@ -106,10 +106,16 @@ li:before {
   bottom: 50%;
   border-radius: 10px;
 }
+
+.hands > div:not(.hand-sec) {
+  /* this transition just makes the initial load smoother*/
+  transition: rotate 1000ms ease-in-out;
+}
 .hands .hand-hour {
   height: 70px;
   rotate: 45deg;
 }
+
 .hands .hand-sec {
   rotate: -45deg;
   width: 5px;
