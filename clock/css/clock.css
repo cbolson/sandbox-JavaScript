@@ -23,8 +23,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  margin-inline: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
 }
 .clock {
+  inset: 0;
   width: var(--clock-size, 200px);
   aspect-ratio: 1;
   background-color: var(--bg-face);
@@ -35,7 +45,7 @@ body {
   box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.5);
 }
 
-.numbers > * {
+.numbers > ul {
   /* counter-reset: item; */
   position: absolute;
   display: flex;
