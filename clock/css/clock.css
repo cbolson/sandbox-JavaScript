@@ -1,0 +1,107 @@
+:root {
+  --bg-face: rgb(2, 70, 70);
+  --clr-hands: rgb(255, 255, 255);
+  --clr-seconds: red;
+  --clr-numbers: rgb(255, 255, 255);
+  --br-face: rgba(255, 255, 255, 1);
+  --bg-face-outline: var(--bg-face);
+  --spc-numbers: 0.5em;
+  --fs-numbers: 1.4em;
+  --clock-size: 300px;
+  --num-distance: 120px;
+}
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+body {
+  background: #eee;
+  margin: 0;
+  height: 100vh;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  margin-inline: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
+}
+.clock {
+  inset: 0;
+  width: var(--clock-size, 200px);
+  aspect-ratio: 1;
+  background-color: var(--bg-face);
+  border-radius: 50%;
+  position: relative;
+  border: 3px solid var(--br-face);
+  outline: 2px solid var(--bg-face-outline);
+  box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.5);
+}
+
+.numbers > ul {
+  /* counter-reset: item; */
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.numbers li {
+  /* counter-increment: item; */
+  transform-origin: center center;
+  position: absolute;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
+  font-weight: 500;
+  color: var(--clr-numbers);
+  font-size: var(--fs-numbers, 2em);
+}
+
+.hands {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hands::before {
+  /* add central circle over clock hands*/
+  content: "";
+  width: 2em;
+  aspect-ratio: 1;
+  background-color: var(--bg-face);
+  border: 2px solid white;
+  border-radius: 1in;
+  z-index: 4;
+}
+.hands > div {
+  background-color: var(--clr-hands);
+  width: 10px;
+  position: absolute;
+  height: 100px;
+  transform-origin: bottom center;
+  bottom: 50%;
+  border-radius: 10px;
+}
+
+.hands > div:not(.hand-sec) {
+  /* this transition just makes the initial load smoother*/
+  transition: rotate 1000ms ease-in-out;
+}
+.hands .hand-hour {
+  height: 70px;
+  rotate: 45deg;
+}
+.hands .hand-sec {
+  rotate: -45deg;
+  width: 5px;
+  background-color: var(--clr-seconds);
+}
