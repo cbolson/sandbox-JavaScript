@@ -36,52 +36,26 @@ body {
 }
 
 .numbers > * {
-  counter-reset: item;
-  color: var(--clr-numbers);
-  font-size: var(--fs-numbers, 2em);
-  font-weight: 500;
-  text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
+  /* counter-reset: item; */
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 .numbers li {
-  counter-increment: item;
+  /* counter-increment: item; */
   transform-origin: center center;
   position: absolute;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
+  font-weight: 500;
+  color: var(--clr-numbers);
+  font-size: var(--fs-numbers, 2em);
 }
-/* .numbers li:nth-child(1){
-transform();
-} */
-li:before {
-  content: counter(item) "";
-}
-/* .num-twelve {
-  top: var(--spc-numbers);
-  left: 50%;
-  transform: translateX(-50%);
-}
-.num-three {
-  right: var(--spc-numbers);
-  top: 50%;
-  transform: translateY(-50%);
-}
-.num-six {
-  bottom: var(--spc-numbers);
-  left: 50%;
-  transform: translateX(-50%);
-}
-.num-nine {
-  left: var(--spc-numbers);
-  top: 50%;
-  transform: translateY(-50%);
-} */
+
 .hands {
   height: 100%;
   display: flex;
@@ -89,6 +63,7 @@ li:before {
   align-items: center;
 }
 .hands::before {
+  /* add central circle over clock hands*/
   content: "";
   width: 2em;
   aspect-ratio: 1;
@@ -115,7 +90,6 @@ li:before {
   height: 70px;
   rotate: 45deg;
 }
-
 .hands .hand-sec {
   rotate: -45deg;
   width: 5px;

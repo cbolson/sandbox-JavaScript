@@ -7,27 +7,44 @@ Changes:
 - place 12 numbers around the clock face (could be a var to define which we want to show)
 */
 
-const elNumbers = document.querySelectorAll(".numbers li");
+// const elNumbers = document.querySelectorAll(".numbers li");
+const elNumbers = document.querySelector(".numbers ol");
 const elHour = document.querySelector(".hand-hour");
 const elMin = document.querySelector(".hand-min");
 const elSec = document.querySelector(".hand-sec");
 
-// place numbers around clock face
-function placeNumbers() {
-  /*
-next step is to add li elements dynamically
-*/
+// // place numbers around clock face
+// function placeNumbers() {
+//   /*
+// next step is to add li elements dynamically
+// */
 
-  elNumbers.forEach((number, index) => {
+//   elNumbers.forEach((number, index) => {
+//     // calculate degrees
+//     const degrees = (360 / 12) * index + 300; // adding 300 to avoid double negatives
+//     // console.log(`${index} -${degrees}`);
+//     // rotate each number
+//     number.style.transform = `otate(${degrees}deg) translate(120px)  rotate(-${degrees}deg)`;
+//   });
+// }
+
+// function add numbers dynamically
+function addNumbers() {
+  for (let i = 1; i <= 12; i++) {
+    // create new number li (number is added via CSS counter)
+    const elNum = document.createElement("li");
+    // Create a new text node
+    const text = document.createTextNode(`${i}`);
+elNum.appendChild(text);
+
     // calculate degrees
-    const degrees = (360 / 12) * index + 300; // adding 300 to avoid double negatives
+    const degrees = (360 / 12) * i + 270; // adding 270 to avoid double negatives
     // console.log(`${index} -${degrees}`);
     // rotate each number
-    number.style.transform = `
-      rotate(${degrees}deg) 
-      translate(120px) 
-      rotate(-${degrees}deg)`;
-  });
+    elNum.style.transform = `rotate(${degrees}deg) translate(120px)  rotate(-${degrees}deg)`;
+    console.log(elNum);
+    elNumbers.appendChild(elNum);
+  }
 }
 
 // update clock every second with current time
@@ -53,5 +70,6 @@ function moveHand(el, newDeg) {
   el.style.rotate = `${newDeg}deg`;
 }
 
-placeNumbers();
+addNumbers();
+//placeNumbers();
 setInterval(updateClock, 1000);
