@@ -13,7 +13,7 @@
 body {
   --hue: var(--hue-neutral);
   height: 100vh;
-  widht: 100vw;
+  width: 100vw;
   padding: 0;
   margin: 0;
   display: flex;
