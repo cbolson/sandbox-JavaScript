@@ -1,2 +1,3 @@
 # vscode-tests
-my VS Code tests
+
+Various HTML, CSS & JavaScript tests
