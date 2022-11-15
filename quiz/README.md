@@ -19,6 +19,10 @@ Changes I want to implement:
 - Fetch questions from external file or source
 - Reset once finished
 
-Changes made to original source:
+Changes made so far:
+
+- retrive random quesetions via api https://opentdb.com
+- placing questions and answers in container
+- correct answer detecting
 
 -
