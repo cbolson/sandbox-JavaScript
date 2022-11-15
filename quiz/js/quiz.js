@@ -16,10 +16,29 @@ const questions = [
       { text: "Sunday", correct: false },
     ],
   },
+  {
+    question: "Is it raining?",
+    answers: [
+      { text: "yes", correct: false },
+      { text: "no", correct: false },
+      { text: "could be", correct: true },
+    ],
+  },
+  {
+    question: "Could this code be improved?",
+    answers: [
+      { text: "Yes, of course", correct: true },
+      { text: "no, this is pretty much it", correct: false },
+    ],
+  },
 ];
 
 // start button - start game
 startButton.addEventListener("click", startGame);
+nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+  setNextQuestion();
+});
 
 // start game
 function startGame() {
@@ -34,6 +53,8 @@ function startGame() {
   setNextQuestion();
 }
 function resetState() {
+  clearStatusClass(document.body);
+
   nextButton.classList.add("hide");
   while (answerButtonElement.firstChild) {
     answerButtonElement.removeChild(answerButtonElement.firstChild);
@@ -61,4 +82,34 @@ function showQuestion(question) {
     answerButtonElement.appendChild(button);
   });
 }
-function selectAnswer() {}
+function selectAnswer(e) {
+  const selectedButton = e.target;
+  const correct = selectedButton.dataset.correct;
+  setStatusClass(document.body, correct);
+  Array.from(answerButtonElement.children).forEach((button) => {
+    setStatusClass(button, button.dataset.correct);
+  });
+  if (shuffleQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove("hide");
+  } else {
+    // questionElement.innerText = "you have finished the quiz";
+    // answerButtonElement.innerText = "";
+    startButton.innerText = "Start Again";
+    startButton.classList.remove("hide");
+    //resetState();
+  }
+}
+
+function setStatusClass(el, correct) {
+  clearStatusClass(el);
+  if (correct) {
+    el.classList.add("correct");
+  } else {
+    el.classList.add("wrong");
+  }
+}
+
+function clearStatusClass(el) {
+  el.classList.remove("correct");
+  el.classList.remove("wrong");
+}
