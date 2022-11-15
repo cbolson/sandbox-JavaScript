@@ -33,6 +33,25 @@ const questions = [
   },
 ];
 
+// get questions from remote api
+const idCat = 22; // Geography (there are many categories - maybe I could add a category selector)
+(async () => {
+  async function getQuestions(id_cat) {
+    const url = `https://opentdb.com/api.php?amount=10&category=${id_cat}`;
+
+    const response = await fetch(url);
+    const repositories = await response.json();
+
+    return repositories;
+  }
+  const questionsV2 = await getQuestions(idCat);
+  console.log(questionsV2);
+})();
+
+
+
+
+
 // start button - start game
 startButton.addEventListener("click", startGame);
 nextButton.addEventListener("click", () => {

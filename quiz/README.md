@@ -1,4 +1,4 @@
-# HTML + CSS + JavaScript Quiza
+# HTML + CSS + JavaScript Quiz
 
 Date : 2022-11-14
 
