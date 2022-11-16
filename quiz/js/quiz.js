@@ -6,6 +6,7 @@ const questionElement = document.getElementById("question");
 const answerButtonElement = document.getElementById("answer_buttons");
 
 let currentQuestionIndex, correctAnswer, shuffleAnswers, answerScore;
+let questions = [];
 let userScore = 0;
 // define score according to question difficulty level
 const levelScore = {
@@ -13,22 +14,6 @@ const levelScore = {
   medium: 2,
   difficult: 3,
 };
-
-let questions = [];
-// get questions from remote api
-const idCat = 22; // Geography (there are many categories - maybe I could add a category selector)
-(async () => {
-  async function getQuestions(id_cat) {
-    const url = `https://opentdb.com/api.php?amount=10&category=${id_cat}`;
-
-    const response = await fetch(url);
-    const repositories = await response.json();
-
-    return repositories.results;
-  }
-  questions = await getQuestions(idCat);
-  // console.log(questions);
-})();
 
 // start button - start game
 startButton.addEventListener("click", startGame);
@@ -39,16 +24,39 @@ nextButton.addEventListener("click", () => {
   setNextQuestion();
 });
 
+// get questions from remote api
+const idCat = 22; // Geography (there are many categories - maybe I could add a category selector)
+const urlQuiz = `https://opentdb.com/api.php?amount=10&category=${idCat}`;
+
 // start game
 function startGame() {
-  // hide start button
-  startButton.classList.add("hide");
-
-  // show question container
-  questionContainerElement.classList.remove("hide");
   currentQuestionIndex = 0;
 
-  setNextQuestion();
+  (async () => {
+    async function getQuestions(id_cat) {
+      const url = `https://opentdb.com/api.php?amount=10&category=${id_cat}`;
+
+      const response = await fetch(url);
+      const repositories = await response.json();
+
+      questions = [...repositories.results];
+      setNextQuestion();
+    }
+    await getQuestions(idCat);
+    //console.log(questions);
+  })();
+
+  //console.log(questions);
+
+  //questions = getapi(urlQuiz);
+  //   async fetch(urlQuiz)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       //questions = data.results;
+  //       let questions = data.results;
+  //       console.log(questions);
+  //     })
+  //     .then(setNextQuestion(questions));
 }
 
 function resetState() {
@@ -62,18 +70,16 @@ function resetState() {
 
 function setNextQuestion() {
   resetState();
-  showQuestion(questions[currentQuestionIndex]);
+  console.log(questions);
+  console.log(`current index: ${currentQuestionIndex}`);
+  // hide start button
+  startButton.classList.add("hide");
+  showQuestion(currentQuestionIndex);
 }
-// ​​result from api:
-// category: "Geography"
-// correct_answer: "Jakarta"
-// difficulty: "easy"
-// incorrect_answers: Array(3) [ "Bandung", "Medan", "Palembang" ]
-// question: "What is the capital of Indonesia?"
-// type: "multiple"
 
-function showQuestion(question) {
-  console.log(question);
+function showQuestion(index) {
+  //console.log(`showQuestion: ${questions}`);
+  const question = questions[index];
   // add question
   questionElement.innerText = question.question;
 
@@ -87,6 +93,7 @@ function showQuestion(question) {
 
   // need to combine answers (wrong + correct) into an array
   const answers = [...question.incorrect_answers];
+  // add correct answer
   answers.push(correctAnswer);
 
   // random sort so that correct answer is not always last
@@ -102,6 +109,12 @@ function showQuestion(question) {
     button.addEventListener("click", selectAnswer);
     answerButtonElement.appendChild(button);
   });
+
+  // show question container
+  questionContainerElement.classList.remove("hide");
+
+  // show next button
+  nextButton.classList.remove("hide");
 }
 
 function selectAnswer(e) {
@@ -138,6 +151,7 @@ function selectAnswer(e) {
     // answerButtonElement.innerText = "";
     startButton.innerText = "Start Again";
     startButton.classList.remove("hide");
+    nextButton.classList.add("hide");
     //resetState();
   }
 }
@@ -157,3 +171,11 @@ function clearStatusClass(el) {
 }
 
 const addScore = (score) => (userScore = userScore + score);
+
+// ​​result from api:
+// category: "Geography"
+// correct_answer: "Jakarta"
+// difficulty: "easy"
+// incorrect_answers: Array(3) [ "Bandung", "Medan", "Palembang" ]
+// question: "What is the capital of Indonesia?"
+// type: "multiple"
