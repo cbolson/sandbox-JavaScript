@@ -1,3 +1,5 @@
-# vscode-tests
+# JavaScript example scripts
 
-Various HTML, CSS & JavaScript tests
+## Description:
+
+Various HTML, CSS & JavaScript tests using tutorials as starting points
