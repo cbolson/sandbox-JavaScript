@@ -11,22 +11,22 @@ Date mod : 2022-11-14
 
 ## Changes made so far:
 
-- retrieve random quesetions via api https://opentdb.com
+- retrieve random questions via api (see below)
 - placing questions and answers in container
 - correct answer detecting
 
 ## Things I want to do:
 
-- &check; fetch questions via api (see below)
-- &check; keep score
-- &check; reset quiz to get new questions
-- [ ] category select
-- [ ] dynamic CSS including animations between question cards.
+- &#9745; fetch questions via api (see below)
+- &#9745; keep score
+- &#9745; reset quiz to get new questions
+- &#9744; category select
+- &#9744; dynamic CSS including animations between question cards.
 
 ## If I have time
 
-- [ ] Fetch list of categories to allow user to select which category they want to do
-- [ ]
+- &#9744;Fetch list of categories to allow user to select which category they want to do
+- &#9744;
 
 #### Sources
 
@@ -34,7 +34,7 @@ Date mod : 2022-11-14
 - Questions Api:https://opentdb.com
 
 ```js
-const api = `https://opentdb.com/api.php?amount=1&difficulty=easy&encode=url3986`;
+const api = `https://opentdb.com/api.php?amount=10&encode=url3986`;
 ```
 
 Fetch data from here 👆👆👆. This is the Open Trivia Database, they have thousands of questions. The documentation for this api is [here](<[https://opentdb.com/api_config.php](https://opentdb.com/api_config.php)>).
