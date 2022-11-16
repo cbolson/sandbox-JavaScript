@@ -21,14 +21,13 @@ Date mod : 2022-11-14
 - &check; keep score
 - &check; reset quiz to get new questions
 - &check; set card border color according to question difficulty level
-- [ ] category select
+- &check;  category select (I wanted to get the list via the api but it appears that many of the cateories are no longer working).
 - [ ] dynamic CSS including animations between question cards.
-- [ ] show user final score and rating
+- &check;  show user final score and rating
 
 ## If I have time
 
-- [ ] Fetch list of categories to allow user to select which category they want to do
-- [ ]
+- [ ] Add timer for each question
 
 #### Sources
 

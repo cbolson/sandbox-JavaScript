@@ -1,19 +1,44 @@
-const startButton = document.getElementById("btn-start");
-const nextButton = document.getElementById("btn-next");
-const levelElement = document.getElementById("quiz__level");
-const questionContainerElement = document.getElementById("question__container");
-const questionElement = document.getElementById("question");
-const answerButtonElement = document.getElementById("answer_buttons");
-const quizWrapper = document.getElementById("wrapper");
+const startButton = document.querySelector("#btn-start");
+const nextButton = document.querySelector("#btn-next");
+const scoreButton = document.querySelector("#btn-score");
 
-let currentQuestionIndex, correctAnswer, shuffleAnswers, answerScore;
+const levelElement = document.querySelector("#question-level");
+const questionContainerElement = document.querySelector("#quiz-questions");
+const quizWrapperElement = document.querySelector("#quiz-wrapper");
+const answerButtonElement = document.querySelector("#answers");
+const questionElement = document.querySelector("#question");
+const msgElement = document.querySelector("#quiz-msg");
+const headerElement = document.querySelector("#quiz-header");
+const catSelectList = document.querySelector("#quiz-cat-id");
+
+let currentQuestionIndex, correctAnswer, shuffleAnswers, answerScore, txtPoints;
+const numQuestions = 10;
+
+let apiToken = "";
+// API - get token
+(async () => {
+  async function getToken() {
+    const url = "https://opentdb.com/api_token.php?command=request";
+
+    const response = await fetch(url);
+    const data = await response.json();
+    apiToken = data.token;
+  }
+  await getToken();
+})();
+
+// get
+
+//console.log(urlQuiz);
+
 let questions = [];
 let userScore = 0;
+let possibleScore = 0;
 // define score according to question difficulty level
 const levelScore = {
   easy: 1,
   medium: 2,
-  difficult: 3,
+  hard: 3,
 };
 
 // start button - start game
@@ -25,21 +50,28 @@ nextButton.addEventListener("click", () => {
   setNextQuestion();
 });
 
-// get questions from remote api
-const idCat = 22; // Geography (there are many categories - maybe I could add a category selector)
-const urlQuiz = `https://opentdb.com/api.php?amount=3&encode=url3986&category=${idCat}`;
+scoreButton.addEventListener("click", showScore);
 
 // start game
 function startGame() {
-  currentQuestionIndex = 0;
+  addClass(questionContainerElement, "hide");
+  addClass(headerElement, "hide");
+  addClass(msgElement, "hide");
+  questionElement.innerText = "";
+  answerButtonElement.innerText = "";
 
+  const idCat = catSelectList.value; // I wanted to get the list of categories via the api but it appears that many of the categories no longer work
+  const urlQuiz = `https://opentdb.com/api.php?amount=${numQuestions}&encode=url3986&category=${idCat}&token=${apiToken}`;
+
+  currentQuestionIndex = 0;
+  //console.log("starting new game");
   (async () => {
     async function getQuestions() {
       const url = `${urlQuiz}`;
 
       const response = await fetch(url);
       const repositories = await response.json();
-
+      console.log(repositories);
       questions = [...repositories.results];
       setNextQuestion();
     }
@@ -49,9 +81,9 @@ function startGame() {
 }
 
 function resetState() {
-  clearStatusClass(quizWrapper);
+  clearStatusClass(quizWrapperElement);
 
-  nextButton.classList.add("hide");
+  addClass(nextButton);
   while (answerButtonElement.firstChild) {
     answerButtonElement.removeChild(answerButtonElement.firstChild);
   }
@@ -60,48 +92,68 @@ function resetState() {
 function setNextQuestion() {
   resetState();
   // hide start button
-  startButton.classList.add("hide");
+  addClass(startButton, "hide");
+
+  // hide cat select
+  //addClass(headerElement, "hide");
+
+  // show question
   showQuestion(currentQuestionIndex);
 }
 
 function showQuestion(index) {
   //console.log(`showQuestion: ${questions}`);
+
   const question = questions[index];
-  // add question
-  questionElement.innerText = decodeURIComponent(question.question);
+  if (!question) {
+    alert("no question");
+  } else {
+    // add question
+    questionElement.innerText = decodeURIComponent(question.question);
+    possibleScore = possibleScore + levelScore[question.difficulty];
+    console.log(possibleScore);
+    // define points text (single if only 1 point awarded)
+    let txtPoints = question.difficulty == "easy" ? "point" : "points";
+    // show level and possible points to score
+    levelElement.innerText = decodeURIComponent(
+      `Level: ${question.difficulty} (${
+        levelScore[question.difficulty]
+      } ${txtPoints})`
+    );
+    removeClass(levelElement, "hide");
 
-  // define level
-  levelElement.innerText = decodeURIComponent(question.difficulty);
-  quizWrapper.classList.add(question.difficulty);
-  answerScore = levelScore[question.difficulty];
+    quizWrapperElement.classList.add(question.difficulty);
+    answerScore = levelScore[question.difficulty];
+    // console.log(answerScore);
+    // get value of correct answer to be able to check against selected answer - ideally we would use an id rather than the text value
+    correctAnswer = decodeURIComponent(question.correct_answer);
 
-  // get value of correct answer to be able to check against selected answer - ideally we would use an id rather than the text value
-  correctAnswer = question.correct_answer;
+    // need to combine answers (wrong + correct) into an array
+    const answers = [...question.incorrect_answers];
+    // add correct answer
+    answers.push(correctAnswer);
 
-  // need to combine answers (wrong + correct) into an array
-  const answers = [...question.incorrect_answers];
-  // add correct answer
-  answers.push(correctAnswer);
+    // random sort so that correct answer is not always last
+    shuffleAnswers = answers.sort(() => Math.random() - 0.5);
 
-  // random sort so that correct answer is not always last
-  shuffleAnswers = answers.sort(() => Math.random() - 0.5);
+    //console.log(shuffleAnswers);
 
-  //console.log(shuffleAnswers);
+    // add answers
+    shuffleAnswers.forEach((answer) => {
+      const button = document.createElement("button");
+      button.innerText = decodeURIComponent(answer);
+      button.classList.add("btn");
+      button.addEventListener("click", selectAnswer);
+      answerButtonElement.appendChild(button);
+    });
 
-  // add answers
-  shuffleAnswers.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerText = decodeURIComponent(answer);
-    button.classList.add("btn");
-    button.addEventListener("click", selectAnswer);
-    answerButtonElement.appendChild(button);
-  });
+    // show question container
 
-  // show question container
-  questionContainerElement.classList.remove("hide");
-
-  // show next button
-  nextButton.classList.remove("hide");
+    removeClass(quizWrapperElement, "hide");
+    removeClass(questionContainerElement, "hide");
+    // show next button
+    removeClass(nextButton, "hide");
+  }
 }
 
 function selectAnswer(e) {
@@ -111,35 +163,31 @@ function selectAnswer(e) {
   // );
 
   if (selectedButton.innerText === correctAnswer) {
-    setStatusClass(selectedButton, "correct");
+    // mark as correct
+    addClass(selectedButton, "correct");
     // add score to userScore total
     addScore(answerScore);
   } else {
-    setStatusClass(selectedButton, "");
-
-    // show correct answer
+    // mark as incorrect
+    addClass(selectedButton, "wrong");
   }
-
-  console.log(`Current Score: ${userScore}`);
-  //const correct = selectedButton.dataset.correct;
-  //setStatusClass(document.body, correct);
+  // remove event from buttons to avoid clicking again
   Array.from(answerButtonElement.children).forEach((button) => {
-    //   setStatusClass(button, button.dataset.correct);
     if (button.textContent.includes(correctAnswer)) {
+      // show correct answer
       setStatusClass(button, "correct");
     }
     // remove event
     button.removeEventListener("click", selectAnswer);
   });
+  // show next button if we have more questions
   if (questions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove("hide");
+    removeClass(nextButton, "hide");
   } else {
-    // questionElement.innerText = "you have finished the quiz";
-    // answerButtonElement.innerText = "";
-    startButton.innerText = "Start Again";
-    startButton.classList.remove("hide");
-    nextButton.classList.add("hide");
-    //resetState();
+    addClass(nextButton, "hide");
+    removeClass(scoreButton, "hide");
+    // show message to indicate that the user has finished
+    levelElement.innerText = "You have finished";
   }
 }
 
@@ -153,9 +201,35 @@ function setStatusClass(el, correct) {
 }
 
 function clearStatusClass(el) {
-  el.classList.remove("correct", "wrong", "easy", "medium", "difficult");
+  el.classList.remove("correct", "wrong", "easy", "medium", "hard");
 }
 
+// show user score and button to restart
+function showScore() {
+  clearStatusClass(quizWrapperElement);
+
+  addClass(scoreButton, "hide");
+  addClass(nextButton, "hide");
+  addClass(levelElement, "hide");
+  //addClass(questionContainerElement, "hide");
+
+  msgElement.innerHTML = `You scored <strong>${userScore}</strong>/${possibleScore}`;
+  removeClass(msgElement, "hide");
+  removeClass(headerElement, "hide");
+
+  //startButton.innerText = "Start Again";
+  removeClass(startButton, "hide");
+}
+
+// add  class to element
+function addClass(el, className = "hide") {
+  el.classList.add(`${className}`);
+}
+
+// remove class from element
+function removeClass(el, className = "hide") {
+  el.classList.remove(`${className}`);
+}
 const addScore = (score) => (userScore = userScore + score);
 
 // ​​result from api:
