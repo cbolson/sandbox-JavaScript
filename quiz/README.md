@@ -17,16 +17,18 @@ Date mod : 2022-11-14
 
 ## Things I want to do:
 
-- &#9745; fetch questions via api (see below)
-- &#9745; keep score
-- &#9745; reset quiz to get new questions
-- &#9744; category select
-- &#9744; dynamic CSS including animations between question cards.
+- &check; fetch questions via api (see below)
+- &check; keep score
+- &check; reset quiz to get new questions
+- &check; set card border color according to question difficulty level
+- [ ] category select
+- [ ] dynamic CSS including animations between question cards.
+- [ ] show user final score and rating
 
 ## If I have time
 
-- &#9744;Fetch list of categories to allow user to select which category they want to do
-- &#9744;
+- [ ] Fetch list of categories to allow user to select which category they want to do
+- [ ]
 
 #### Sources
 

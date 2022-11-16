@@ -8,22 +8,22 @@
     <link rel="stylesheet" href="css/quiz.css" />
   </head>
   <body>
-    <div class="container">
-      <div id="question__container" class="hide">
-        <div id="question">Question</div>
-        <div id="answer_buttons" class="btn-grid">
-          <button class="btn">answer 1</button>
-          <button class="btn">answer 2</button>
-          <button class="btn">answer 3</button>
-          <button class="btn">answer 4</button>
+    <main>
+      <h1>JS Quiz</h1>
+      <div id="wrapper">
+        <div id="question__container" class="hide">
+          <div id="question"><!--question will be placed here-->></div>
+          <div id="answer_buttons" class="btn-grid">
+            <!-- answer buttons will be placed here -->
+          </div>
         </div>
+        <div class="quiz__controls">
+          <button id="btn-start" class="btn btn__start">Start</button>
+          <button id="btn-next" class="btn btn__next hide">Next</button>
+        </div>
+        <div id="quiz__level"></div>
       </div>
-      <div class="quiz__controls">
-        <button id="btn-start" class="btn btn__start">Start</button>
-        <button id="btn-next" class="btn btn__next hide">Next</button>
-      </div>
-      <div id="quiz__level"></div>
-    </div>
+    </main>
 
     <script src="js/quiz.js"></script>
   </body>

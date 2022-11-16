@@ -1,4 +1,6 @@
 :root {
+  --bg-body: hsl(274, 85%, 92%);
+  --bg-h1: hsl(60, 100%, 94%);
   --bg-face: rgb(107, 27, 149);
   --clr-hands: rgb(255, 255, 255);
   --clr-seconds: red;
@@ -14,24 +16,34 @@
 ::before,
 ::after {
   box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
 }
 body {
-  background: #eee;
+  background: var(--bg-body, #eee);
   margin: 0;
   height: 100vh;
-  font-family: "Courier New", Courier, monospace;
+
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-
+h1 {
+  box-shadow: 10px 10px 0 black;
+  padding: 1em 3em;
+  border: 3px solid #000;
+  background-color: var(--bg-h1);
+}
 .wrapper {
   display: flex;
   margin-inline: auto;
   justify-content: center;
   align-items: center;
   margin-top: 3em;
+  box-shadow: 10px 10px 0 black;
+  padding: 3em;
+  border: 3px solid #000;
+  background-color: hsl(193, 100%, 94%);
 }
 .clock {
   inset: 0;
@@ -42,7 +54,7 @@ body {
   position: relative;
   border: 3px solid var(--br-face);
   outline: 2px solid var(--bg-face-outline);
-  box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.5);
+  /* box-shadow: 10px 10px 0 black; */
 }
 
 .numbers > ul {
@@ -90,6 +102,7 @@ body {
   transform-origin: bottom center;
   bottom: 50%;
   border-radius: 10px;
+  /* box-shadow: 3px 3px 0 black; */
 }
 
 .hands > div:not(.hand-sec) {
@@ -103,5 +116,6 @@ body {
 .hands .hand-sec {
   rotate: -45deg;
   width: 5px;
+  height: 130px;
   background-color: var(--clr-seconds);
 }

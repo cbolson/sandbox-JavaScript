@@ -2,41 +2,64 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Courier New", Courier, monospace;
 }
 :root {
   /* --hue-neutral:#0099CC; */
+  --bg-body: hsl(33, 100%, 88%);
+  --bg-h1: hsl(60, 100%, 94%);
+  --bg-wrapper: hsl(200, 60%, 90%);
   --hue-neutral: 220;
   --hue-wrong: 0;
   --hue-correct: 120;
+  --box-shadow: #000;
+  --box-border: #000;
+  --clr-easy: hsl(120, 100%, 25%);
+  --clr-medium: hsl(39, 100%, 50%);
+  --clr-difficult: rgb(255, 0, 0);
 }
 body {
-  --hue: var(--hue-neutral);
-  height: 100vh;
-  width: 100vw;
-  padding: 0;
+  background: var(--bg-body, #eee);
   margin: 0;
+  height: 100vh;
+  font-size: 1em;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: hsl(var(--hue), 50%, 20%);
+  align-items: top;
+  text-align: center;
+  color: hsl(39, 100%, 50%);
 }
-body.wrong {
-  --hue: var(--hue-wrong);
+h1 {
+  padding: 1em 3em;
+  border: 4px solid var(--box-border);
+  background-color: var(--bg-h1);
+  box-shadow: 10px 10px 0 var(--box-shadow);
+  margin-bottom: 2em;
 }
-body.correct {
-  --hue: var(--hue-correct);
-}
-
-.container {
+main {
   width: 800px;
   max-width: 80%;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 1em 2em;
-  box-shadow: 0 0 10px 2px;
-  color: hsl(200, 100%, 30%);
 }
+#wrapper {
+  --clr: var(--box-border);
+  background-color: var(--bg-wrapper);
+  padding: 1em 2em;
+  border: 4px solid var(--clr);
+  box-shadow: 10px 10px 0 var(--clr);
+  color: hsl(200, 100%, 30%);
+  font-size: 2em;
+}
+/* change hue var for each question level */
+#wrapper.easy {
+  --clr: var(--clr-easy);
+}
+#wrapper.medium {
+  --clr: var(--clr-medium);
+}
+#wrapper.difficult {
+  --clr: var(--clr-difficult);
+}
+
 .btn-grid {
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -51,6 +74,8 @@ body.correct {
   padding: 0.5em 0.75em;
   color: #fff;
   outline: none;
+  font-size: 1em;
+  transition: transform 3s ease-in;
 }
 .btn:hover {
   border-color: #000;
@@ -72,5 +97,6 @@ body.correct {
   align-items: center;
 }
 .hide {
+  opacity: 0;
   display: none;
 }

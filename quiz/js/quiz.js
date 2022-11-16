@@ -4,6 +4,7 @@ const levelElement = document.getElementById("quiz__level");
 const questionContainerElement = document.getElementById("question__container");
 const questionElement = document.getElementById("question");
 const answerButtonElement = document.getElementById("answer_buttons");
+const quizWrapper = document.getElementById("wrapper");
 
 let currentQuestionIndex, correctAnswer, shuffleAnswers, answerScore;
 let questions = [];
@@ -48,7 +49,7 @@ function startGame() {
 }
 
 function resetState() {
-  clearStatusClass(document.body);
+  clearStatusClass(quizWrapper);
 
   nextButton.classList.add("hide");
   while (answerButtonElement.firstChild) {
@@ -58,8 +59,6 @@ function resetState() {
 
 function setNextQuestion() {
   resetState();
-  console.log(questions);
-  console.log(`current index: ${currentQuestionIndex}`);
   // hide start button
   startButton.classList.add("hide");
   showQuestion(currentQuestionIndex);
@@ -73,7 +72,7 @@ function showQuestion(index) {
 
   // define level
   levelElement.innerText = decodeURIComponent(question.difficulty);
-
+  quizWrapper.classList.add(question.difficulty);
   answerScore = levelScore[question.difficulty];
 
   // get value of correct answer to be able to check against selected answer - ideally we would use an id rather than the text value
@@ -107,9 +106,9 @@ function showQuestion(index) {
 
 function selectAnswer(e) {
   const selectedButton = e.target;
-  console.log(
-    `selected: ${selectedButton.innerText}\n correct: ${correctAnswer}`
-  );
+  // console.log(
+  //   `selected: ${selectedButton.innerText}\n correct: ${correctAnswer}`
+  // );
 
   if (selectedButton.innerText === correctAnswer) {
     setStatusClass(selectedButton, "correct");
@@ -154,8 +153,7 @@ function setStatusClass(el, correct) {
 }
 
 function clearStatusClass(el) {
-  el.classList.remove("correct");
-  el.classList.remove("wrong");
+  el.classList.remove("correct", "wrong", "easy", "medium", "difficult");
 }
 
 const addScore = (score) => (userScore = userScore + score);
