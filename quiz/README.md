@@ -20,11 +20,11 @@
 - [ ] Add timer for each question
 - [ ] dynamic CSS including animations between question cards.
 
-#### Sources
+### Sources
 
-- JavaScript quiz tutorial: Web Dev Simplified - https://www.youtube.com/watch?v=riDzcEQbX6k
+- JavaScript tutorial: Web Dev Simplified - https://www.youtube.com/watch?v=riDzcEQbX6k
 - Questions Api: https://opentdb.com
 
 ```js
-const api = `https://opentdb.com/api.php?amount=10&encode=url3986`;
+const api = `https://opentdb.com/api.php?amount=10&encode=url3986&token=XXXXX`;
 ```
