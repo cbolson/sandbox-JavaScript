@@ -15,15 +15,16 @@ Date mod : 2022-11-14
 - placing questions and answers in container
 - correct answer detecting
 
-## Things I want to do:
+## Additions:
 
-- &check; fetch questions via api (see below)
-- &check; keep score
-- &check; reset quiz to get new questions
-- &check; set card border color according to question difficulty level
-- &check;  category select (I wanted to get the list via the api but it appears that many of the cateories are no longer working).
+- &check; Fetch questions via api (see below)
+- &check; Keep user score
+- &check; Reset quiz to get new questions
+- &check; Set card border color according to question difficulty level
+- &check; Category select (I wanted to get the list via the api but it appears that many of the cateories are no longer working).
 - [ ] dynamic CSS including animations between question cards.
-- &check;  show user final score and rating
+- &check; Show user final score and rating
+- &check; Show selected category in card
 
 ## If I have time
 

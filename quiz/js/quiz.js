@@ -10,7 +10,8 @@ const questionElement = document.querySelector("#question");
 const msgElement = document.querySelector("#quiz-msg");
 const headerElement = document.querySelector("#quiz-header");
 const catSelectList = document.querySelector("#quiz-cat-id");
-
+const quizCatTitleElement = document.querySelector("#quiz-cat-title");
+console.log(quizCatTitleElement);
 let currentQuestionIndex, correctAnswer, shuffleAnswers, answerScore, txtPoints;
 const numQuestions = 10;
 
@@ -60,9 +61,12 @@ function startGame() {
   questionElement.innerText = "";
   answerButtonElement.innerText = "";
 
-  const idCat = catSelectList.value; // I wanted to get the list of categories via the api but it appears that many of the categories no longer work
-  const urlQuiz = `https://opentdb.com/api.php?amount=${numQuestions}&encode=url3986&category=${idCat}&token=${apiToken}`;
+  const catId = catSelectList.value; // I wanted to get the list of categories via the api but it appears that many of the categories no longer work
+  const catTitle = catSelectList.options[catSelectList.selectedIndex].text;
+  quizCatTitleElement.innerText = catTitle;
 
+  const urlQuiz = `https://opentdb.com/api.php?amount=${numQuestions}&encode=url3986&category=${catId}&token=${apiToken}`;
+  // sel.options[sel.selectedIndex].sel.options[sel.selectedIndex].text;;
   currentQuestionIndex = 0;
   //console.log("starting new game");
   (async () => {
