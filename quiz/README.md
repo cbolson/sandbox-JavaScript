@@ -17,11 +17,11 @@ Date mod : 2022-11-14
 
 ## Things I want to do:
 
-- [] fetch questions via api (see below)
-- [] keep score
-- [] reset quiz to get new questions
-- [] category select
-- [] dynamic CSS including animations between question cards.
+- [ ] fetch questions via api (see below)
+- [ ] keep score
+- [ ] reset quiz to get new questions
+- [ ] category select
+- [ ] dynamic CSS including animations between question cards.
 
 #### Sources
 
