@@ -11,7 +11,7 @@
 - &check; Keep user score
 - &check; Reset quiz to get new questions
 - &check; Set card border color according to question difficulty level
-- &check; Category select (I wanted to get the list via the api but it appears that many of the cateories are no longer working).
+- &check; Category select (I wanted to get the list via the api but it appears that many of the categories are no longer working).
 - &check; Show user final score and rating
 - &check; Show selected category in card
 

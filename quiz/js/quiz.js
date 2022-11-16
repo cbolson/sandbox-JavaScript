@@ -77,7 +77,7 @@ function startGame() {
   // set current question index to 0 for new quiz
   currentQuestionIndex = 0;
 
-  // fetch qestions via api
+  // fetch questions via api
   (async () => {
     async function getQuestions() {
       const url = `${urlQuiz}`;
