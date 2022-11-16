@@ -1,7 +1,9 @@
+// buttons
 const startButton = document.querySelector("#btn-start");
 const nextButton = document.querySelector("#btn-next");
 const scoreButton = document.querySelector("#btn-score");
 
+// elements
 const levelElement = document.querySelector("#question-level");
 const questionContainerElement = document.querySelector("#quiz-questions");
 const quizWrapperElement = document.querySelector("#quiz-wrapper");
@@ -11,10 +13,24 @@ const msgElement = document.querySelector("#quiz-msg");
 const headerElement = document.querySelector("#quiz-header");
 const catSelectList = document.querySelector("#quiz-cat-id");
 const quizCatTitleElement = document.querySelector("#quiz-cat-title");
-console.log(quizCatTitleElement);
-let currentQuestionIndex, correctAnswer, shuffleAnswers, answerScore, txtPoints;
+
+// define number of questions to get
 const numQuestions = 10;
 
+let currentQuestionIndex, correctAnswer, shuffleAnswers, answerScore, txtPoints;
+
+let questions = [];
+let userScore = 0;
+let possibleScore = 0;
+
+// define score according to question difficulty level
+const levelScore = {
+  easy: 1,
+  medium: 2,
+  hard: 3,
+};
+
+// get api token to send with api fetch to avoid getting the same questions
 let apiToken = "";
 // API - get token
 (async () => {
@@ -28,21 +44,7 @@ let apiToken = "";
   await getToken();
 })();
 
-// get
-
-//console.log(urlQuiz);
-
-let questions = [];
-let userScore = 0;
-let possibleScore = 0;
-// define score according to question difficulty level
-const levelScore = {
-  easy: 1,
-  medium: 2,
-  hard: 3,
-};
-
-// start button - start game
+// start button - start/restart game
 startButton.addEventListener("click", startGame);
 
 // next button - increase question index and set question
@@ -50,25 +52,32 @@ nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
   setNextQuestion();
 });
-
+// show score button (visible at end of quiz)
 scoreButton.addEventListener("click", showScore);
 
 // start game
 function startGame() {
+  // hide elements - used when starting again
   addClass(questionContainerElement, "hide");
   addClass(headerElement, "hide");
   addClass(msgElement, "hide");
   questionElement.innerText = "";
   answerButtonElement.innerText = "";
 
+  // get cat id for api url
   const catId = catSelectList.value; // I wanted to get the list of categories via the api but it appears that many of the categories no longer work
+
+  // define selected cat title for car header
   const catTitle = catSelectList.options[catSelectList.selectedIndex].text;
   quizCatTitleElement.innerText = catTitle;
 
+  // define apu url with cat, number of questions and token
   const urlQuiz = `https://opentdb.com/api.php?amount=${numQuestions}&encode=url3986&category=${catId}&token=${apiToken}`;
-  // sel.options[sel.selectedIndex].sel.options[sel.selectedIndex].text;;
+
+  // set current question index to 0 for new quiz
   currentQuestionIndex = 0;
-  //console.log("starting new game");
+
+  // fetch qestions via api
   (async () => {
     async function getQuestions() {
       const url = `${urlQuiz}`;
@@ -77,29 +86,29 @@ function startGame() {
       const repositories = await response.json();
       console.log(repositories);
       questions = [...repositories.results];
+
+      // set up first question
       setNextQuestion();
     }
     await getQuestions();
-    //console.log(questions);
   })();
 }
 
+// reset state
 function resetState() {
-  clearStatusClass(quizWrapperElement);
-
+  // show "next" button
   addClass(nextButton);
+  // remove old answers
   while (answerButtonElement.firstChild) {
     answerButtonElement.removeChild(answerButtonElement.firstChild);
   }
 }
 
+// prepare next question
 function setNextQuestion() {
   resetState();
   // hide start button
   addClass(startButton, "hide");
-
-  // hide cat select
-  //addClass(headerElement, "hide");
 
   // show question
   showQuestion(currentQuestionIndex);
@@ -215,7 +224,7 @@ function showScore() {
   addClass(scoreButton, "hide");
   addClass(nextButton, "hide");
   addClass(levelElement, "hide");
-  //addClass(questionContainerElement, "hide");
+  addClass(quizWrapperElement, "hide");
 
   msgElement.innerHTML = `You scored <strong>${userScore}</strong>/${possibleScore}`;
   removeClass(msgElement, "hide");

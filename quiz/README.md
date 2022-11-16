@@ -19,7 +19,7 @@
 
 - [ ] Add timer for each question
 - [ ] dynamic CSS including animations between question cards.
-      test
+- [ ] indicate question progress to show how many questions are left
 
 ### Sources
 
