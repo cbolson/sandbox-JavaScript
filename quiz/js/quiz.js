@@ -26,15 +26,15 @@ nextButton.addEventListener("click", () => {
 
 // get questions from remote api
 const idCat = 22; // Geography (there are many categories - maybe I could add a category selector)
-const urlQuiz = `https://opentdb.com/api.php?amount=10&category=${idCat}`;
+const urlQuiz = `https://opentdb.com/api.php?amount=3&encode=url3986&category=${idCat}`;
 
 // start game
 function startGame() {
   currentQuestionIndex = 0;
 
   (async () => {
-    async function getQuestions(id_cat) {
-      const url = `https://opentdb.com/api.php?amount=10&category=${id_cat}`;
+    async function getQuestions() {
+      const url = `${urlQuiz}`;
 
       const response = await fetch(url);
       const repositories = await response.json();
@@ -42,21 +42,9 @@ function startGame() {
       questions = [...repositories.results];
       setNextQuestion();
     }
-    await getQuestions(idCat);
+    await getQuestions();
     //console.log(questions);
   })();
-
-  //console.log(questions);
-
-  //questions = getapi(urlQuiz);
-  //   async fetch(urlQuiz)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       //questions = data.results;
-  //       let questions = data.results;
-  //       console.log(questions);
-  //     })
-  //     .then(setNextQuestion(questions));
 }
 
 function resetState() {
@@ -81,10 +69,10 @@ function showQuestion(index) {
   //console.log(`showQuestion: ${questions}`);
   const question = questions[index];
   // add question
-  questionElement.innerText = question.question;
+  questionElement.innerText = decodeURIComponent(question.question);
 
   // define level
-  levelElement.innerText = question.difficulty;
+  levelElement.innerText = decodeURIComponent(question.difficulty);
 
   answerScore = levelScore[question.difficulty];
 
@@ -104,7 +92,7 @@ function showQuestion(index) {
   // add answers
   shuffleAnswers.forEach((answer) => {
     const button = document.createElement("button");
-    button.innerText = answer;
+    button.innerText = decodeURIComponent(answer);
     button.classList.add("btn");
     button.addEventListener("click", selectAnswer);
     answerButtonElement.appendChild(button);
