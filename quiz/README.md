@@ -21,8 +21,12 @@ Changes I want to implement:
 
 Changes made so far:
 
-- retrive random quesetions via api https://opentdb.com
+- retrieve random quesetions via api https://opentdb.com
 - placing questions and answers in container
 - correct answer detecting
 
--
+To Do:
+
+- css styling (not urgent)
+- score counter
+- difficulty indication (as we have this info in the api)

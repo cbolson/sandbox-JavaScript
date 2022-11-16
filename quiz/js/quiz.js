@@ -1,37 +1,19 @@
 const startButton = document.getElementById("btn-start");
 const nextButton = document.getElementById("btn-next");
-
+const levelElement = document.getElementById("quiz__level");
 const questionContainerElement = document.getElementById("question__container");
 const questionElement = document.getElementById("question");
 const answerButtonElement = document.getElementById("answer_buttons");
 
-let shuffleQuestions, currentQuestionIndex, correctAnswer, shuffleAnswers;
+let currentQuestionIndex, correctAnswer, shuffleAnswers, answerScore;
+let userScore = 0;
+// define score according to question difficulty level
+const levelScore = {
+  easy: 1,
+  medium: 2,
+  difficult: 3,
+};
 
-// define questions (I want to get these from an external file)
-// const questionsS = [
-//   {
-//     question: "what day is it today?",
-//     answers: [
-//       { text: "Monday", correct: true },
-//       { text: "Sunday", correct: false },
-//     ],
-//   },
-//   {
-//     question: "Is it raining?",
-//     answers: [
-//       { text: "yes", correct: false },
-//       { text: "no", correct: false },
-//       { text: "could be", correct: true },
-//     ],
-//   },
-//   {
-//     question: "Could this code be improved?",
-//     answers: [
-//       { text: "Yes, of course", correct: true },
-//       { text: "no, this is pretty much it", correct: false },
-//     ],
-//   },
-// ];
 let questions = [];
 // get questions from remote api
 const idCat = 22; // Geography (there are many categories - maybe I could add a category selector)
@@ -50,6 +32,8 @@ const idCat = 22; // Geography (there are many categories - maybe I could add a 
 
 // start button - start game
 startButton.addEventListener("click", startGame);
+
+// next button - increase question index and set question
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
   setNextQuestion();
@@ -59,14 +43,14 @@ nextButton.addEventListener("click", () => {
 function startGame() {
   // hide start button
   startButton.classList.add("hide");
+
   // show question container
   questionContainerElement.classList.remove("hide");
   currentQuestionIndex = 0;
-  //shuffle questions
-  //shuffleQuestions = questions.sort(() => Math.random() - 0.5);
-  //console.log(shuffleQuestions);
+
   setNextQuestion();
 }
+
 function resetState() {
   clearStatusClass(document.body);
 
@@ -93,7 +77,12 @@ function showQuestion(question) {
   // add question
   questionElement.innerText = question.question;
 
-  // get id of correct answer
+  // define level
+  levelElement.innerText = question.difficulty;
+
+  answerScore = levelScore[question.difficulty];
+
+  // get value of correct answer to be able to check against selected answer - ideally we would use an id rather than the text value
   correctAnswer = question.correct_answer;
 
   // need to combine answers (wrong + correct) into an array
@@ -103,7 +92,7 @@ function showQuestion(question) {
   // random sort so that correct answer is not always last
   shuffleAnswers = answers.sort(() => Math.random() - 0.5);
 
-  console.log(shuffleAnswers);
+  //console.log(shuffleAnswers);
 
   // add answers
   shuffleAnswers.forEach((answer) => {
@@ -123,13 +112,22 @@ function selectAnswer(e) {
 
   if (selectedButton.innerText === correctAnswer) {
     setStatusClass(selectedButton, "correct");
+    // add score to userScore total
+    addScore(answerScore);
   } else {
     setStatusClass(selectedButton, "");
+
+    // show correct answer
   }
+
+  console.log(`Current Score: ${userScore}`);
   //const correct = selectedButton.dataset.correct;
   //setStatusClass(document.body, correct);
   Array.from(answerButtonElement.children).forEach((button) => {
     //   setStatusClass(button, button.dataset.correct);
+    if (button.textContent.includes(correctAnswer)) {
+      setStatusClass(button, "correct");
+    }
     // remove event
     button.removeEventListener("click", selectAnswer);
   });
@@ -157,3 +155,5 @@ function clearStatusClass(el) {
   el.classList.remove("correct");
   el.classList.remove("wrong");
 }
+
+const addScore = (score) => (userScore = userScore + score);
