@@ -3,7 +3,7 @@
 ## Description:
 
 - HTML, CSS, JavaScript
-- Multiple categories quiz with questions retrieved via ap (see source below)
+- Quiz with multiple categories and questions retrieved via api (see source below)
 
 ## Additions:
 
