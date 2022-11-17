@@ -16,6 +16,12 @@
   : data-show="all" = show all numbers
   : data-show="simple" - show only 3,6,9,12
 
+## Wish List
+
+- [ ] Add option to show no numbers and/or show simple bars rather than numbers
+- [ ] Get time from a remote source (api) rather than system clock
+- [ ] Show world clock
+
 ### Source
 
 https://www.youtube.com/watch?v=DzSLUdJWrEQ&t=6999s

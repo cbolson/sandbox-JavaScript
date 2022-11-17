@@ -1,0 +1,96 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-clr: hsl(200 30% 90%);
+  --bg-header: hsl(62 20% 90%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+  background-color: var(--bg-clr);
+  font-size: 1rem;
+  line-height: 2.2;
+}
+
+header {
+  background-color: var(--bg-header);
+  box-shadow: 0 5px 0 rgb(0, 0, 0);
+}
+header .nav-main__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+header .nav-main__header .logo {
+  margin-top: -20px; /* to compensate for my poor logo svg*/
+}
+header .nav-main__hamburger {
+  margin-left: auto;
+  cursor: pointer;
+}
+header .menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  height: 0;
+  overflow: hidden;
+  transition: height 300ms linear;
+}
+header .menu a {
+  color: grey;
+  letter-spacing: 0.1rem;
+  display: block;
+  padding: 0.5rem 2rem;
+  transition: padding 300ms linear, background-color 300ms linear;
+  text-align: right;
+  text-decoration: none;
+}
+header .menu a:hover {
+  display: block;
+  background: pink;
+  color: #000;
+  padding-left: 2.5rem;
+}
+header .show-menu {
+  height: 10rem;
+}
+
+main {
+  padding: 4rem;
+}
+
+@media (min-width: 800px) {
+  .nav-main {
+    max-width: 1152px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-main .nav-main__hamburger {
+    display: none;
+  }
+  .nav-main .menu {
+    height: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .nav-main .menu a {
+    padding: 0;
+    margin: 0 0.5rem;
+    transition: none;
+  }
+  .nav-main .menu a:hover {
+    background: transparent;
+    padding: 0;
+  }
+}/*# sourceMappingURL=style.css.map */
