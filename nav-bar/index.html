@@ -11,9 +11,42 @@
     <header class="nav-main">
       <div class="nav-main__header">
         <img src="./sandbox-logo.svg" alt="logo" class="logo" />
-        <div id="hamburger" class="nav-main__hamburger">
+        <!-- <div id="hamburger" class="nav-main__hamburger">
           <span>bars</span>
-        </div>
+        </div> -->
+        <button
+          id="hamburger"
+          class="hamburger"
+          aria-controls="primary-navigation"
+          aria-expanded="false">
+          <svg
+            class="hamburger"
+            viewBox="0 0 100 100"
+            width="250"
+            fill="var(--bt-color)">
+            <rect
+              class="line line__top"
+              width="80"
+              height="10"
+              x="10"
+              y="25"
+              rx="5"></rect>
+            <rect
+              class="line line__middle"
+              width="80"
+              height="10"
+              x="10"
+              y="45"
+              rx="5"></rect>
+            <rect
+              class="line line__bottom"
+              width="80"
+              height="10"
+              x="10"
+              y="65"
+              rx="5"></rect>
+          </svg>
+        </button>
       </div>
       <nav>
         <ul id="menu" class="menu">

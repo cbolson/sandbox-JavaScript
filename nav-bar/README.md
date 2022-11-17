@@ -34,9 +34,9 @@ A simple responsive nav bar to get started with SCSS
 
 ## :sparkles: Features
 
-:heavy_check_mark: Responsive;\
-:heavy_check_mark: Minimal JavaScript;\
-:heavy_check_mark: Animated hamburger with CSS (to do);\
+:heavy_check_mark: Responsive\
+:heavy_check_mark: Minimal JavaScript\
+:heavy_check_mark: Animated hamburger with CSS (to do)
 
 ## :rocket: Technologies
 

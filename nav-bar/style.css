@@ -7,6 +7,7 @@
 :root {
   --bg-clr: hsl(200 30% 90%);
   --bg-header: hsl(62 20% 90%);
+  --bt-color: blue;
 }
 
 body {
@@ -30,10 +31,6 @@ header .nav-main__header {
 }
 header .nav-main__header .logo {
   margin-top: -20px; /* to compensate for my poor logo svg*/
-}
-header .nav-main__hamburger {
-  margin-left: auto;
-  cursor: pointer;
 }
 header .menu {
   margin: 0;
@@ -63,11 +60,26 @@ header .show-menu {
   height: 10rem;
 }
 
+.hamburger {
+  margin-left: auto;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+.hamburger .line {
+  transition: 1s;
+  transform-origin: center;
+}
+
+.hamburger:hover .line__top {
+  y: 45;
+}
+
 main {
   padding: 4rem;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1800px) {
   .nav-main {
     max-width: 1152px;
     margin-inline: auto;
@@ -75,7 +87,7 @@ main {
     justify-content: space-between;
     align-items: center;
   }
-  .nav-main .nav-main__hamburger {
+  .nav-main .hamburger {
     display: none;
   }
   .nav-main .menu {
