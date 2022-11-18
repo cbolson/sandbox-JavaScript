@@ -1,14 +1,9 @@
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-:root {
-  --bg-clr: hsl(200 30% 90%);
-  --bg-header: hsl(62 20% 90%);
-  --bt-color: rgb(77, 163, 90);
-  --menu-hover: rgb(204, 204, 179);
-  --hamburger-speed: 100ms;
+@import "./root";
+@import "./variables";
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
 }
 
 body {
@@ -22,14 +17,15 @@ body {
 header {
   background-color: var(--bg-header);
   box-shadow: 0 5px 0 rgb(0, 0, 0, 1);
+
   .nav-main__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
-
-    .logo {
-      margin-top: -20px; /* to compensate for my poor logo svg*/
+    .logo img {
+      margin-top: -10px; /* to compensate for my poor logo svg*/
+      max-width: 300px;
     }
   }
   .menu {
@@ -103,23 +99,34 @@ main > * {
   padding: 0 3em;
   margin-inline: auto;
 }
-@media (min-width: 1800px) {
-  .nav-main__header {
-    max-width: 1152px;
-    margin-inline: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@media (min-width: 800px) {
+  header,
+  main {
+    padding: 0 5em;
+  }
+  header {
+    @include flexCenter();
 
+    ju .nav-main__header {
+      max-width: 1152px;
+      width: 100%;
+      margin-inline: auto;
+      justify-content: space-between;
+    }
     .hamburger {
       display: none;
     }
+    nav {
+      margin-left: auto;
+    }
     .menu {
       height: auto;
-      display: flex;
-      align-items: center;
+      @include flexCenter();
       text-align: center;
 
+      li {
+        height: auto;
+      }
       a {
         padding: 0;
         margin: 0 0.5rem;

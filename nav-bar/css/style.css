@@ -31,8 +31,9 @@ header .nav-main__header {
   justify-content: space-between;
   padding: 0 2rem;
 }
-header .nav-main__header .logo {
-  margin-top: -20px; /* to compensate for my poor logo svg*/
+header .nav-main__header .logo img {
+  margin-top: -10px; /* to compensate for my poor logo svg*/
+  max-width: 300px;
 }
 header .menu {
   margin: 0;
@@ -109,29 +110,42 @@ main > * {
   margin-inline: auto;
 }
 
-@media (min-width: 1800px) {
-  .nav-main__header {
-    max-width: 1152px;
-    margin-inline: auto;
+@media (min-width: 800px) {
+  header,
+main {
+    padding: 0 5em;
+  }
+  header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
   }
-  .nav-main__header .hamburger {
+  header ju .nav-main__header {
+    max-width: 1152px;
+    width: 100%;
+    margin-inline: auto;
+    justify-content: space-between;
+  }
+  header .hamburger {
     display: none;
   }
-  .nav-main__header .menu {
+  header nav {
+    margin-left: auto;
+  }
+  header .menu {
     height: auto;
     display: flex;
     align-items: center;
     text-align: center;
   }
-  .nav-main__header .menu a {
+  header .menu li {
+    height: auto;
+  }
+  header .menu a {
     padding: 0;
     margin: 0 0.5rem;
     transition: none;
   }
-  .nav-main__header .menu a:hover {
+  header .menu a:hover {
     background: transparent;
     padding: 0;
   }
