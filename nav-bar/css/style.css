@@ -7,7 +7,7 @@
 :root {
   --bg-clr: hsl(200 30% 90%);
   --bg-header: hsl(62 20% 90%);
-  --bt-color: rgb(77, 163, 90);
+  --bt-color: rgb(132, 190, 139);
   --menu-hover: rgb(204, 204, 179);
   --hamburger-speed: 100ms;
 }
@@ -76,6 +76,7 @@ body {
   cursor: pointer;
   background: transparent;
   border: none;
+  fill: var(--bt-color);
 }
 .hamburger .line {
   transition: y var(--hamburger-speed) ease-in var(--hamburger-speed), rotate var(--hamburger-speed) ease-in, opacity 0ms var(--hamburger-speed), fill var(--hamburger-speed) ease-in;

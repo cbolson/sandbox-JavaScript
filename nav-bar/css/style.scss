@@ -58,6 +58,7 @@ body {
   cursor: pointer;
   background: transparent;
   border: none;
+  fill: var(--bt-color);
   .line {
     transition: y var(--hamburger-speed) ease-in var(--hamburger-speed),
       rotate var(--hamburger-speed) ease-in, opacity 0ms var(--hamburger-speed),
