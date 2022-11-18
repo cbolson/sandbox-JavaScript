@@ -12,6 +12,10 @@
   --hamburger-speed: 100ms;
 }
 
+/*
+setting default paramater values
+if we only want to define a single value we can used "named" parameters when we call our mixin function
+*/
 body {
   margin: 0;
   padding: 0;
@@ -28,6 +32,7 @@ header {
 header .nav-main__header {
   display: flex;
   align-items: center;
+  flex-direction: row;
   justify-content: space-between;
   padding: 0 2rem;
 }
@@ -110,6 +115,13 @@ main > * {
   margin-inline: auto;
 }
 
+.circle {
+  border-radius: 50%;
+  width: 200px;
+  aspect-ratio: 1;
+  background-color: red;
+}
+
 @media (min-width: 800px) {
   header,
 main {
@@ -118,6 +130,8 @@ main {
   header {
     display: flex;
     align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
   }
   header ju .nav-main__header {
     max-width: 1152px;
@@ -135,6 +149,8 @@ main {
     height: auto;
     display: flex;
     align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
     text-align: center;
   }
   header .menu li {

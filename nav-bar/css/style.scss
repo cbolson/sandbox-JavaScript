@@ -1,10 +1,6 @@
-@import "./root";
+@import "./base";
 @import "./variables";
-
-@mixin flexCenter {
-  display: flex;
-  align-items: center;
-}
+@import "./mixins";
 
 body {
   margin: 0;
@@ -19,9 +15,7 @@ header {
   box-shadow: 0 5px 0 rgb(0, 0, 0, 1);
 
   .nav-main__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flexCenter($justify: space-between);
     padding: 0 2rem;
     .logo img {
       margin-top: -10px; /* to compensate for my poor logo svg*/
@@ -99,13 +93,18 @@ main > * {
   padding: 0 3em;
   margin-inline: auto;
 }
+
+.circle {
+  @include circle(200px);
+  background-color: red;
+}
 @media (min-width: 800px) {
   header,
   main {
     padding: 0 5em;
   }
   header {
-    @include flexCenter();
+    @include flexCenter($justify: space-between);
 
     ju .nav-main__header {
       max-width: 1152px;
@@ -121,7 +120,7 @@ main > * {
     }
     .menu {
       height: auto;
-      @include flexCenter();
+      @include flexCenter($justify: space-between);
       text-align: center;
 
       li {

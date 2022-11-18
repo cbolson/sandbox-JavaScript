@@ -1,0 +1,15 @@
+@mixin flexCenter($justify: center, $direction: row) {
+  display: flex;
+  align-items: center;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+@mixin circle($width){
+    border-radius: 50%;
+    width: $width;
+    aspect-ratio: 1;
+}
+/*
+setting default paramater values
+if we only want to define a single value we can used "named" parameters when we call our mixin function
+*/
