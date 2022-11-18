@@ -1,0 +1,76 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+:root {
+  /* --hue-neutral:#0099CC; */
+  --bg-body: hsl(33, 100%, 88%);
+  --bg-h1: hsl(60, 100%, 94%);
+  --bg-header: hsl(210, 74%, 82%);
+  --bg-wrapper: hsl(0, 0%, 96%);
+  --clr-neutral: hsl(205, 77%, 53%);
+  --clr-btn: hsl(120, 1%, 61%);
+  --clr-wrong: rgb(145, 6, 6);
+  --clr-correct: hsl(120, 100%, 25%);
+  --box-shadow: #000;
+  --box-border: #000;
+  --clr-easy: hsl(120, 100%, 25%);
+  --clr-medium: hsl(39, 100%, 50%);
+  --clr-hard: rgb(255, 0, 0);
+}
+
+body {
+  background: var(--bg-body, #eee);
+  margin: 0;
+  height: 100vh;
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  text-align: left;
+}
+
+main > * {
+  --clr: var(--box-border);
+  background-color: var(--bg-wrapper);
+  box-shadow: 6px 6px 0 var(--clr);
+  border: 4px solid var(--clr);
+  font-size: 1.6em;
+  margin-bottom: 1em;
+  border-radius: 4px;
+  padding: 1em 2em;
+}
+
+main {
+  width: 800px;
+  max-width: 80%;
+}
+
+.slider {
+  padding: 0;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+.slider__images {
+  display: flex;
+  transition: transform 500ms ease-in-out;
+}
+.slider .btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.slider .btn__next {
+  right: 10px;
+}
+.slider .btn:hover {
+  opacity: 1;
+}/*# sourceMappingURL=slideshow.css.map */
