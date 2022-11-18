@@ -12,7 +12,7 @@ A simple responsive nav bar to get started with SCSS
 
 ## :link: Sources:
 
-- [ kevin Powell ] Hamburger menu animation: https://www.youtube.com/watch?v=R00QiudbD4Y&t=45s\
+- [ kevin Powell ] Hamburger menu animation: https://www.youtube.com/watch?v=R00QiudbD4Y&t=45s
 - [ Code with Sahand ] Simple responsive nav tutorial: https://www.youtube.com/watch?v=DzSLUdJWrEQ&t=6999s
 
 ## :rocket: Technologies
