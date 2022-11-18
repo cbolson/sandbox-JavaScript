@@ -17,6 +17,6 @@ A simple responsive nav bar to get started with SCSS
 
 ## :rocket: Technologies
 
-<!-- - [SCSS](https://sass-lang.com/) -->
+- [SASS](https://sass-lang.com/)
 
 <a href="#top">Back to top</a>

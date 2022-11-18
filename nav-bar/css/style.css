@@ -25,22 +25,22 @@ body {
   line-height: 2em;
 }
 
-header {
+.nav-main {
   background-color: var(--bg-header);
   box-shadow: 0 5px 0 rgb(0, 0, 0);
 }
-header .nav-main__header {
+.nav-main__header {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
   padding: 0 2rem;
 }
-header .nav-main__header .logo img {
+.nav-main__header .logo img {
   margin-top: -10px; /* to compensate for my poor logo svg*/
   max-width: 300px;
 }
-header .menu {
+.nav-main .menu {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -49,10 +49,10 @@ header .menu {
   overflow: hidden;
   transition: height 300ms linear;
 }
-header .menu li {
+.nav-main .menu li {
   height: 3em;
 }
-header .menu a {
+.nav-main .menu a {
   color: grey;
   letter-spacing: 0.1rem;
   display: block;
@@ -61,13 +61,13 @@ header .menu a {
   text-align: right;
   text-decoration: none;
 }
-header .menu a:hover {
+.nav-main .menu a:hover {
   display: block;
   background: var(--menu-hover, pink);
   color: #000;
   padding-left: 2.5rem;
 }
-header .show-menu {
+.nav-main .show-menu {
   height: 9em; /* not convinced by this as it is a predefined height - this should be a calculation of all the menu items*/
 }
 
@@ -127,25 +127,25 @@ main > * {
 main {
     padding: 0 5em;
   }
-  header {
+  .nav-main {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
   }
-  header ju .nav-main__header {
+  .nav-main__header {
     max-width: 1152px;
     width: 100%;
     margin-inline: auto;
     justify-content: space-between;
   }
-  header .hamburger {
+  .nav-main .hamburger {
     display: none;
   }
-  header nav {
+  .nav-main nav {
     margin-left: auto;
   }
-  header .menu {
+  .nav-main .menu {
     height: auto;
     display: flex;
     align-items: center;
@@ -153,15 +153,15 @@ main {
     justify-content: space-between;
     text-align: center;
   }
-  header .menu li {
+  .nav-main .menu li {
     height: auto;
   }
-  header .menu a {
+  .nav-main .menu a {
     padding: 0;
     margin: 0 0.5rem;
     transition: none;
   }
-  header .menu a:hover {
+  .nav-main .menu a:hover {
     background: transparent;
     padding: 0;
   }
