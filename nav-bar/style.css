@@ -7,7 +7,9 @@
 :root {
   --bg-clr: hsl(200 30% 90%);
   --bg-header: hsl(62 20% 90%);
-  --bt-color: blue;
+  --bt-color: rgb(77, 163, 90);
+  --menu-hover: rgb(204, 204, 179);
+  --hamburger-speed: 100ms;
 }
 
 body {
@@ -16,7 +18,7 @@ body {
   font-family: "Courier New", Courier, monospace;
   background-color: var(--bg-clr);
   font-size: 1rem;
-  line-height: 2.2;
+  line-height: 2em;
 }
 
 header {
@@ -41,6 +43,9 @@ header .menu {
   overflow: hidden;
   transition: height 300ms linear;
 }
+header .menu li {
+  height: 3em;
+}
 header .menu a {
   color: grey;
   letter-spacing: 0.1rem;
@@ -52,12 +57,12 @@ header .menu a {
 }
 header .menu a:hover {
   display: block;
-  background: pink;
+  background: var(--menu-hover, pink);
   color: #000;
   padding-left: 2.5rem;
 }
 header .show-menu {
-  height: 10rem;
+  height: 9em; /* not convinced by this as it is a predefined height - this should be a calculation of all the menu items*/
 }
 
 .hamburger {
@@ -67,41 +72,66 @@ header .show-menu {
   border: none;
 }
 .hamburger .line {
-  transition: 1s;
+  transition: y var(--hamburger-speed) ease-in var(--hamburger-speed), rotate var(--hamburger-speed) ease-in, opacity 0ms var(--hamburger-speed), fill var(--hamburger-speed) ease-in;
   transform-origin: center;
 }
-
-.hamburger:hover .line__top {
-  y: 45;
+.hamburger :hover {
+  fill: black;
 }
 
-main {
+.hamburger[aria-expanded=true] .line {
+  transition: y var(--hamburger-speed) ease-in, rotate var(--hamburger-speed) ease-in var(--hamburger-speed), opacity 0ms var(--hamburger-speed);
+}
+
+.hamburger[aria-expanded=true] .line__bottom,
+.hamburger[aria-expanded=true] .line__top {
+  y: 45px;
+}
+
+.hamburger[aria-expanded=true] .line__top {
+  rotate: 45deg;
+}
+
+.hamburger[aria-expanded=true] .line__bottom {
+  rotate: -45deg;
+}
+
+.hamburger[aria-expanded=true] .line__middle {
+  opacity: 0;
+}
+
+.hamburger main {
   padding: 4rem;
 }
 
+main > * {
+  padding: 0 3em;
+  margin-inline: auto;
+}
+
 @media (min-width: 1800px) {
-  .nav-main {
+  .nav-main__header {
     max-width: 1152px;
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .nav-main .hamburger {
+  .nav-main__header .hamburger {
     display: none;
   }
-  .nav-main .menu {
+  .nav-main__header .menu {
     height: auto;
     display: flex;
     align-items: center;
     text-align: center;
   }
-  .nav-main .menu a {
+  .nav-main__header .menu a {
     padding: 0;
     margin: 0 0.5rem;
     transition: none;
   }
-  .nav-main .menu a:hover {
+  .nav-main__header .menu a:hover {
     background: transparent;
     padding: 0;
   }

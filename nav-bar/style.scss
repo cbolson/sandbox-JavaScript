@@ -6,7 +6,9 @@
 :root {
   --bg-clr: hsl(200 30% 90%);
   --bg-header: hsl(62 20% 90%);
-  --bt-color: blue;
+  --bt-color: rgb(77, 163, 90);
+  --menu-hover: rgb(204, 204, 179);
+  --hamburger-speed: 100ms;
 }
 
 body {
@@ -15,7 +17,7 @@ body {
   font-family: "Courier New", Courier, monospace;
   background-color: var(--bg-clr);
   font-size: 1rem;
-  line-height: 2.2;
+  line-height: 2em;
 }
 header {
   background-color: var(--bg-header);
@@ -30,7 +32,6 @@ header {
       margin-top: -20px; /* to compensate for my poor logo svg*/
     }
   }
-
   .menu {
     margin: 0;
     padding: 0;
@@ -39,6 +40,9 @@ header {
     height: 0;
     overflow: hidden;
     transition: height 300ms linear;
+    li {
+      height: 3em;
+    }
     a {
       color: grey;
       letter-spacing: 0.1rem;
@@ -50,13 +54,13 @@ header {
     }
     a:hover {
       display: block;
-      background: pink;
+      background: var(--menu-hover, pink);
       color: #000;
       padding-left: 2.5rem;
     }
   }
   .show-menu {
-    height: 10rem;
+    height: 9em; /* not convinced by this as it is a predefined height - this should be a calculation of all the menu items*/
   }
 }
 .hamburger {
@@ -64,24 +68,43 @@ header {
   cursor: pointer;
   background: transparent;
   border: none;
-
   .line {
-    transition: 1s;
+    transition: y var(--hamburger-speed) ease-in var(--hamburger-speed),
+      rotate var(--hamburger-speed) ease-in, opacity 0ms var(--hamburger-speed),
+      fill var(--hamburger-speed) ease-in;
     transform-origin: center;
   }
+  :hover {
+    fill: black;
+  }
 }
-.hamburger:hover .line__top {
-  y: 45;
+.hamburger[aria-expanded="true"] .line {
+  transition: y var(--hamburger-speed) ease-in,
+    rotate var(--hamburger-speed) ease-in var(--hamburger-speed),
+    opacity 0ms var(--hamburger-speed);
 }
-.hamburger[aria-expanded="true"] {
+.hamburger[aria-expanded="true"] .line__bottom,
+.hamburger[aria-expanded="true"] .line__top {
+  y: 45px;
 }
-
-main {
+.hamburger[aria-expanded="true"] .line__top {
+  rotate: 45deg;
+}
+.hamburger[aria-expanded="true"] .line__bottom {
+  rotate: -45deg;
+}
+.hamburger[aria-expanded="true"] .line__middle {
+  opacity: 0;
+}
+.hamburger main {
   padding: 4rem;
 }
-
+main > * {
+  padding: 0 3em;
+  margin-inline: auto;
+}
 @media (min-width: 1800px) {
-  .nav-main {
+  .nav-main__header {
     max-width: 1152px;
     margin-inline: auto;
     display: flex;
