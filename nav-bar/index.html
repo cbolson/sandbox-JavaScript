@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass test</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="nav-main">
+      <div class="nav-main__header">
+        <div class="logo">
+          <img src="./sandbox-logo.svg" alt="logo" />
+        </div>
+        <button
+          id="hamburger"
+          class="hamburger"
+          aria-controls="primary-navigation"
+          aria-expanded="false">
+          <svg class="hamburger" viewBox="0 0 100 100" width="40">
+            <rect
+              class="line line__top"
+              width="80"
+              height="10"
+              x="10"
+              y="25"
+              rx="5"></rect>
+            <rect
+              class="line line__middle"
+              width="80"
+              height="10"
+              x="10"
+              y="45"
+              rx="5"></rect>
+            <rect
+              class="line line__bottom"
+              width="80"
+              height="10"
+              x="10"
+              y="65"
+              rx="5"></rect>
+          </svg>
+        </button>
+      </div>
+      <nav>
+        <ul id="menu" class="menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div>
+        <h1>A simple responsive nav bar</h1>
+        <p>
+          This code is more about practicing SCSS than creating the responsive
+          nav.
+        </p>
+        <ul>
+          <li>
+            Basic hamburger menu animation:
+            <a
+              href="https://www.youtube.com/watch?v=R00QiudbD4Y&t=45s"
+              target="_blank"
+              >Kevin Powell</a
+            >
+          </li>
+          <li>
+            Simple responsive nav tutorial:
+            <a href="https://www.youtube.com/watch?v=DzSLUdJWrEQ&t=6999s"
+              >Code with Sahand</a
+            >
+          </li>
+        </ul>
+      </div>
+    </main>
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-clr: hsl(200 30% 90%);
+  --bg-header: hsl(62 20% 90%);
+  --bt-color: rgb(132, 190, 139);
+  --menu-hover: rgb(204, 204, 179);
+  --hamburger-speed: 100ms;
+}
+
+/*
+setting default paramater values
+if we only want to define a single value we can used "named" parameters when we call our mixin function
+*/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+  background-color: var(--bg-clr);
+  font-size: 1rem;
+  line-height: 2em;
+}
+
+.nav-main {
+  background-color: var(--bg-header);
+  box-shadow: 0 5px 0 rgb(0, 0, 0);
+}
+.nav-main__header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+.nav-main__header .logo img {
+  margin-top: -10px; /* to compensate for my poor logo svg*/
+  max-width: 300px;
+}
+.nav-main .menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  height: 0;
+  overflow: hidden;
+  transition: height 300ms linear;
+}
+.nav-main .menu li {
+  height: 3em;
+}
+.nav-main .menu a {
+  color: grey;
+  letter-spacing: 0.1rem;
+  display: block;
+  padding: 0.5rem 2rem;
+  transition: padding 300ms linear, background-color 300ms linear;
+  text-align: right;
+  text-decoration: none;
+}
+.nav-main .menu a:hover {
+  display: block;
+  background: var(--menu-hover, pink);
+  color: #000;
+  padding-left: 2.5rem;
+}
+.nav-main .show-menu {
+  height: 9em; /* not convinced by this as it is a predefined height - this should be a calculation of all the menu items*/
+}
+
+.hamburger {
+  margin-left: auto;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  fill: var(--bt-color);
+}
+.hamburger .line {
+  transition: y var(--hamburger-speed) ease-in var(--hamburger-speed), rotate var(--hamburger-speed) ease-in, opacity 0ms var(--hamburger-speed), fill var(--hamburger-speed) ease-in;
+  transform-origin: center;
+}
+.hamburger :hover {
+  fill: black;
+}
+
+.hamburger[aria-expanded=true] .line {
+  transition: y var(--hamburger-speed) ease-in, rotate var(--hamburger-speed) ease-in var(--hamburger-speed), opacity 0ms var(--hamburger-speed);
+}
+
+.hamburger[aria-expanded=true] .line__bottom,
+.hamburger[aria-expanded=true] .line__top {
+  y: 45px;
+}
+
+.hamburger[aria-expanded=true] .line__top {
+  rotate: 45deg;
+}
+
+.hamburger[aria-expanded=true] .line__bottom {
+  rotate: -45deg;
+}
+
+.hamburger[aria-expanded=true] .line__middle {
+  opacity: 0;
+}
+
+.hamburger main {
+  padding: 4rem;
+}
+
+main > * {
+  padding: 0 3em;
+  margin-inline: auto;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 200px;
+  aspect-ratio: 1;
+  background-color: red;
+}
+
+@media (min-width: 800px) {
+  header,
+main {
+    padding: 0 5em;
+  }
+  .nav-main {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .nav-main__header {
+    max-width: 1152px;
+    width: 100%;
+    margin-inline: auto;
+    justify-content: space-between;
+  }
+  .nav-main .hamburger {
+    display: none;
+  }
+  .nav-main nav {
+    margin-left: auto;
+  }
+  .nav-main .menu {
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .nav-main .menu li {
+    height: auto;
+  }
+  .nav-main .menu a {
+    padding: 0;
+    margin: 0 0.5rem;
+    transition: none;
+  }
+  .nav-main .menu a:hover {
+    background: transparent;
+    padding: 0;
+  }
+}/*# sourceMappingURL=style.css.map */

@@ -1,10 +1,6 @@
 # HTML + CSS + JavaScript clock
 
-Date : 2022-11-09
-Date mod : 2022-11-10
-Source: https://www.youtube.com/watch?v=DzSLUdJWrEQ&t=6999s
-
-Description:
+## Description:
 
 - CSS - clock face and hands
 - Javascript: Numbers created and placed
@@ -12,11 +8,20 @@ Description:
 - JavaScript: Hour hand placed in real position between hours
 - HTML data attribute allows us to define the click numbers to show all the numbers or just 3,6,9,12
 
-Notes:
-Changes made to original source:
+## Additions:
 
-- separate large function into smaller functions
-- move hour hand to position between numbers to reflect actual minutes
-- place numbers around the clock face via JavaScript:
+- Separate large function into smaller functions
+- Move hour hand to position between numbers to reflect actual minutes
+- Place numbers around the clock face via JavaScript:
   : data-show="all" = show all numbers
   : data-show="simple" - show only 3,6,9,12
+
+## Wish List
+
+- [ ] Add option to show no numbers and/or show simple bars rather than numbers
+- [ ] Get time from a remote source (api) rather than system clock
+- [ ] Show world clock
+
+### Source
+
+https://www.youtube.com/watch?v=DzSLUdJWrEQ&t=6999s
