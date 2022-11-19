@@ -61,13 +61,16 @@ main {
   .btn {
     position: absolute;
     top: 50%;
+    left: 10px;
     transform: translateY(-50%);
     color: #fff;
-    opacity: 0.5;
+    opacity: 0.7;
+    font-size: 3em;
     cursor: pointer;
 
     &__next {
       right: 10px;
+      left: auto;
     }
     &:hover {
       opacity: 1;

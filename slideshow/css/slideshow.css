@@ -63,13 +63,16 @@ main {
 .slider .btn {
   position: absolute;
   top: 50%;
+  left: 10px;
   transform: translateY(-50%);
   color: #fff;
-  opacity: 0.5;
+  opacity: 0.7;
+  font-size: 3em;
   cursor: pointer;
 }
 .slider .btn__next {
   right: 10px;
+  left: auto;
 }
 .slider .btn:hover {
   opacity: 1;
