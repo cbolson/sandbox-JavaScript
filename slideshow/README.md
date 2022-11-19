@@ -1,4 +1,4 @@
-# SLideshow
+# Slideshow
 
 ## About
 
@@ -7,8 +7,8 @@
 
 ## Features
 
-[ ] Multiple slideshows on same page
-[ ] Responsive
+[ ] Multiple slideshows on same page\
+[ ] Responsive\
 [ ] JavaScript file < 1kb
 
 ## Resources
