@@ -4,39 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SlideShow</title>
+    <title>JavaScript & CSS slideshow</title>
     <link rel="stylesheet" href="css/slideshow.css" />
   </head>
   <body>
    
     <main>
-      <h1>Slideshow</h1> 
-      <header>about this...</header>
-      <div id="slider-one" class="slider" data-slider>
-        <div id="slider-images" class="slider__images">
-          <img src="https://picsum.photos/id/27/600/400" alt="">
-          <img src="https://picsum.photos/id/59/600/400" alt="">
-          <img src="https://picsum.photos/id/77/600/400" alt="">
-          <img src="https://picsum.photos/id/84/600/400" alt="">
-          <img src="https://picsum.photos/id/95/600/400" alt="">
-          <img src="https://picsum.photos/id/116/600/400" alt="">
+      <h1>JavaScript & CSS slideshow</h1> 
+      <header>
+        Permits multiple slideshows on the same page
+      </header>
+
+      <div class="slider" data-slider>
+        <div class="slider__images">
+          <img src="https://picsum.photos/id/27/600/400" alt="img" loading="lazy">
+          <img src="https://picsum.photos/id/59/600/400" alt="img" loading="lazy">
+          <img src="https://picsum.photos/id/77/600/400" alt="img" loading="lazy">
+          <img src="https://picsum.photos/id/84/600/400" alt="img" loading="lazy">
         </div>
         <div class="btn btn__prev" slider-btn="prev">&#8249;</div>
         <div class="btn btn__next" slider-btn="next">&#8250;</div>
        </div>
-       <div id="slider-two" class="slider" data-slider>
-        <div id="slider-images" class="slider__images">
-          <img src="https://picsum.photos/id/24/600/400" alt="">
-          <img src="https://picsum.photos/id/26/600/400" alt="">
-          <img src="https://picsum.photos/id/34/600/400" alt="">
-          <img src="https://picsum.photos/id/36/600/400" alt="">
-          <img src="https://picsum.photos/id/39/600/400" alt="">
-          <img src="https://picsum.photos/id/48/600/400" alt="">
+
+       <div class="slider" data-slider>
+        <div class="slider__images">
+          <img src="https://picsum.photos/id/24/600/400" alt="img" loading="lazy">
+          <img src="https://picsum.photos/id/26/600/400" alt="img" loading="lazy">
+          <img src="https://picsum.photos/id/34/600/400" alt="img" loading="lazy">
+          <img src="https://picsum.photos/id/36/600/400" alt="img" loading="lazy">
+          <img src="https://picsum.photos/id/39/600/400" alt="img" loading="lazy">
+          <img src="https://picsum.photos/id/48/600/400" alt="img" loading="lazy">
         </div>
-        <div class="btn btn__prev" slider-btn="prev">&#8249;</div>
-        <div class="btn btn__next" slider-btn="next">&#8250;</div>
+        <div class="btn" slider-btn="prev">&#8249;</div>
+        <div class="btn" slider-btn="next">&#8250;</div>
        </div>
     
-    <script src="js/slideshow.js"></script>
+    <script src="js/slideshow.js" defer></script>
   </body>
 </html>

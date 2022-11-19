@@ -1,15 +1,12 @@
 // get array of all the slideshows on the page
-// Note - I use the data attribute rather than the css so that if we change the css names nothing breaks
-const sliders = Array.from(document.querySelectorAll("[data-slider]"));
+const sliders = document.querySelectorAll("[data-slider]");
 
 sliders.forEach((slider) => {
-  // define each slider vars and functiosn
-  const sliderElement = slider.querySelector("#slider-images");
+  const sliderElement = slider.firstElementChild;
   const sliderImages = sliderElement.querySelectorAll("img");
   const sliderButtons = slider.querySelectorAll("[slider-btn]");
   let currentImg = 0;
 
-  // add click event to buttons to slide image container
   sliderButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const direction = btn.getAttribute("slider-btn");
@@ -26,10 +23,8 @@ sliders.forEach((slider) => {
     } else if (currentImg < 0) {
       currentImg = sliderImages.length - 1;
     }
-    // get slider width to be able to calculate transform position
-    // note I am doing this within this function incase the window has been resized after defining the variables
-    const imgW = slider.offsetWidth;
-
+    // get slider width to calculate transform position (check each time incase the viewport width has changed)
+    const imgW = sliderElement.offsetWidth;
     sliderElement.style.transform = `translateX(-${currentImg * imgW}px)`;
   }
 });
