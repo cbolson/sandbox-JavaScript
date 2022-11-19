@@ -1,15 +1,16 @@
 # SLideshow
 
-## Description
+## About
 
-Simple CSS & JavaScript Slideshow
+- HTML, CSS, JavaScript
+- Simple CSS & JavaScript Slideshow
 
 ## Features
 
 [ ] Multiple slideshows on same page
-[ ] Responsive (TO DO)
+[ ] Responsive
+[ ] JavaScript file < 1kb
 
 ## Resources
 
 - Images from Lorem Picsum : https://picsum.photos/
--
