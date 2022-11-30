@@ -72,6 +72,21 @@ header {
     font-size: 2em;
     cursor: pointer;
 
+    //       width:30px;
+    //   aspect-ratio:1;
+    //   border-radius: 50%;
+    //   display:flex;
+    //   justify-content: center;
+    //   align-items:center;
+    //   line-height: 0;
+    // }
+    // .slider .slider-btn::before{
+    // 	content:'\276E';
+    // }
+    // .slider .slider-btn:last-of-type::before{
+    // 	content:'\276F';
+    // }
+
     &[slider-btn="next"] {
       right: 10px;
       left: auto;
