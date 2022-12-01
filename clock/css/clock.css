@@ -19,7 +19,6 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  font-family: "Courier New", Courier, monospace;
 }
 body {
   background: var(--bg-body, #eee);
