@@ -9,15 +9,40 @@
     <script src="js/cards.js" defer></script>
   </head>
   <body>
-    <div class="card-group">
-      <div class="card card--small"></div>
-      <div class="card card--large"></div>
-      <div class="card card--small"></div>
-      <div class="card card--large"></div>
-      <div class="card card--small"></div>
-      <div class="card card--large"></div>
-      <div class="card card--small"></div>
-      <div class="card card--large"></div>
+    <div class="card-swiper">
+      <div class="card-groups">
+        <div class="card-group" data-index="0" data-status="active">
+          <div class="card card--large"></div>
+
+          <div class="card card--large"></div>
+
+          <div class="card card--large"></div>
+
+          <div class="card card--large"></div>
+        </div>
+        <div class="card-group" data-index="1" data-status="unknown">
+          <div class="card card--large"></div>
+
+          <div class="card card--large"></div>
+
+          <div class="card card--large"></div>
+
+          <div class="card card--large"></div>
+        </div>
+        <div class="card-group" data-index="2" data-status="unknown">
+          <div class="card card--large"></div>
+
+          <div class="card card--large"></div>
+
+          <div class="card card--large"></div>
+
+          <div class="card card--large"></div>
+        </div>
+      </div>
+      <div class="card-swiper-buttons">
+        <button id="btn-hate">hate</button>
+        <button id="btn-love">love</button>
+      </div>
     </div>
 
     https://www.youtube.com/watch?v=6TYkDy54q4E
