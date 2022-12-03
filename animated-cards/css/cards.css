@@ -4,16 +4,10 @@
   box-sizing: border-box;
 }
 
-:root {
-  --body-bg: hsl(0 0% 0%);
-  --card-bg: hsl(0, 100%, 50%, 0.5);
-  --card-small-bg: hsl(240, 100%, 50%, 0.5);
-}
-
 body {
   margin: 0;
   height: 100vh;
-  background-color: var(--body-bg);
+  background-color: hsl(0deg, 0%, 0%);
   display: grid;
   place-items: center;
 }
@@ -27,7 +21,7 @@ body {
 .card-groups,
 .card-group,
 .card--large {
-  width: 30vmin;
+  width: 260px;
 }
 
 .card-group {
@@ -56,16 +50,16 @@ body {
   transition: none;
 }
 .card-group:hover > .card--large:nth-child(1) {
-  transform: translate(-165%);
+  transform: translateX(calc(-260px * 1.5));
 }
 .card-group:hover > .card--large:nth-child(2) {
-  transform: translate(-55%);
+  transform: translate(calc(-260px * 0.5));
 }
 .card-group:hover > .card--large:nth-child(3) {
-  transform: translate(55%);
+  transform: translate(calc(260px * 0.5));
 }
 .card-group:hover > .card--large:nth-child(4) {
-  transform: translate(165%);
+  transform: translate(calc(260px * 1.5));
 }
 
 .card-swiper-buttons {
@@ -77,11 +71,12 @@ body {
 }
 
 .card {
-  background: var(--card-bg);
+  background: hsla(0deg, 100%, 50%, 0.5);
   position: absolute;
   transition: transform 500ms cubic-bezier(0.06, 0.77, 0.21, 0.81);
   border-radius: 1vmin;
   background-size: cover;
+  border: 1px solid #fff;
 }
 .card:nth-child(1) {
   transform: translateX(-10%) rotate(-1deg);
@@ -95,7 +90,6 @@ body {
 .card:nth-child(4) {
   transform: translate(10%, 3%) rotate(5deg);
 }
-
 .card-group[data-index="0"] > .card:nth-child(1) {
   background-image: url(https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0c3xlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60);
 }

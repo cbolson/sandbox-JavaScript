@@ -1,6 +1,6 @@
 @use "mixins.scss";
 @use "base.scss";
-@use "variables.scss";
+@use "master.scss" as m;
 
 $images_card_rabbits: (
   "https://images.unsplash.com/photo-1529040274442-815019b0e4fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fHJhYmJpdHN8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=230&q=60",
@@ -24,7 +24,7 @@ $images_card_cats: (
 body {
   margin: 0;
   height: 100vh;
-  background-color: var(--body-bg);
+  background-color: m.$body_bg;
   display: grid;
   place-items: center;
 }
@@ -37,7 +37,7 @@ body {
 .card-groups,
 .card-group,
 .card--large {
-  width: 30vmin;
+  width: m.$card-w;
 }
 
 .card-group {
@@ -68,16 +68,16 @@ body {
   }
 
   &:hover > .card--large:nth-child(1) {
-    transform: translate(-165%);
+    transform: translateX(calc(-#{m.$card_w} * 1.5));
   }
   &:hover > .card--large:nth-child(2) {
-    transform: translate(-55%);
+    transform: translate(calc(-#{m.$card_w} * 0.5));
   }
   &:hover > .card--large:nth-child(3) {
-    transform: translate(55%);
+    transform: translate(calc(#{m.$card_w} * 0.5));
   }
   &:hover > .card--large:nth-child(4) {
-    transform: translate(165%);
+    transform: translate(calc(#{m.$card_w} * 1.5));
   }
 }
 .card-swiper-buttons {
@@ -88,11 +88,12 @@ body {
   gap: 2em;
 }
 .card {
-  background: var(--card-bg);
+  background: m.$card-bg;
   position: absolute;
   transition: transform 500ms cubic-bezier(0.06, 0.77, 0.21, 0.81);
   border-radius: 1vmin;
   background-size: cover;
+  border: 1px solid #fff;
   & {
     &:nth-child(1) {
       transform: translateX(-10%) rotate(-1deg);
@@ -106,6 +107,9 @@ body {
     &:nth-child(4) {
       transform: translate(10%, 3%) rotate(5deg);
     }
+  }
+  &:hover {
+    // scale: 1.04;
   }
 }
 
