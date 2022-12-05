@@ -26,7 +26,9 @@ body {
   height: 100vh;
   background-color: m.$body_bg;
   display: grid;
+  color: m.$body_clr;
   place-items: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .card-groups,
 .card-group,
@@ -36,14 +38,19 @@ body {
 
 .card-groups,
 .card-group,
-.card--large {
+.card {
   width: m.$card-w;
 }
 
 .card-group {
   position: absolute;
   transition: transform 300ms ease;
-
+  &__title {
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translate(-50%);
+  }
   &[data-status="unknown"] {
     transform: scale(0);
     transition: none;
@@ -53,31 +60,30 @@ body {
   }
 
   &[data-status="after"] {
-    transform: translateX(50%) scale(0);
+    transform: scale(0);
   }
   &[data-status="before"] {
-    transform: translateX(-50%) scale(0);
+    transform: scale(0);
   }
-  &[data-status="becoming-active-from-after"] {
-    transform: translateX(50%) scale(0);
-    transition: none;
+  &:hover > .card:nth-child(1) {
+    transform: translateX(calc(-#{m.$card_w} * 1.5 - 6px));
+    opacity: 1;
   }
-  &[data-status="becoming-active-from-before"] {
-    transform: translateX(-50%) scale(0);
-    transition: none;
+  &:hover > .card:nth-child(2) {
+    transform: translate(calc(-#{m.$card_w} * 0.5 - 2px));
+    opacity: 1;
   }
-
-  &:hover > .card--large:nth-child(1) {
-    transform: translateX(calc(-#{m.$card_w} * 1.5));
+  &:hover > .card:nth-child(3) {
+    transform: translate(calc(#{m.$card_w} * 0.5 + 2px));
+    opacity: 1;
   }
-  &:hover > .card--large:nth-child(2) {
-    transform: translate(calc(-#{m.$card_w} * 0.5));
+  &:hover > .card:nth-child(4) {
+    transform: translate(calc(#{m.$card_w} * 1.5 + 6px));
+    opacity: 1;
   }
-  &:hover > .card--large:nth-child(3) {
-    transform: translate(calc(#{m.$card_w} * 0.5));
-  }
-  &:hover > .card--large:nth-child(4) {
-    transform: translate(calc(#{m.$card_w} * 1.5));
+  &:hover .card__title {
+    transform: translateY(-90%);
+    color: #fff;
   }
 }
 .card-swiper-buttons {
@@ -86,7 +92,26 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2em;
+
+  & > button {
+    border: none;
+    font-size: 2em;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  & > button:hover {
+    opacity: 1;
+  }
 }
+// @function randomNum($min, $max) {
+//   $rand: random();
+//   $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+//   @return $randomNum;
+// }
+
 .card {
   background: m.$card-bg;
   position: absolute;
@@ -94,25 +119,48 @@ body {
   border-radius: 1vmin;
   background-size: cover;
   border: 1px solid #fff;
+  opacity: 0.5;
+
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-image: linear-gradient(
+  //     hsl(0 0% 0% / 0.3),
+  //     hsl(0 0% 0% / 0.1) 20%
+  //   );
+  // }
+  &:last-of-type {
+    opacity: 1;
+  }
   & {
     &:nth-child(1) {
-      transform: translateX(-10%) rotate(-1deg);
+      transform: translateX(random(5) * 1%) rotate(-1deg);
     }
+
     &:nth-child(2) {
       transform: rotate(2deg);
     }
     &:nth-child(3) {
-      transform: translate(-6%) rotate(-3deg);
+      transform: translate(random(5) * 1%) rotate(-3deg);
     }
     &:nth-child(4) {
-      transform: translate(10%, 3%) rotate(5deg);
+      transform: translate(random(5) * 1%) rotate(5deg);
     }
   }
-  &:hover {
-    // scale: 1.04;
+
+  &__title {
+    padding: 1em;
+    font-size: 1.2em;
+    transition: transform 200ms ease-in-out 300ms, color 100ms ease-in 3h00ms;
+    z-index: 1;
+    color: #000;
   }
 }
 
-@include mixins.card-images("0", $images_card_cats);
+@include mixins.card-images("2", $images_card_cats);
 @include mixins.card-images("1", $images_card_dogs);
-@include mixins.card-images("2", $images_card_rabbits);
+@include mixins.card-images("0", $images_card_rabbits);
