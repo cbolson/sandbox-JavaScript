@@ -1,0 +1,166 @@
+@use "mixins.scss";
+@use "base.scss";
+@use "master.scss" as m;
+
+$images_card_rabbits: (
+  "https://images.unsplash.com/photo-1529040274442-815019b0e4fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fHJhYmJpdHN8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=230&q=60",
+  "https://images.unsplash.com/photo-1570989086575-503363bb091b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cmFiYml0c3xlbnwwfDF8MHx8&auto=format&fit=crop&w=230&q=60",
+  "https://images.unsplash.com/photo-1609151257897-4d24b5a6491e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHJhYmJpdHN8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=230&q=60",
+  "https://images.unsplash.com/photo-1636096034623-1d3254303038?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fHJhYmJpdHN8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=230&q=60"
+);
+$images_card_dogs: (
+  "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9nc3xlbnwwfDF8MHx8&auto=format&fit=crop&w=230&q=60",
+  "https://images.unsplash.com/photo-1588269845464-8993565cac3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGRvZ3N8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGRvZ3N8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1625316708582-7c38734be31d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZG9nc3xlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60"
+);
+$images_card_cats: (
+  "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0c3xlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNhdHN8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1615111784767-4d7c527f32a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGNhdHN8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fGNhdHN8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+);
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: m.$body_bg;
+  display: grid;
+  color: m.$body_clr;
+  place-items: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.card-groups,
+.card-group,
+.card {
+  aspect-ratio: 5 / 7;
+}
+
+.card-groups,
+.card-group,
+.card {
+  width: m.$card-w;
+}
+
+.card-group {
+  position: absolute;
+  transition: transform 300ms ease;
+  &__title {
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  &[data-status="unknown"] {
+    transform: scale(0);
+    transition: none;
+  }
+  &[data-status="active"] {
+    transition-delay: 300ms;
+  }
+
+  &[data-status="after"] {
+    transform: scale(0);
+  }
+  &[data-status="before"] {
+    transform: scale(0);
+  }
+  &:hover > .card:nth-child(1) {
+    transform: translateX(calc(-#{m.$card_w} * 1.5 - 6px));
+    opacity: 1;
+  }
+  &:hover > .card:nth-child(2) {
+    transform: translate(calc(-#{m.$card_w} * 0.5 - 2px));
+    opacity: 1;
+  }
+  &:hover > .card:nth-child(3) {
+    transform: translate(calc(#{m.$card_w} * 0.5 + 2px));
+    opacity: 1;
+  }
+  &:hover > .card:nth-child(4) {
+    transform: translate(calc(#{m.$card_w} * 1.5 + 6px));
+    opacity: 1;
+  }
+  &:hover .card__title {
+    transform: translateY(-90%);
+    color: #fff;
+  }
+}
+.card-swiper-buttons {
+  margin-top: 8vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+
+  & > button {
+    border: none;
+    font-size: 2em;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  & > button:hover {
+    opacity: 1;
+  }
+}
+// @function randomNum($min, $max) {
+//   $rand: random();
+//   $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+//   @return $randomNum;
+// }
+
+.card {
+  background: m.$card-bg;
+  position: absolute;
+  transition: transform 500ms cubic-bezier(0.06, 0.77, 0.21, 0.81);
+  border-radius: 1vmin;
+  background-size: cover;
+  border: 1px solid #fff;
+  opacity: 0.5;
+
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-image: linear-gradient(
+  //     hsl(0 0% 0% / 0.3),
+  //     hsl(0 0% 0% / 0.1) 20%
+  //   );
+  // }
+  &:last-of-type {
+    opacity: 1;
+  }
+  & {
+    &:nth-child(1) {
+      transform: translateX(random(5) * 1%) rotate(-1deg);
+    }
+
+    &:nth-child(2) {
+      transform: rotate(2deg);
+    }
+    &:nth-child(3) {
+      transform: translate(random(5) * 1%) rotate(-3deg);
+    }
+    &:nth-child(4) {
+      transform: translate(random(5) * 1%) rotate(5deg);
+    }
+  }
+
+  &__title {
+    padding: 1em;
+    font-size: 1.2em;
+    transition: transform 200ms ease-in-out 300ms, color 100ms ease-in 200ms;
+    z-index: 1;
+    color: #000;
+  }
+}
+
+@include mixins.card-images("2", $images_card_cats);
+@include mixins.card-images("1", $images_card_dogs);
+@include mixins.card-images("0", $images_card_rabbits);

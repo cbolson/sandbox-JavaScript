@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS animated cards</title>
+    <link rel="stylesheet" href="css/cards.css" />
+    <script src="js/cards.js" defer></script>
+  </head>
+  <body>
+    <div class="card-swiper">
+      <div class="card-groups">
+        <div class="card-group" data-index="0" data-status="active">
+          <div class="card">
+            <div class="card__title">Rabbit 1</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Rabbit 2</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Rabbit 3</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Rabbit 4</div>
+          </div>
+        </div>
+        <div class="card-group" data-index="1" data-status="unknown">
+          <div class="card">
+            <div class="card__title">Dogs 1</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Dogs 2</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Dogs 3</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Dogs 4</div>
+          </div>
+        </div>
+        <div class="card-group" data-index="2" data-status="unknown">
+          <div class="card">
+            <div class="card__title">Cats 1</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Cats 2</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Cats 3</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Cats 4</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-swiper-buttons">
+        <button id="btn-last" nav-direction="back">&#10094;</button>
+        <button id="btn-next" nav-direction="next">&#10095;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+@mixin card-images($index, $arr) {
+  .card-group[data-index="#{$index}"] {
+    > .card {
+      @each $img in $arr {
+        $i: index($arr, $img);
+        &:nth-child(#{$i}) {
+          background-image: url(#{$img});
+        }
+      }
+    }
+  }
+}
+
+// @mixin position(
+//   $position,
+//   $top: null,
+//   $right: null,
+//   $bottom: null,
+//   $left: null
+// ) {
+//   position: $position;
+//   top: $top;
+//   right: $right;
+//   bottom: $bottom;
+//   left: $left;
+// }

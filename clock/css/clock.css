@@ -1,38 +1,55 @@
 :root {
-  --bg-body: hsl(274, 85%, 92%);
-  --bg-h1: hsl(60, 100%, 94%);
-  --bg-face: rgb(107, 27, 149);
+  --w-main: 90%;
+  --box-shadow-w: 3px;
+  --box-shadow: hsl(0, 0%, 0%);
+  --box-border: hsl(0, 0%, 0%);
+  --bg-body: hsl(175, 59%, 79%);
+  --bg-header: hsl(60, 100%, 94%);
+  --bg-face: rgb(176, 55, 160);
   --clr-hands: rgb(255, 255, 255);
   --clr-seconds: red;
   --clr-numbers: rgb(255, 255, 255);
   --br-face: rgba(255, 255, 255, 1);
   --bg-face-outline: var(--bg-face);
   --spc-numbers: 0.5em;
-  --fs-numbers: 1.4em;
-  --clock-size: 300px;
+  --fs-numbers: 0.4em;
   --num-distance: 120px;
 }
 *,
 ::before,
 ::after {
   box-sizing: border-box;
-  font-family: "Courier New", Courier, monospace;
 }
 body {
   background: var(--bg-body, #eee);
   margin: 0;
+  padding: 1em;
   height: 100vh;
-
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: top;
   text-align: center;
 }
-h1 {
-  box-shadow: 10px 10px 0 black;
-  padding: 1em 3em;
-  border: 3px solid #000;
-  background-color: var(--bg-h1);
+main {
+  width: var(--w-main, 80%);
+}
+main > * {
+  --clr: var(--box-border);
+  background-color: var(--bg-wrapper);
+
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  border-radius: 4px;
+  padding: 0.5 1em;
+}
+header {
+  background-color: var(--bg-header);
+  box-shadow: 0 var(--box-shadow-w) 0 var(--clr);
+  border: 4px solid var(--clr);
+}
+header h1 {
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 2rem);
 }
 .wrapper {
   display: flex;
@@ -40,21 +57,24 @@ h1 {
   justify-content: center;
   align-items: center;
   margin-top: 3em;
-  box-shadow: 10px 10px 0 black;
+
+  /* box-shadow: 10px 10px 0 black;
   padding: 3em;
   border: 3px solid #000;
   background-color: hsl(193, 100%, 94%);
+  color: hsl(90, 83%, 26%); */
 }
 .clock {
+  container-type: inline-size;
+  container-name: clock;
   inset: 0;
-  width: var(--clock-size, 200px);
+  width: clamp(200px, 300px, 400px); /*clamp(<min>, <ideal>, <max>):*/
   aspect-ratio: 1;
   background-color: var(--bg-face);
   border-radius: 50%;
   position: relative;
   border: 3px solid var(--br-face);
   outline: 2px solid var(--bg-face-outline);
-  /* box-shadow: 10px 10px 0 black; */
 }
 
 .numbers > ul {
@@ -75,7 +95,8 @@ h1 {
   text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
   font-weight: 500;
   color: var(--clr-numbers);
-  font-size: var(--fs-numbers, 2em);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  display: none;
 }
 
 .hands {
@@ -87,7 +108,7 @@ h1 {
 .hands::before {
   /* add central circle over clock hands*/
   content: "";
-  width: 2em;
+  width: 10%;
   aspect-ratio: 1;
   background-color: var(--bg-face);
   border: 2px solid white;
@@ -96,9 +117,9 @@ h1 {
 }
 .hands > div {
   background-color: var(--clr-hands);
-  width: 10px;
+  width: 3%;
   position: absolute;
-  height: 100px;
+  height: 36%;
   transform-origin: bottom center;
   bottom: 50%;
   border-radius: 10px;
@@ -110,12 +131,35 @@ h1 {
   transition: rotate 1000ms ease-in-out;
 }
 .hands .hand-hour {
-  height: 70px;
+  height: 26%;
+  width: 4%;
   rotate: 45deg;
 }
 .hands .hand-sec {
   rotate: -45deg;
-  width: 5px;
-  height: 130px;
+  width: 1%;
+  height: 45%;
   background-color: var(--clr-seconds);
+}
+/* @ container not yet supported on all browsers */
+@container clock (min-width: 120px) {
+  .numbers li:nth-of-type(3n) {
+    display: block;
+  }
+}
+
+@container clock (min-width: 320px) {
+  .numbers li {
+    display: block;
+  }
+}
+@media all and (min-width: 220px) {
+  .numbers li:nth-of-type(3n) {
+    display: block;
+  }
+}
+@media all and (min-width: 480px) {
+  .numbers li {
+    display: block;
+  }
 }
