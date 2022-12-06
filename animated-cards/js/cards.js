@@ -1,22 +1,24 @@
 let activeIndex = 0;
 
-const btnNext = document.querySelector("#btn-next");
-const btnPrev = document.querySelector("#btn-last");
 const groups = document.querySelectorAll(".card-group");
+const btnsNav = document.querySelectorAll("[nav-direction]");
 
-btnNext.addEventListener("click", () => {
-  const nextIndex = activeIndex + 1 <= groups.length - 1 ? activeIndex + 1 : 0;
-  const currentGroup = document.querySelector(`[data-index="${activeIndex}"]`),
-    nextGroup = document.querySelector(`[data-index="${nextIndex}"]`);
-  currentGroup.dataset.status = "after";
-  nextGroup.dataset.status = "active";
-  activeIndex = nextIndex;
+btnsNav.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const direction = btn.getAttribute("nav-direction");
+    swapCards(direction);
+  });
 });
-btnPrev.addEventListener("click", () => {
-  const nextIndex = activeIndex - 1 >= 0 ? activeIndex - 1 : groups.length - 1;
-  const currentGroup = document.querySelector(`[data-index="${activeIndex}"]`),
-    nextGroup = document.querySelector(`[data-index="${nextIndex}"]`);
+
+function swapCards(direction) {
+  let nextIndex = "";
+  if (direction == "next")
+    nextIndex = activeIndex + 1 <= groups.length - 1 ? activeIndex + 1 : 0;
+  else nextIndex = activeIndex - 1 >= 0 ? activeIndex - 1 : groups.length - 1;
+
+  const currentGroup = document.querySelector(`[data-index="${activeIndex}"]`);
+  const nextGroup = document.querySelector(`[data-index="${nextIndex}"]`);
   currentGroup.dataset.status = "before";
   nextGroup.dataset.status = "active";
   activeIndex = nextIndex;
-});
+}
