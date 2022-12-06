@@ -2,7 +2,8 @@
 
 ## Description
 
-Animated Cards using CSS and JavaScript
+Animated Card stacks using CSS and JavaScript with forward and back navigation
+![](images/cards.png)
 
 ## About
 
