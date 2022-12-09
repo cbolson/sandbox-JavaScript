@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+svg {
+  width: 80%;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+}
+
+section {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 6rem;
+}
+
+section:nth-of-type(2) {
+  background: hsl(235, 82%, 90%);
+}
+
+svg path {
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+  stroke-width: 0.5;
+  stroke: #000;
+  fill: none;
+  transition: stroke-dashoffset 300ms;
+}
