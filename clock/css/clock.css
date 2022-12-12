@@ -3,13 +3,13 @@
   --box-shadow-w: 3px;
   --box-shadow: hsl(0, 0%, 0%);
   --box-border: hsl(0, 0%, 0%);
-  --bg-body: hsl(175, 59%, 79%);
-  --bg-header: hsl(60, 100%, 94%);
-  --bg-face: rgb(176, 55, 160);
-  --clr-hands: rgb(255, 255, 255);
+  --bg-body: hsl(0, 0%, 10%);
+  --bg-header: hsl(0, 0%, 20%);
+  --bg-face: hsl(0, 0%, 0%);
+  --clr-hands: hsl(0, 0%, 100%);
   --clr-seconds: red;
-  --clr-numbers: rgb(255, 255, 255);
-  --br-face: rgba(255, 255, 255, 1);
+  --clr-numbers: hsl(0, 0%, 100%);
+  --br-face: hsl(127, 73%, 52%);
   --bg-face-outline: var(--bg-face);
   --spc-numbers: 0.5em;
   --fs-numbers: 0.4em;
@@ -22,6 +22,7 @@
 }
 body {
   background: var(--bg-body, #eee);
+  color: #fff;
   margin: 0;
   padding: 1em;
   height: 100vh;
@@ -75,6 +76,7 @@ header h1 {
   position: relative;
   border: 3px solid var(--br-face);
   outline: 2px solid var(--bg-face-outline);
+  box-shadow: 0 0 5px 5px black;
 }
 
 .numbers > ul {
@@ -105,7 +107,7 @@ header h1 {
   justify-content: center;
   align-items: center;
 }
-.hands::before {
+.hands::after {
   /* add central circle over clock hands*/
   content: "";
   width: 10%;
@@ -117,7 +119,7 @@ header h1 {
 }
 .hands > div {
   background-color: var(--clr-hands);
-  width: 3%;
+  width: 2%;
   position: absolute;
   height: 36%;
   transform-origin: bottom center;
@@ -132,7 +134,7 @@ header h1 {
 }
 .hands .hand-hour {
   height: 26%;
-  width: 4%;
+  width: 3%;
   rotate: 45deg;
 }
 .hands .hand-sec {
