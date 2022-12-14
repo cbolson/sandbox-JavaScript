@@ -1,0 +1,20 @@
+body {
+  height: 500vh;
+  margin: 0;
+}
+.line-container {
+  position: fixed;
+  inset:0;
+  height: 100%;
+  width: 100%;
+}
+svg{
+    display: inline-block;
+    height:100%;
+}
+section{
+    height:100vh;
+    display: grid;
+    place-content: center;
+    font-size: 4em;
+}
