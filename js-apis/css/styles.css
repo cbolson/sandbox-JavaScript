@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --clr-bg-100: hsl(0, 0%, 5%);
+  --clr-bg-700: hsl(0, 0%, 20%);
+  --clr-txt: #eee;
+}
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: var(--clr-bg-100);
+  color: var(--clr-txt);
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 1.4em;
+}
+h1 {
+}
+.container {
+  padding: 2em;
+  margin: 0 auto;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.api-results {
+  padding: 2em;
+  background: var(--clr-bg-700);
+  max-width: 1000px;
+  margin-inline: auto;
+  border: 1px solid;
+}
