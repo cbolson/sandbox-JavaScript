@@ -1,0 +1,177 @@
+:root {
+  --bg-clr: hsl(0, 0%, 93%);
+  --txt-clr: hsl(240, 26%, 26%);
+  --primary-clr: hsl(211 72% 44%);
+  --btn-clr-h: 211;
+  --btn-clr-s: 72%;
+  --btn-clr-l: 44%;
+  --btn-secondary-clr: hsl(1, 100%, 67%);
+  --btb-txt-clr: hsl(0, 0%, 100%);
+  --business: hsl(67, 19%, 80%);
+  --personal: hsl(215, 54%, 80%);
+}
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montserrat", sans-serif;
+}
+
+input:not([type=radio]):not([type=checkbox]),
+button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: initial;
+}
+
+input[type=radio],
+input[type=checkbox] {
+  transform: scale(1.4);
+}
+
+/* layout */
+body {
+  background: var(--bg-clr);
+  color: var(--txt-clr);
+}
+
+main {
+  width: 100%;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+header {
+  margin-block: 2em;
+}
+
+section {
+  margin-bottom: 2em;
+}
+
+section + section {
+  margin-top: 2em;
+}
+
+h3 {
+  color: var(--txt-clr);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+/* buttons */
+.btn {
+  background-color: hsl(var(--btn-clr-h), var(--btn-clr-s), var(--btn-clr-l));
+  display: block;
+  padding: 0.5em 1em;
+  border-radius: 0.25rem;
+  color: var(--btb-txt-clr);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.btn:hover {
+  background-color: hsl(var(--btn-clr-h), var(--btn-clr-s), calc(var(--btn-clr-l) - 15%));
+}
+.btn--delete {
+  --btn-clr-h: 1;
+  --btn-clr-s: 100%;
+  --btn-clr-l: 67%;
+  margin-left: 0.5em;
+  background-color: var(--btn-secondary-clr);
+}
+
+/* new todo form*/
+.todo {
+  --rad: 0.5em;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  gap: 4px;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+.todo > * {
+  padding: 1rem 1em;
+  border-radius: var(--rad);
+}
+.todo input#content {
+  --bg: #ddd;
+  display: block;
+  width: 100%;
+  font-size: inherit;
+  color: var(--txt-clr);
+  background: #eee;
+}
+.todo input#content:focus {
+  box-shadow: 0 0 0 2px var(--primary-clr);
+}
+.todo .btn--new {
+  width: 80px;
+  font-size: inherit;
+  display: grid;
+  place-content: center;
+}
+.todo label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 0.5em;
+  font-size: 0.8em;
+}
+.todo label.personal {
+  background-color: var(--personal);
+}
+.todo label.business {
+  background-color: var(--business);
+}
+
+/* todo list item */
+.todo-item {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: height 300ms ease, padding 50ms ease;
+}
+.todo-item.hidden {
+  height: 0;
+  padding: 0 0.5rem;
+  margin-bottom: 0;
+}
+.todo-item.done {
+  opacity: 0.5;
+}
+.todo-item.personal {
+  background: var(--personal, pink);
+}
+.todo-item.business {
+  background: var(--business, rgb(156, 195, 234));
+}
+.todo-item input[type=checkbox] {
+  display: block;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+.todo-item__content {
+  flex: 1 1 0%;
+}
+.todo-item__content input {
+  color: var(--txt-clr);
+  font-size: 1.125rem;
+  width: 100%;
+  padding: 0 1em;
+}/*# sourceMappingURL=style.css.map */
