@@ -8,6 +8,8 @@ HTML, Scss & JavaScript todo list with the following functions:
 - Edit
 - Delete
 
+<a href="https://sandbox.cbolson.com/projects/todo/">Demo</a>
+
 ## About
 
 Uses JavaScript and Localstorage to create a list of ToDo items color-coded by category.

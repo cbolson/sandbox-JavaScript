@@ -98,9 +98,11 @@ function displayTodoItem(todo) {
 
   // btn - delete
   todoBtnDelete.addEventListener("click", (e) => {
+    todoItem.classList.add("hidden");
     todos = todos.filter((t) => t != todo);
-
-    updateTodoList(todos);
+    setInterval(function () {
+      updateTodoList(todos);
+    }, 300);
   });
 }
 

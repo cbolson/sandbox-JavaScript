@@ -144,6 +144,13 @@ h3 {
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  transition: height 300ms ease, padding 50ms ease;
+}
+.todo-item.hidden {
+  height: 0;
+  padding: 0 0.5rem;
+  margin-bottom: 0;
 }
 .todo-item.done {
   opacity: 0.5;
