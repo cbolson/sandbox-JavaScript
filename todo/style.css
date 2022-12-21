@@ -110,7 +110,7 @@ h3 {
   width: 100%;
   font-size: inherit;
   color: var(--txt-clr);
-  background: #EEE;
+  background: #eee;
 }
 .todo input#content:focus {
   box-shadow: 0 0 0 2px var(--primary-clr);

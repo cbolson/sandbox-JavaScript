@@ -69,11 +69,9 @@ h3 {
   &:hover {
     background-color: hsl(
       var(--btn-clr-h) var(--btn-clr-s) calc(var(--btn-clr-l) - 15%)
-        /* darken lightnes by 5%*/
     );
   }
-  &--edit {
-  }
+
   &--delete {
     --btn-clr-h: 1;
     --btn-clr-s: 100%;
@@ -95,7 +93,7 @@ h3 {
   padding: 1rem;
   font-size: 1.2rem;
   > * {
-    padding:1rem 1em;
+    padding: 1rem 1em;
     border-radius: var(--rad);
   }
 
@@ -105,9 +103,7 @@ h3 {
     width: 100%;
     font-size: inherit;
     color: var(--txt-clr);
-    //    box-shadow: 0 0 0 2px var( --shadow);
-    
-    background: #EEE;
+    background: #eee;
   }
   input#content:focus {
     box-shadow: 0 0 0 2px var(--primary-clr);
@@ -125,7 +121,7 @@ h3 {
     justify-content: center;
     cursor: pointer;
     gap: 0.5em;
-font-size: .8em;
+    font-size: 0.8em;
 
     &.personal {
       background-color: var(--personal);
@@ -134,7 +130,6 @@ font-size: .8em;
       background-color: var(--business);
     }
   }
-  // }
 }
 
 /* todo list item */
