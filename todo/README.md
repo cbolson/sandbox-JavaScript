@@ -16,7 +16,7 @@ Modifications to original code:
 - Changed UI
 - Removed unnecessary DOM
 - Uses Scss
-- JavaScript modified to breakdown functions and alter functionality 
+- JavaScript modified to breakdown functions and alter functionality
 
 ## Resources
 
