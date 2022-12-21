@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="scripts.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Todo List</h1>
+      </header>
+      <section>
+        <form id="new-todo-form" class="todo">
+          <label class="business">
+              <input type="radio" name="new_category" value="business"checked />
+              Work
+            </label>
+            <label class="personal">
+              <input type="radio" name="new_category" value="personal" />
+              Personal
+            </label>
+            <input
+            type="text"
+            placeholder="what do you have to do?"
+            name="new_content"
+            id="content" />
+          
+            
+        
+
+          <button type="submit" class="btn btn--new">&#10095;</button>
+        </form>
+      </section>
+      <section id="todo-list" class="todo-list">
+        <!-- todo items will be added here -->
+      </section>
+    </main>
+  </body>
+</html>
