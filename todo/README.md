@@ -8,7 +8,7 @@ HTML, Scss & JavaScript todo list with the following functions:
 - Edit
 - Delete
 
-<a href="https://sandbox.cbolson.com/projects/todo/">Demo</a>
+<a href="https://sandbox.cbolson.com/projects/todo/" target="_blank">Demo</a>
 
 ## About
 
