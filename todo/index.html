@@ -16,6 +16,12 @@
 
       <section>
         <form id="new-todo-form" class="todo">
+          <input
+            type="text"
+            placeholder="what do you have to do?"
+            name="new_content"
+            id="content"
+            required />
           <label class="business">
             <input type="radio" name="new_category" value="business" checked />
             Work
@@ -24,12 +30,6 @@
             <input type="radio" name="new_category" value="personal" />
             Personal
           </label>
-          <input
-            type="text"
-            placeholder="what do you have to do?"
-            name="new_content"
-            id="content"
-            required />
           <button type="submit" class="btn btn--new">&#10095;</button>
         </form>
       </section>

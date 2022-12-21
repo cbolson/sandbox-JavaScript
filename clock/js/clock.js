@@ -1,3 +1,5 @@
+"use strict";
+
 // const elNumbers = document.querySelectorAll(".numbers li");
 const elNumbers = document.querySelector(".numbers ul");
 const elHour = document.querySelector(".hand-hour");
