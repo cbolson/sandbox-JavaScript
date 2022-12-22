@@ -34,6 +34,7 @@ function updateTodoList(todos) {
 
   // set focus to input field
   //contentInput.focus();
+
 }
 
 // display each item and add listeners
