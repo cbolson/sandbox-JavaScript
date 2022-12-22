@@ -7,8 +7,8 @@
   --btn-clr-l: 44%;
   --btn-secondary-clr: hsl(1, 100%, 67%);
   --btb-txt-clr: hsl(0, 0%, 100%);
-  --business: hsl(67, 19%, 80%);
-  --personal: hsl(215, 54%, 80%);
+  --business: hsl(197, 91%, 66%);
+  --personal: hsl(291, 58%, 91%);
 }
 /* reset */
 * {
@@ -34,6 +34,7 @@ input[type="checkbox"] {
 body {
   background: var(--bg-clr);
   color: var(--txt-clr);
+  padding: 0 1em;
 }
 main {
   width: 100%;
@@ -122,6 +123,7 @@ h3 {
     cursor: pointer;
     gap: 0.5em;
     font-size: 0.8em;
+    padding: 1.2em 0.5em;
 
     &.personal {
       background-color: var(--personal);
