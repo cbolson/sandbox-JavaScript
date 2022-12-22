@@ -7,8 +7,8 @@
   --btn-clr-l: 44%;
   --btn-secondary-clr: hsl(1, 100%, 67%);
   --btb-txt-clr: hsl(0, 0%, 100%);
-  --business: hsl(187, 81%, 82%);
-  --personal: hsl(69, 63%, 77%);
+  --business: hsl(197, 91%, 66%);
+  --personal: hsl(291, 58%, 91%);
 }
 
 /* reset */
@@ -129,6 +129,7 @@ h3 {
   cursor: pointer;
   gap: 0.5em;
   font-size: 0.8em;
+  padding: 1.2em 0.5em;
 }
 .todo label.personal {
   background-color: var(--personal);
