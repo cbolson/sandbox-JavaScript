@@ -15,7 +15,7 @@ const catSelectList = document.querySelector("#quiz-cat-id");
 const quizCatTitleElement = document.querySelector("#quiz-cat-title");
 
 // define number of questions to get
-const numQuestions = 10;
+const numQuestions = 2;
 
 let currentQuestionIndex, correctAnswer, shuffleAnswers, answerScore, txtPoints;
 

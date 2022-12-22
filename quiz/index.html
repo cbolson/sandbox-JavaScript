@@ -10,12 +10,14 @@
   <body>
     <main>
       <header>
-        <h1>Quiz</h1>
+        <h1>Api Quiz</h1>
       </header>
       <div id="quiz-header" class="quiz-header">
         <div class="quiz-header__wrapper">
-          <label for="quiz-cat-id">Choose a category:</label>
-          <select id="quiz-cat-id" class="quiz__cat_select">
+          <select
+            id="quiz-cat-id"
+            class="quiz__cat_select"
+            aria-label="choose a category">
             <option value="9">General Knowledge</option>
             <option value="10">Entertainment: Books</option>
             <option value="11">Entertainment: Film</option>
@@ -46,18 +48,18 @@
 
           <button id="btn-start" class="btn btn__start">Start</button>
         </div>
-        <div id="quiz-msg" class="quiz__msg hide">
+        <div id="quiz-msg" class="quiz-msg hide">
           <!-- messages will be placed here -->
         </div>
       </div>
 
       <div id="quiz-wrapper" class="quiz__wrapper hide">
         <div id="quiz-cat-title" class="quiz__title">cat title</div>
-        <div id="quiz-questions" class="quiz__questions">
+        <div id="quiz-questions" class="question">
           <div id="question" class="question__title">
             <!--question will be placed here-->>
           </div>
-          <div id="answers" class="btn-grid">
+          <div id="answers" class="answers">
             <!-- answer buttons will be placed here -->
           </div>
         </div>
