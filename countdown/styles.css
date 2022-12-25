@@ -1,0 +1,76 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+:root {
+  --body-bg: hsl(0 0% 10%);
+}
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+div {
+  /* border: 1px dashed red;
+  margin: 1em;
+  padding: 1em; */
+}
+
+.circle-container{
+  margin: 150px auto;
+  width: 150px;
+  aspect-ratio: 1;
+  background: #fefcff;
+  border-radius: 50%;
+  border: 1px solid #cdcbd0;
+  position: relative;
+}
+
+.circle__mask,
+.circle__fill {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle__mask {
+  clip: rect(0px, 150px, 150px, 75px);
+}
+
+.circle-wrap::after {
+  /* content:'';
+  width: 122px;
+  height: 122px;
+  border-radius: 50%;
+  background: #d2eaf1;
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%); */
+}
+
+/* color animation */
+
+/* 3rd progress bar */
+.circle__mask .circle__fill {
+  --deg: 225deg;
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: red;
+}
+
+.circle__mask-full,
+.circle .circle__fill {
+  animation: fill ease-in-out 300ms;
+  transform: rotate(var(--deg));
+}
+
+@keyframes fill {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(var(--deg));
+  } 
+}
