@@ -10,25 +10,81 @@
   </head>
   <body>
     <h1>Countdown</h1>
-    <section class="container">
-      <div id="months"></div>
-      <div id="weeks"></div>
-      <div id="days"></div>
-      <div id="hours"></div>
-      <div id="minutes"></div>
-      <div id="seconds"></div>
-    </section>
-
-    <div class="circle-container">
-      <div class="circle">
-        <div class="circle__mask circle__mask-full">
-          <div class="circle__fill"></div>
-        </div>
-        <div class="circle__mask">
-          <div class="circle__fill"></div>
-        </div>
-        <div class="inside-circle"></div>
+    <section class="card">
+      <div class="timer timer--months">
+        <svg>
+          <circle cx="115" cy="115" r="50"></circle>
+          <circle
+            id="timer-months"
+            cx="115"
+            cy="115"
+            r="50"
+            style="--percent: 0"></circle>
+        </svg>
       </div>
-    </div>
+      <div class="timer timer--weeks">
+        <svg>
+          <circle cx="115" cy="115" r="100"></circle>
+          <circle
+            id="timer-weeks"
+            cx="115"
+            cy="115"
+            r="100"
+            style="--percent: 30"></circle>
+        </svg>
+      </div>
+      <div class="timer timer--days">
+        <svg>
+          <circle cx="115" cy="115" r="100"></circle>
+          <circle
+            id="timer-days"
+            cx="115"
+            cy="115"
+            r="100"
+            style="--percent: 30"></circle>
+        </svg>
+      </div>
+      <div class="timer timer--hours">
+        <svg>
+          <circle cx="115" cy="115" r="100"></circle>
+          <circle
+            id="timer-hours"
+            cx="115"
+            cy="115"
+            r="100"
+            style="--percent: 30"></circle>
+        </svg>
+      </div>
+      <div class="timer timer--minutes">
+        <svg>
+          <circle cx="115" cy="115" r="100"></circle>
+          <circle
+            id="timer-minutes"
+            cx="115"
+            cy="115"
+            r="100"
+            style="--percent: 30"></circle>
+        </svg>
+      </div>
+      <div class="timer timer--seconds">
+        <svg>
+          <circle cx="115" cy="115" r="100"></circle>
+          <circle
+            id="timer-seconds"
+            cx="115"
+            cy="115"
+            r="100"
+            style="--percent: 90"></circle>
+        </svg>
+      </div>
+    </section>
+    <section class="countdown">
+      <div id="months">Days</div>
+      <div id="weeks">Weeks</div>
+      <div id="days">Days</div>
+      <div id="hours">Hours</div>
+      <div id="minutes">Minutes</div>
+      <div id="seconds">Seconds</div>
+    </section>
   </body>
 </html>

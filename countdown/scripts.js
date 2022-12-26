@@ -9,6 +9,12 @@ const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
+const timerMonthsEl = document.querySelector("#timer-months");
+const timerWeeksEl = document.querySelector("#timer-weeks");
+const timerDaysEl = document.querySelector("#timer-days");
+const timerHoursEl = document.querySelector("#timer-hours");
+const timerMinutesEl = document.querySelector("#timer-minutes");
+const timerSecondsEl = document.querySelector("#timer-seconds");
 
 const startCountdown = () => {
   const now = new Date().getTime();
@@ -29,22 +35,32 @@ const startCountdown = () => {
   minutesEl.innerHTML = formatTime(minutes, "minute");
   secondsEl.innerHTML = formatTime(seconds, "second");
 
-  convertToDeg(seconds, 60);
+
+
+  timerMonthsEl.style.setProperty("--percent", convertToPercent(months, 12));
+  timerWeeksEl.style.setProperty("--percent", convertToPercent(weeks, 4));
+  timerDaysEl.style.setProperty("--percent", convertToPercent(days, 7));
+  timerHoursEl.style.setProperty("--percent", convertToPercent(hours, 24));
+  timerMinutesEl.style.setProperty("--percent", convertToPercent(minutes, 60));
+  timerSecondsEl.style.setProperty("--percent", convertToPercent(seconds, 60));
 };
 
 const formatTime = (time, string) => {
   return time == 1 ? `${time} ${string}` : `${time} ${string}s`;
 };
 
-const convertToDeg = (num,divisor) => {
-  const deg = (num / divisor) * 360;
-  console.log(deg);
-}
+const convertToPercent = (num, divisor) => Math.floor((num / divisor) * 100);
+
+
+// const convertToDeg = (num,divisor) => {
+//   const deg = (num / divisor) * 360;
+//   console.log(deg);
+// }
 
 let timerInterval;
 
 window.addEventListener("load", () => {
   startCountdown();
 
- // timerInterval = setInterval(startCountdown, 1000);
+  timerInterval = setInterval(startCountdown, 1000);
 });
