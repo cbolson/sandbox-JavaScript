@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circular Countdown</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js" defer></script>
+  </head>
+  <body>
+    <h1>
+      Countdown to <input type="date" value="2024-01-01" id="countdown-date" />
+    </h1>
+
+    <main>
+      <section class="card">
+        <svg class="timer timer--days">
+          <circle></circle>
+          <circle id="timer-days"></circle>
+        </svg>
+
+        <svg class="timer timer--hours">
+          <circle></circle>
+          <circle id="timer-hours"></circle>
+        </svg>
+
+        <svg class="timer timer--minutes">
+          <circle></circle>
+          <circle id="timer-minutes"></circle>
+        </svg>
+
+        <svg class="timer timer--seconds">
+          <circle></circle>
+          <circle id="timer-seconds"></circle>
+        </svg>
+      </section>
+      <section class="countdown">
+        <div id="seconds" class="countdown_num timer--seconds">Seconds</div>
+        <div id="minutes" class="countdown_num timer--minutes">Minutes</div>
+        <div id="hours" class="countdown_num timer--hours">Hours</div>
+        <div id="days" class="countdown_num timer--days">Days</div>
+      </section>
+    </main>
+  </body>
+</html>
