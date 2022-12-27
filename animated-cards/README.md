@@ -4,7 +4,7 @@
 
 Animated Card stacks using CSS and JavaScript with forward and back navigation.
 
-<img src="images/cards.png" width="240">
+<img src="/assets/images/cards.png" width="240">
 
 ## About
 
