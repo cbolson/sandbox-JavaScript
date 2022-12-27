@@ -7,7 +7,7 @@
   --body-bg: hsl(0 0% 10%);
   --body-txt: #fff;
   --PI: 3.14159265358979;
-  --circle-w:300px;
+  --circle-w: 300px;
   --stroke-w: 18; /* thickness of circle borders - also used to calculate radius and then circcumference */
 }
 body {
@@ -25,6 +25,19 @@ main {
   justify-content: center;
   align-items: center;
 }
+h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:.5em;
+}
+input{
+  font-size: 1.1em;
+  padding:.2em 1em;
+  border:none;
+  background: #333;
+  color:#FFF;
+}
 /* main > * {
   border: 1px dashed red;
 } */
@@ -40,7 +53,6 @@ main {
   color: hsl(var(--stroke-h) var(--stroke-s) var(--stroke-l));
 }
 .card {
-  
   flex: 0 0 var(--circle-w);
   position: relative;
   margin: 2em;
@@ -74,7 +86,6 @@ main {
 }
 
 .card svg {
-  
   width: var(--circle-w);
   aspect-ratio: 1;
   position: absolute;
@@ -95,6 +106,7 @@ svg.timer circle {
   cx: calc(var(--circle-w) / 2);
   cy: calc(var(--circle-w) / 2);
   r: var(--rad);
+  transition: stroke-dashoffset 200ms ease-in-out;
 }
 
 svg.timer circle:last-of-type {
@@ -102,6 +114,6 @@ svg.timer circle:last-of-type {
     var(--PI) * (var(--rad) * 2)
   ); /* calculate circumference from radius */
   stroke-dasharray: var(--cir);
-  stroke-dashoffset: calc(var(--cir) - (var(--cir) * var(--percent)) / 100);
+  stroke-dashoffset: calc(var(--cir) + (var(--cir) * var(--percent)) / 100);
   stroke: var(--stroke-percent);
 }
