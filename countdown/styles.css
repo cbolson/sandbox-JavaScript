@@ -5,69 +5,103 @@
 }
 :root {
   --body-bg: hsl(0 0% 10%);
+  --body-txt: #fff;
+  --PI: 3.14159265358979;
+  --circle-w:300px;
+  --stroke-w: 18; /* thickness of circle borders - also used to calculate radius and then circcumference */
 }
 body {
   margin: 0;
+  padding: 3em;
   height: 100vh;
-  display: grid;
-  place-items: center;
+  text-align: center;
+  background-color: var(--body-bg);
+  color: var(--body-txt);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 300;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* main > * {
+  border: 1px dashed red;
+} */
+.countdown {
+  flex: 0 0 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: 1.3rem;
+  text-align: left;
+}
+.countdown_num {
+  color: hsl(var(--stroke-h) var(--stroke-s) var(--stroke-l));
 }
 .card {
+  
+  flex: 0 0 var(--circle-w);
   position: relative;
-  margin:2em;
-}
-.timer svg {
-  width: 230px;
+  margin: 2em;
+  width: var(--circle-w);
   aspect-ratio: 1;
-  position: absolute;
-  left:50%;
-  top:50%;
-  rotate:-90deg;
-  translate: -50% -50%;
-  transform: scale(var(--scale), var(--scale));
 }
 
-.timer svg circle {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: #f0f0f0;
-  stroke-width: 15;
-  stroke-linecap: round;
-  
-}
-.timer--months {
-  --stroke-clr: rgb(181, 32, 222);
-  --scale: 0.6;
-}
-.timer--weeks {
-  --stroke-clr: rgb(181, 32, 222);
-  --scale: 0.46;
-}
 .timer--days {
-  --stroke-clr: rgb(181, 32, 222);
-  --scale: 0.58;
+  --stroke-h: 133;
+  --stroke-s: 100%;
+  --stroke-l: 36%;
+  --rad: calc(var(--stroke-w) * 3px);
 }
 .timer--hours {
-  --stroke-clr: rgb(207, 188, 19);
-  --scale: 0.7;
+  --stroke-h: 351;
+  --stroke-s: 88%;
+  --stroke-l: 50%;
+  --rad: calc(var(--stroke-w) * 4.5px);
 }
 .timer--minutes {
-  --stroke-clr: hsl(114 14% 33%);
-  --scale: 0.84;
+  --stroke-h: 45;
+  --stroke-s: 100%;
+  --stroke-l: 50%;
+  --rad: calc(var(--stroke-w) * 6px);
 }
 .timer--seconds {
-  --stroke-clr: hwb(204 20% 14%);
-  --scale: 1;
-}
-.timer svg circle:last-of-type {
-  stroke-dasharray: 625px;
-  stroke-dashoffset: calc(625px + (625px * var(--percent)) / 100);
-  stroke: var(--stroke-clr, #3498db);
+  --stroke-h: 204;
+  --stroke-s: 70%;
+  --stroke-l: 53%;
+  --rad: calc(var(--stroke-w) * 7.5px);
 }
 
-.countdown{
-  display: flex;
-  gap:1em;
-  font-size: 1.3rem;
+.card svg {
+  
+  width: var(--circle-w);
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  rotate: -90deg;
+}
+
+svg.timer circle {
+  --stroke-percent: hsl(var(--stroke-h) var(--stroke-s) var(--stroke-l));
+  width: 100%;
+  aspect-ratio: 1;
+  fill: none;
+  stroke: hsl(var(--stroke-h) var(--stroke-s) var(--stroke-l) / 0.2);
+  stroke-width: var(--stroke-w);
+  stroke-linecap: round;
+  cx: calc(var(--circle-w) / 2);
+  cy: calc(var(--circle-w) / 2);
+  r: var(--rad);
+}
+
+svg.timer circle:last-of-type {
+  --cir: calc(
+    var(--PI) * (var(--rad) * 2)
+  ); /* calculate circumference from radius */
+  stroke-dasharray: var(--cir);
+  stroke-dashoffset: calc(var(--cir) - (var(--cir) * var(--percent)) / 100);
+  stroke: var(--stroke-percent);
 }

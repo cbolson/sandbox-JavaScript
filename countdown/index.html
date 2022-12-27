@@ -10,81 +10,35 @@
   </head>
   <body>
     <h1>Countdown</h1>
-    <section class="card">
-      <div class="timer timer--months">
-        <svg>
-          <circle cx="115" cy="115" r="50"></circle>
-          <circle
-            id="timer-months"
-            cx="115"
-            cy="115"
-            r="50"
-            style="--percent: 0"></circle>
+    <input type="date" value="2024-01-01" id="countdown-date" />
+    <main>
+      <section class="card">
+        <svg class="timer timer--days">
+          <circle></circle>
+          <circle id="timer-days"></circle>
         </svg>
-      </div>
-      <div class="timer timer--weeks">
-        <svg>
-          <circle cx="115" cy="115" r="100"></circle>
-          <circle
-            id="timer-weeks"
-            cx="115"
-            cy="115"
-            r="100"
-            style="--percent: 30"></circle>
+
+        <svg class="timer timer--hours">
+          <circle></circle>
+          <circle id="timer-hours"></circle>
         </svg>
-      </div>
-      <div class="timer timer--days">
-        <svg>
-          <circle cx="115" cy="115" r="100"></circle>
-          <circle
-            id="timer-days"
-            cx="115"
-            cy="115"
-            r="100"
-            style="--percent: 30"></circle>
+
+        <svg class="timer timer--minutes">
+          <circle></circle>
+          <circle id="timer-minutes"></circle>
         </svg>
-      </div>
-      <div class="timer timer--hours">
-        <svg>
-          <circle cx="115" cy="115" r="100"></circle>
-          <circle
-            id="timer-hours"
-            cx="115"
-            cy="115"
-            r="100"
-            style="--percent: 30"></circle>
+
+        <svg class="timer timer--seconds">
+          <circle></circle>
+          <circle id="timer-seconds"></circle>
         </svg>
-      </div>
-      <div class="timer timer--minutes">
-        <svg>
-          <circle cx="115" cy="115" r="100"></circle>
-          <circle
-            id="timer-minutes"
-            cx="115"
-            cy="115"
-            r="100"
-            style="--percent: 30"></circle>
-        </svg>
-      </div>
-      <div class="timer timer--seconds">
-        <svg>
-          <circle cx="115" cy="115" r="100"></circle>
-          <circle
-            id="timer-seconds"
-            cx="115"
-            cy="115"
-            r="100"
-            style="--percent: 90"></circle>
-        </svg>
-      </div>
-    </section>
-    <section class="countdown">
-      <div id="months">Days</div>
-      <div id="weeks">Weeks</div>
-      <div id="days">Days</div>
-      <div id="hours">Hours</div>
-      <div id="minutes">Minutes</div>
-      <div id="seconds">Seconds</div>
-    </section>
+      </section>
+      <section class="countdown">
+        <div id="seconds" class="countdown_num timer--seconds">Seconds</div>
+        <div id="minutes" class="countdown_num timer--minutes">Minutes</div>
+        <div id="hours" class="countdown_num timer--hours">Hours</div>
+        <div id="days" class="countdown_num timer--days">Days</div>
+      </section>
+    </main>
   </body>
 </html>
