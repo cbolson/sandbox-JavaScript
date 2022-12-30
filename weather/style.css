@@ -1,0 +1,108 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+:root {
+  --body-bg: hsl(0 0% 10%);
+  --body-txt: hsl(200 100% 70%);
+  --clr-border: hsl(200 100% 15%);
+  --txt-300: hsl(200, 100%, 50%);
+}
+body {
+  background-color: var(--body-bg);
+  color: var(--body-txt);
+  font-size: 1rem;
+  height: 100vh;
+  padding: 1em;
+  margin: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.blurred {
+  filter: blur(3px);
+  overflow: hidden;
+}
+.header,
+main {
+  max-width: 600px;
+  margin-inline: auto;
+}
+.header {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: center;
+}
+.current-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+.weather-icon {
+  width: 32px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+.weather-icon.large {
+  width: 80px;
+}
+.header-current-temp {
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.current-details {
+  display: grid;
+  justify-content: space-around;
+  gap: 0.5rem;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(2, auto);
+}
+.info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: var(--txt-300);
+}
+.day-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem;
+}
+.day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--clr-border);
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}
+.day-card-day {
+  font-size: 0.75rem;
+  color: var(--txt-300);
+  margin-top: 0.5rem;
+}
+
+.hour-section {
+  width: 100%;
+  text-align: center;
+  border-spacing: 0;
+}
+.hour-row {
+  background-color: hsl(200, 60%, 75%);
+}
+.hour-row:nth-child(2n) {
+  background-color: hsl(200, 60%, 70%);
+}
+.hour-row > td {
+  padding: 0.25rem 0.5rem;
+}
