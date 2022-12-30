@@ -4,10 +4,10 @@
   box-sizing: border-box;
 }
 :root {
-  --body-bg: hsl(200 100% 85%);
-  --body-txt: hsl(200 100% 10%);
-  --clr-border: hsl(200 100% 10%);
-  --txt-300: hsl(200, 100%, 20%);
+  --body-bg: hsl(0 0% 10%);
+  --body-txt: hsl(200 100% 70%);
+  --clr-border: hsl(200 100% 15%);
+  --txt-300: hsl(200, 100%, 50%);
 }
 body {
   background-color: var(--body-bg);
@@ -23,21 +23,25 @@ body {
   filter: blur(3px);
   overflow: hidden;
 }
+.header,
+main {
+  max-width: 600px;
+  margin-inline: auto;
+}
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   align-items: center;
 }
-.header-left {
+.current-icon {
   display: flex;
   align-items: center;
-  width: 50%;
   justify-content: center;
   margin: 0.5rem;
   padding: 0.5rem;
-  border-right: 2px solid var(--clr-border);
 }
 .weather-icon {
-  width: 45px;
+  width: 32px;
   aspect-ratio: 1;
   object-fit: contain;
 }
@@ -49,12 +53,11 @@ body {
   margin-left: 1rem;
 }
 
-.header-right {
+.current-details {
   display: grid;
-  width: 50%;
   justify-content: space-around;
   gap: 0.5rem;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(2, auto);
 }
 .info-group {
@@ -70,7 +73,7 @@ body {
 }
 .day-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 75px);
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   gap: 0.5rem;
   justify-content: center;
   padding: 1rem;
@@ -89,18 +92,17 @@ body {
   margin-top: 0.5rem;
 }
 
-.hour-section{
+.hour-section {
   width: 100%;
   text-align: center;
   border-spacing: 0;
-
 }
-.hour-row{
-  background-color: hsl(200,60%,75%) ;
+.hour-row {
+  background-color: hsl(200, 60%, 75%);
 }
-.hour-row:nth-child(2n){
-  background-color: hsl(200,60%,70%) ;
+.hour-row:nth-child(2n) {
+  background-color: hsl(200, 60%, 70%);
 }
-.hour-row > td{
-  padding:.25rem .5rem;
+.hour-row > td {
+  padding: 0.25rem 0.5rem;
 }

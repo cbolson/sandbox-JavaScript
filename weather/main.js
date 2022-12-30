@@ -26,7 +26,7 @@ function positionError() {
 function renderWeather({ current, daily, hourly }) {
   renderCurrentWeather(current);
   renderDailyWeather(daily);
-  renderHourlyWeather(hourly);
+  //renderHourlyWeather(hourly);
   document.body.classList.remove("blurred");
 }
 
@@ -46,8 +46,8 @@ function renderCurrentWeather(current) {
   setValue("current-temp", current.currentTemp);
   setValue("current-high", current.highTemp);
   setValue("current-low", current.lowTemp);
-  setValue("current-fl-high", current.highFeelsLike);
-  setValue("current-fl-low", current.lowFeelsLike);
+  //setValue("current-fl-high", current.highFeelsLike);
+  //setValue("current-fl-low", current.lowFeelsLike);
   setValue("current-wind", current.windSpeed);
   setValue("current-precip", current.precip);
 }
@@ -69,30 +69,30 @@ function renderDailyWeather(daily) {
   });
 }
 
-const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, {
-  hour: "numeric",
-  hour12: false,
-  minute: "numeric",
-});
-const hourlySelection = document.querySelector("[data-hour-section]");
-const hourCardTemplate = document.querySelector("#hour-row-template");
+// const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, {
+//   hour: "numeric",
+//   hour12: false,
+//   minute: "numeric",
+// });
+// const hourlySelection = document.querySelector("[data-hour-section]");
+// const hourCardTemplate = document.querySelector("#hour-row-template");
 
-function renderHourlyWeather(hourly) {
-  hourlySelection.innerHTML = "";
+// function renderHourlyWeather(hourly) {
+//   hourlySelection.innerHTML = "";
 
-  hourly.forEach((hour) => {
-    const element = hourCardTemplate.content.cloneNode(true);
-    setValue("temp", hour.temp, { parent: element });
-    setValue("fl-temp", hour.feelsLike, { parent: element });
-    setValue("wind", hour.windSpeed, { parent: element });
-    setValue("precip", hour.precip, { parent: element });
-    setValue("day", DAY_FORMATTER.format(hour.timestamp), { parent: element });
-    setValue("time", HOUR_FORMATTER.format(hour.timestamp), {
-      parent: element,
-    });
+//   hourly.forEach((hour) => {
+//     const element = hourCardTemplate.content.cloneNode(true);
+//     setValue("temp", hour.temp, { parent: element });
+//     //setValue("fl-temp", hour.feelsLike, { parent: element });
+//     setValue("wind", hour.windSpeed, { parent: element });
+//     setValue("precip", hour.precip, { parent: element });
+//     setValue("day", DAY_FORMATTER.format(hour.timestamp), { parent: element });
+//     setValue("time", HOUR_FORMATTER.format(hour.timestamp), {
+//       parent: element,
+//     });
 
-    element.querySelector("[data-icon]").src = getIconUrl(hour.iconCode);
+//     element.querySelector("[data-icon]").src = getIconUrl(hour.iconCode);
 
-    hourlySelection.append(element);
-  });
-}
+//     hourlySelection.append(element);
+//   });
+// }
