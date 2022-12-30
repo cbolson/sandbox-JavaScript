@@ -15,7 +15,7 @@ This project retrieves weather information for the user location (could easily b
 
 ## Sources
 
-- a <a href="https://www.youtube.com/watch?v=w0VEOghdMpQ&t=38s" target="_blank">Web Dev Simplified tutorial</a>
+- a <a href="https://www.youtube.com/watch?v=w0VEOghdMpQ" target="_blank">Web Dev Simplified tutorial</a>
 - Data from <a href="https://open-meteo.com/en/">Open-Meteo</a> Free Weather API
 - icons https://www.figma.com/community/file/1126777451931792118
 
