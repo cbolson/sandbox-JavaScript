@@ -5,7 +5,7 @@
 }
 :root {
   --body-bg: #333;
-  --txt-clr-400: hsl(0, 0%, 90%);
+  --txt-clr-400: hsl(100, 70%, 60%);
   --txt-clr-300: hsl(0, 0%, 70%);
   --border-clr: hsl(100, 78%, 30%);
 }
