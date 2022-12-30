@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location Search API (basic)</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>Location Search</h1>
+      <section>
+        <h2 for="search-str">New location</h2>
+        <input
+          type="search"
+          id="search-str"
+          placeholder="What location do you want?"
+          data-search-str />
+      </section>
+      <section class="results" data-results-list>
+        <!-- api results loaded here -->
+      </section>
+
+      <section class="results hidden" data-stored-results>
+        <h2>My Locations</h2>
+        <div class="results" data-saved-results>
+          your saved locations will appear here
+        </div>
+      </section>
+    </main>
+    <template data-results-template>
+      <div class="card">
+        <div>
+          <div class="card__title" data-title></div>
+          <div class="card__details" data-details></div>
+        </div>
+        <div class="card__save" data-save>
+          <svg width="32px" height="32px" viewBox="0 0 32 32">
+            <path
+              d="M15.546 4.984a.5.5 0 01.908 0l3.097 6.714a.5.5 0 00.395.287l7.341.87a.5.5 0 01.28.864l-5.427 5.02a.5.5 0 00-.15.464l1.44 7.251a.5.5 0 01-.735.534l-6.45-3.611a.5.5 0 00-.49 0l-6.45 3.61a.5.5 0 01-.735-.533l1.44-7.251a.5.5 0 00-.15-.465l-5.428-5.02a.5.5 0 01.28-.863l7.342-.87a.5.5 0 00.396-.287l3.096-6.714z" />
+          </svg>
+        </div>
+      </div>
+    </template>
+  </body>
+</html>
