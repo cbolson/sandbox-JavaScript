@@ -1,19 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js"></script>
-</head>
-<body>
-    <header>
-        <h1>Weather App</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  </head>
+  <body class="blurred">
+      <main>
+
+      <header class="header">
+      <div class="current-icon">
+        <img
+          src="icons/sun.svg"
+          data-current-icon
+          alt=""
+          class="weather-icon large" />
+        <div class="header-current-temp"><span data-current-temp>31</span></div>
+        &deg;
+      </div>
+      <div class="current-details">
+        <div class="info-group">
+          <div class="label">High</div>
+          <div><span data-current-high>32</span>&deg;</div>
+        </div>
+
+        <div class="info-group">
+          <div class="label">Low</div>
+          <div><span data-current-low>19</span>&deg;</div>
+        </div>
+
+        <div class="info-group">
+          <div class="label">Wind</div>
+          <div>
+            <span data-current-wind>9</span>
+            <span class="value-sub-info">km/h</span>
+          </div>
+        </div>
+
+        <div class="info-group">
+          <div class="label">Precip</div>
+          <div>
+            <span data-current-precip>0.1</span
+            ><span class="value-sub-info">mm</span>
+          </div>
+        </div>
+      </div>
     </header>
-    <main>
-        
-    </main>
-</body>
+  
+    <section class="day-section" data-day-section>
+      <div class="day-card">
+        <img src="icons/cloud.svg" class="weather-icon" />
+        <div class="day-card-day">Monday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="icons/cloud.svg" class="weather-icon" />
+        <div class="day-card-day">Tuesday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="icons/cloud.svg" class="weather-icon" />
+        <div class="day-card-day">Wednesday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="icons/cloud.svg" class="weather-icon" />
+        <div class="day-card-day">Thursday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="icons/cloud.svg" class="weather-icon" />
+        <div class="day-card-day">Friday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="icons/cloud.svg" class="weather-icon" />
+        <div class="day-card-day">Saturday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="icons/cloud.svg" class="weather-icon" />
+        <div class="day-card-day">Sunday</div>
+        <div>32&deg;</div>
+      </div>
+    </section>
+</main>
+    <template id="day-card-template">
+      <div class="day-card">
+        <img data-icon class="weather-icon" />
+        <div class="day-card-day" data-date></div>
+        <div><span data-temp></span><span>&deg;</span></div>
+      </div>
+    </template>
+    <template id="hour-row-template">
+      <tr class="hour-row">
+        <td>
+          <div class="info-group">
+            <div class="label" data-day></div>
+            <div data-time></div>
+          </div>
+        </td>
+        <td>
+          <img data-icon class="weather-icon" />
+        </td>
+        <td>
+          <div class="info-group">
+            <div><span data-temp></span><span>&deg;</span></div>
+          </div>
+        </td>
+        <td>
+          <div class="info-group">
+            <div class="label">Wind</div>
+            <div>
+              <span data-wind></span><span class="value-sub-info">km/h</span>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="info-group">
+            <div class="label">Precip</div>
+            <div>
+              <span data-precip></span><span class="value-sub-info">mm</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </template>
+
+    <script type="module" src="/main.js"></script>
+  </body>
 </html>
