@@ -21,6 +21,10 @@ searchStrField.addEventListener("focus", (e) => {
   listResultsEl.innerHTML = "";
 });
 
+const sendDebounce = debounce((value) => {
+  checkDataViaApi(value);
+}, 500);
+
 // search string - detect input
 searchStrField.addEventListener("input", (e) => {
   // clear list
@@ -28,9 +32,19 @@ searchStrField.addEventListener("input", (e) => {
   const value = e.target.value.toLowerCase();
 
   if (value.length > minChars) {
-    checkDataViaApi(value);
+    sendDebounce(value);
   }
 });
+
+function debounce(func, delay = 1000) {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+}
 
 // call api with search value
 const checkDataViaApi = async (value) => {
@@ -47,7 +61,13 @@ function addResultToList({ results }) {
     const card = cardTemplate.content.cloneNode(true).children[0];
 
     const locationName = location.name;
-    const locationAddress = `${location.admin3}, ${location.country}`;
+    let locationAddress = "";
+    if (location.admin3) {
+      locationAddress += `${location.admin3}, `;
+    }
+    if (location.country) {
+      locationAddress += location.country;
+    }
 
     const cardName = (card.querySelector("[data-title]").textContent =
       locationName);
@@ -88,7 +108,6 @@ function addStorage({
   showSavedList();
 }
 
-
 // update localstorage then display items
 function showSavedList() {
   listSavedEl.innerHTML = "";
@@ -99,8 +118,6 @@ function showSavedList() {
   savedLocations.forEach((location) => {
     displaySavedItem(location);
   });
-
-  
 }
 
 // add saved location to list
@@ -109,7 +126,13 @@ function displaySavedItem(location) {
 
   const card = cardTemplate.content.cloneNode(true).children[0];
   const locationName = location.name;
-  const locationAddress = `${location.admin3}, ${location.country}`;
+  let locationAddress = "";
+  if (location.admin3) {
+    locationAddress += `${location.admin3}, `;
+  }
+  if (location.country) {
+    locationAddress += location.country;
+  }
   const cardName = (card.querySelector("[data-title]").textContent =
     locationName);
   const cardAddress = (card.querySelector("[data-details]").textContent =
@@ -124,21 +147,14 @@ function displaySavedItem(location) {
     savedLocations = savedLocations.filter((t) => t != location);
     localStorage.setItem("locations", JSON.stringify(savedLocations));
     // reload list after slight delay (need to slide up)
-     setInterval(function () {
-       showSavedList();
-     }, 300);
-
-    
+    setInterval(function () {
+      showSavedList();
+    }, 300);
   });
 }
 
 // load saved locations
 showSavedList();
-
-
-
-
-
 
 // data returned for each location
 // id: 2654034,
