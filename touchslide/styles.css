@@ -1,0 +1,55 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+}
+
+html,
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #333;
+  color: #fff;
+  line-height: 1.6;
+}
+.slider-container {
+  height: 100vh;
+  display: inline-flex;
+  overflow: hidden;
+  transform: translateX(0);
+  transition: transform 300ms ease-out;
+  cursor: grab;
+}
+.slide {
+  max-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  user-select: none;
+}
+
+.slide img {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+   transition: transform 300ms ease-in-out;
+}
+.slide h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.grabbing {
+  cursor: grabbing;
+}
+.grabbing .slide img {
+  transform: scale(0.9);
+}
