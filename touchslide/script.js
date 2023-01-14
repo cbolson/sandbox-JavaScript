@@ -1,6 +1,6 @@
 const slider = document.querySelector(".slider-container");
 const slides = [...slider.querySelectorAll(".slide")];
-
+console.log(slides);
 let isDragging = false;
 let startPos = 0;
 let currentTranslate = 0;
@@ -9,10 +9,10 @@ let animationID = 0;
 let currentIndex = 0;
 
 slides.forEach((slide, index) => {
-  const slideImage = slide.querySelector("img");
+  //const slideImage = slide.querySelector("img");
 
   // prevent img drag
-  slideImage.addEventListener("dragstart", (e) => e.preventDefault());
+  slide.addEventListener("dragstart", (e) => e.preventDefault());
 
   // touch events
   slide.addEventListener("touchstart", touchStart(index));
@@ -45,14 +45,13 @@ function touchStart(index) {
 
 function touchEnd() {
   isDragging = false;
-  cancelAnimationFrame(animationID); 
+  cancelAnimationFrame(animationID);
   const movedBy = currentTranslate - prevTranslate;
-  if(movedBy < -100 && currentIndex < slides.length-1)currentIndex +=1;
-  if (movedBy > 100 && currentIndex > 0)  currentIndex -=1;
-setPositionByIndex();
-   
-  slider.classList.remove("grabbing");
+  if (movedBy < -100 && currentIndex < slides.length - 1) currentIndex += 1;
+  if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
+  setPositionByIndex();
 
+  slider.classList.remove("grabbing");
 }
 
 function touchMove(event) {
@@ -78,8 +77,8 @@ function animation() {
 function setSliderPosition() {
   slider.style.transform = `translateX(${currentTranslate}px)`;
 }
-function setPositionByIndex(){
-    currentTranslate = currentIndex * -window.innerWidth;
-    prevTranslate = currentTranslate;
-    setSliderPosition();
+function setPositionByIndex() {
+  currentTranslate = currentIndex * -window.innerWidth;
+  prevTranslate = currentTranslate;
+  setSliderPosition();
 }
