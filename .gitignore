@@ -4,8 +4,8 @@ js-tests/
 electricity-prices/
 _keys.js
 js-search/*
- .vscode
- X-
- test-
- ac-v4.01.02-translations.sql
+.vscode
+X-*
+test-
+algorithms
  
