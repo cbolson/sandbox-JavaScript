@@ -1,0 +1,44 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+:root{
+    
+}
+body{
+    margin:0;
+}
+section{
+    height: 100vh;
+
+    &:nth-of-type(1){
+        display: grid;
+        place-content: center;
+    }
+    &:nth-of-type(2){
+        display: grid;
+        align-content: center;
+        overflow: hidden;
+
+        ul{
+            list-style-type: none;
+            gap:2em;
+            display: flex;
+            // transition: transform 300ms ease-in-out;
+
+            li{
+                width:400px;
+                height:400px;
+                background-color: lightpink;
+                border-radius: .3em;
+                cursor: grab;
+                display: grid;
+                place-content: center;
+                font-size: 2rem; 
+                pointer-events: none;
+
+            }
+        }
+    }
+}
