@@ -102,16 +102,16 @@ body {
   opacity: 1;
 }
 .card:nth-child(1) {
-  transform: translateX(1%) rotate(-1deg);
+  transform: translateX(2%) rotate(-1deg);
 }
 .card:nth-child(2) {
   transform: rotate(2deg);
 }
 .card:nth-child(3) {
-  transform: translate(2%) rotate(-3deg);
+  transform: translate(3%) rotate(-3deg);
 }
 .card:nth-child(4) {
-  transform: translate(2%) rotate(5deg);
+  transform: translate(4%) rotate(5deg);
 }
 .card__title {
   padding: 1em;
