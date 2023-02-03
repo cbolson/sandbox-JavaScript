@@ -11,3 +11,6 @@ Working demos of these scripts can be found <a href="https://sandbox.cbolson.com
 
 # Countdown
 <img src="/assets/images/countdown.png" width="240">
+
+# Animated Cards
+<img src="/assets/images/cards.png" width="240">
