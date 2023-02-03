@@ -15,25 +15,42 @@ body {
   height: 100vh;
   padding: 0;
   margin: 0;
-  display: grid;
-  place-items: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+main {
+  width: 400px;
+  margin: 2rem auto;
 }
 section {
-  border: 1px solid greenyellow;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
-p {
-  font-size: 2rem;
+.stopwatch {
+  border: 1px solid greenyellow;
 }
 #timer {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block-end: 1rem;
+}
+#timer > * {
+  text-align: center;
 }
 .num {
-  width: 40px;
+  width: 50px;
 }
-.num--two::after {
-  content: " : ";
+
+.laps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.num--three {
-  width: 60px;
+.laps li {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(213, 232, 186);
 }

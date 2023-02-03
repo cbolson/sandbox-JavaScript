@@ -1,27 +1,35 @@
-let timer = document.querySelector("#timer");
-let milliseconds = document.querySelector("#milliseconds");
-let seconds = document.querySelector("#seconds");
-let minutes = document.querySelector("#minutes");
+const millisecondsEl = document.querySelector("#milliseconds");
+const secondsEl = document.querySelector("#seconds");
+const minutesEl = document.querySelector("#minutes");
+const hoursEl = document.querySelector("#hours");
+const laps = document.querySelector("[data-laps]");
+const buttons = document.querySelectorAll("button");
 
-const btnStart = document.querySelector("#btn-start");
-const btnPause = document.querySelector("#btn-pause");
-const btnClear = document.querySelector("#btn-clear");
-let time = "";
-
-let ms = 0;
-let s = 0;
-let m = 0;
-
-btnStart.addEventListener("click", () => {
-  startTimer();
-});
-btnPause.addEventListener("click", () => {
-  pauseTimer();
-});
-btnClear.addEventListener("click", () => {
-  clearTimer();
-});
 let counter;
+let ms = 0;
+let s = 55;
+let m = 59;
+let h = 0;
+
+buttons.forEach((btn) => {
+  const action = btn.getAttribute("data-action");
+  btn.addEventListener("click", () => {
+    switch (action) {
+      case "start":
+        startTimer();
+        break;
+      case "pause":
+        pauseTimer();
+        break;
+      case "reset":
+        resetTimer();
+        break;
+      case "lap":
+        lapTimer();
+        break;
+    }
+  });
+});
 
 function count() {
   ms++;
@@ -33,32 +41,46 @@ function count() {
     m++;
     s = 0;
   }
+  if (m === 60) {
+    h++;
+    m = 0;
+  }
 
-  milliseconds.innerText = ms.toLocaleString("en-US", {
-    minimumIntegerDigits: 2,
-    useGrouping: false,
-  });
-  seconds.innerText = s.toLocaleString("en-US", {
-    minimumIntegerDigits: 2,
-    useGrouping: false,
-  });
-  minutes.innerText = m.toLocaleString("en-US", {
+  millisecondsEl.innerText = formatNum(ms);
+  secondsEl.innerText = formatNum(s);
+  minutesEl.innerText = formatNum(m);
+  hoursEl.innerText = formatNum(h);
+}
+
+function formatNum(num) {
+  return num.toLocaleString("en-US", {
     minimumIntegerDigits: 2,
     useGrouping: false,
   });
 }
 function startTimer() {
-  console.log("start timer");
-
   counter = setInterval(count, 10);
 }
 function pauseTimer() {
   clearInterval(counter);
 }
-function clearTimer() {
+function resetTimer() {
   clearInterval(counter);
   counter = 0;
-  milliseconds.innerText = 0;
-  seconds.innerText = 0;
-  minutes.innerText = 0;
+  millisecondsEl.innerText = "00";
+  secondsEl.innerText = "00";
+  minutesEl.innerText = "00";
+  hoursEl.innerText = "00";
+  laps.innerHTML = "";
+}
+let lapCounter = 0;
+function lapTimer() {
+  const currentTime = `${formatNum(h)}:${formatNum(m)}:${formatNum(
+    s
+  )}:${formatNum(ms)}`;
+  console.log(currentTime);
+  ++lapCounter;
+  const newLap = document.createElement("li");
+  newLap.innerHTML = `<span>Lap ${lapCounter}</span><span>${currentTime}</span>`;
+  laps.append(newLap);
 }

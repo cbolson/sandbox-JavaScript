@@ -9,16 +9,24 @@
     <script src="stopwatch.js" defer></script>
   </head>
   <body>
-    <section>
+    <main>
       <h1>Stopwatch</h1>
-      <p id="timer">
-        <span id="minutes" class="num num--two">00</span>
-        <span id="seconds" class="num num--two">00</span>
-        <span id="milliseconds" class="num num--three">00</span>
-      </p>
-      <button id="btn-start">Start</button>
-      <button id="btn-pause">Pause</button>
-      <button id="btn-clear">Reset</button>
-    </section>
+      <section class="stopwatch">
+        <div id="timer">
+          <div id="hours" class="num">00</div>
+          <div class="divider">:</div>
+          <div id="minutes" class="num">00</div>
+          <div class="divider">:</div>
+          <div id="seconds" class="num">00</div>
+          <div class="divider">:</div>
+          <div id="milliseconds" class="num">00</div>
+        </div>
+        <button data-action="start">Start</button>
+        <button data-action="pause">Pause</button>
+        <button data-action="lap">Lap</button>
+        <button data-action="reset">Reset</button>
+      </section>
+      <ul class="laps" data-laps></ul>
+    </main>
   </body>
 </html>
