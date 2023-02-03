@@ -1,0 +1,56 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+:root {
+  --body-bg: hsl(0, 0%, 10%);
+  --body-clr: hsl(255 100% 100%);
+}
+body {
+  background-color: var(--body-bg);
+  color: var(--body-clr);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+main {
+  width: 400px;
+  margin: 2rem auto;
+}
+section {
+  padding: 1rem;
+  text-align: center;
+}
+.stopwatch {
+  border: 1px solid greenyellow;
+}
+#timer {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block-end: 1rem;
+}
+#timer > * {
+  text-align: center;
+}
+.num {
+  width: 50px;
+}
+
+.laps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.laps li {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(213, 232, 186);
+}
