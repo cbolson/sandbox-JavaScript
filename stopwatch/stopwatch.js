@@ -7,8 +7,8 @@ const buttons = document.querySelectorAll("button");
 
 let counter;
 let ms = 0;
-let s = 55;
-let m = 59;
+let s = 0;
+let m = 0;
 let h = 0;
 
 buttons.forEach((btn) => {
@@ -78,9 +78,8 @@ function lapTimer() {
   const currentTime = `${formatNum(h)}:${formatNum(m)}:${formatNum(
     s
   )}:${formatNum(ms)}`;
-  console.log(currentTime);
-  ++lapCounter;
   const newLap = document.createElement("li");
-  newLap.innerHTML = `<span>Lap ${lapCounter}</span><span>${currentTime}</span>`;
+  newLap.innerHTML = `<li><span>Lap ${lapCounter}</span><span>${currentTime}</span></li>`;
   laps.append(newLap);
+  ++lapCounter;
 }
