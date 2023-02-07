@@ -1,6 +1,6 @@
 /*
 array is sorted but may contain duplicates
-remove duplicates (in-place) but returned array must be the same length as original array
+remove duplicates
 */
 var removeDuplicates = function (nums) {
   //   const len = nums.length;
@@ -16,17 +16,43 @@ var removeDuplicates = function (nums) {
   //     newArr.push("_");
   //   }
   //   return newArr.length;
-
-  const set = new Set(nums);
-  //console.log(set);
-  let i = 0;
-  set.forEach((num) => {
-    nums[i] = num;
-    i++;
-  });
-
-  return set.size;
 };
 
-const nums = [1, 1, 2];
-console.log(removeDuplicates(nums));
+function removeDuplicatesSet(arr) {
+  // using new set
+  return [...new Set(arr)];
+}
+function removeDuplicatesReduce(arr) {
+  // using reduce
+  return arr.reduce((acc, b) => (acc.includes(b) ? acc : [...acc, b]), []);
+}
+const nums = [1, 1, 2, 4, 5, 5, 8];
+console.log(removeDuplicatesSet(nums));
+console.log(removeDuplicatesReduce(nums));
+
+
+
+/*
+remove duplicates but keep same length (add filler)
+*/
+// using push()
+function removeDuplicatesSameLength(arr) {
+  const newArr = [...new Set(arr)];
+  //console.log(newArr);
+  while (newArr.length < arr.length) {
+    newArr.push("_");
+  }
+  return newArr;
+}
+
+// using fill()
+function removeDuplicatesSameLengthFill(arr) {
+  const newArr = [...new Set(arr)];
+
+  const l1 = newArr.length; // length of new array (before we add empty values)
+  newArr.length = arr.length; // make new array length to be same as passed array
+  newArr.fill("_", l1); // fill array from last postion to end
+  return newArr;
+}
+console.log(removeDuplicatesSameLength(nums));
+console.log(removeDuplicatesSameLengthFill(nums));
