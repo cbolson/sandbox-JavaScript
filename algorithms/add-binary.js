@@ -1,5 +1,5 @@
 /*
-function to return binary 
+Given two binary strings a and b, return their sum as a binary string.
 */
 
 // this method is fine until we get to very large numbers
