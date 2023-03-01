@@ -32,7 +32,7 @@ async function getISS() {
 function addToMap(data) {
   const { latitude, longitude } = data;
   marker.setLatLng([latitude, longitude]);
-  map.setView([latitude, longitude]);
+  map.setView([latitude, longitude], map.getZoom());
 }
 getISS();
 setInterval(getISS, 10000); // min rate 1second but we really don't need to update even that often
