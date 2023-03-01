@@ -28,11 +28,11 @@ async function getISS() {
   const data = await response.json();
   addToMap(data);
 }
-
+// place marker on map and center
 function addToMap(data) {
   const { latitude, longitude } = data;
   marker.setLatLng([latitude, longitude]);
-  map.setView([latitude, longitude], mapZoom);
+  map.setView([latitude, longitude]);
 }
 getISS();
-setInterval(getISS, 5000);
+setInterval(getISS, 10000); // min rate 1second but we really don't need to update even that often
