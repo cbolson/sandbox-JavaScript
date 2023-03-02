@@ -1,0 +1,18 @@
+{
+  "name": "selfie-app",
+  "version": "1.0.0",
+  "description": "this is the data selfie app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "selfie",
+    "data"
+  ],
+  "author": "Chris Bolson",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

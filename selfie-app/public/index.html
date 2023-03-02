@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Selfie APP</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Data Selfie App</h1>
+      <p>Latitude: <span id="latitude"></span>&deg;</p>
+      <p>Latitude: <span id="longitude"></span>&deg;</p>
+      <div id="map"></div>
+    </main>
+  </body>
+  <script>
+    if ("geolocation" in navigator) {
+      console.log("YES");
+      navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        document.querySelector("#latitude").innerText = lat;
+        document.querySelector("#longitude").innerText = lng;
+      });
+    } else {
+      console.log("Not connected");
+    }
+  </script>
+</html>
