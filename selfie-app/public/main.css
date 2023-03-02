@@ -23,6 +23,6 @@ main {
 }
 #map {
   height: 400px;
-  offset-distance: 3px;
-  border: 1px solid green;
+  outline-offset: 3px;
+  outline: 1px solid green;
 }
