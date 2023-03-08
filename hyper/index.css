@@ -1,0 +1,33 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+:root {
+  --body-bg: hsl(0, 0%, 10%);
+  --body-clr: hsl(255 100% 100%);
+}
+body {
+  background-color: var(--body-bg);
+  color: var(--body-clr);
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5rem;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+h1 {
+  font-size: 3.4rem;
+
+  width: 600px;
+  line-height: 3.4rem;
+}
+.hyper {
+  font-size: 5rem;
+  font-family: "Space Mono", monospace;
+  color: rgb(186, 21, 192);
+  display: inline-block;
+}
