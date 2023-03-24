@@ -25,9 +25,9 @@ body {
   --offset: calc(var(--rad-l) * 2);
   --degrees: 0;
 
-  width: calc(var(--rad-l) * 4);
+  width: calc(var(--rad-l) * 5);
   aspect-ratio: 1;
-  border: 1px solid #333;
+  border: 1px dashed #333;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -35,13 +35,24 @@ body {
   cursor: pointer;
   &:hover .card-mask {
     background-color: transparent;
+    outline-offset: calc(var(--rad-l) * 1.5);
+    outline-color: #fff;
+    font-size: 0;
+    .hamburger {
+      opacity: 0;
+    }
   }
   .card-mask {
-    width: calc(var(--rad-l) * 2);
+    width: calc(var(--rad-l));
     aspect-ratio: 1;
     border-radius: inherit;
-    border: 1px solid #333;
-    background-color: #333;
+    // background-color: #333;
+    display: grid;
+    place-items: center;
+    font-size: 6rem;
+    outline: 1px solid #ddd;
+    transition: outline-offset 1500ms cubic-bezier(0.075, 0.82, 0.165, 1),
+      color 300ms, font-size 300ms;
   }
   .card {
     width: calc(var(--rad-s) * 2);
@@ -52,14 +63,14 @@ body {
     position: absolute;
     z-index: 1;
     cursor: pointer;
-    outline: 1px dashed red;
-    outline-offset: 200px;
+
     img {
       width: 100%;
       aspect-ratio: 1;
       border-radius: inherit;
       object-fit: cover;
       transition: scale 300ms ease-in, opacity 150ms ease-in;
+      border: 3px solid #fff;
     }
     .card-contents {
       position: absolute;
@@ -68,8 +79,8 @@ body {
       border-radius: 50%;
       opacity: 0;
       transition: opacity 300ms ease-in;
-
       z-index: 3;
+
       img {
         scale: 0;
       }
@@ -131,4 +142,25 @@ $colors: red, orange, yellow, green, blue, purple, teal, pink;
   //     background-color: red;
   //     opacity: 1;
   //   }
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 6px;
+  width: 40px;
+  border-radius: 3px;
+  transition: opacity 300ms;
+}
+.hamburger::before {
+  content: "";
+  margin-top: -12px;
+}
+
+.hamburger::after {
+  content: "";
+  margin-top: 12px;
 }

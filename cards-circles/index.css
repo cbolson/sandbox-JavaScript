@@ -27,9 +27,9 @@ body {
   --rad-s: 60px;
   --offset: calc(var(--rad-l) * 2);
   --degrees: 0;
-  width: calc(var(--rad-l) * 4);
+  width: calc(var(--rad-l) * 5);
   aspect-ratio: 1;
-  border: 1px solid #333;
+  border: 1px dashed #333;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -38,13 +38,22 @@ body {
 }
 .card-container:hover .card-mask {
   background-color: transparent;
+  outline-offset: calc(var(--rad-l) * 1.5);
+  outline-color: #fff;
+  font-size: 0;
+}
+.card-container:hover .card-mask .hamburger {
+  opacity: 0;
 }
 .card-container .card-mask {
-  width: calc(var(--rad-l) * 2);
+  width: calc(var(--rad-l));
   aspect-ratio: 1;
   border-radius: inherit;
-  border: 1px solid #333;
-  background-color: #333;
+  display: grid;
+  place-items: center;
+  font-size: 6rem;
+  outline: 1px solid #ddd;
+  transition: outline-offset 1500ms cubic-bezier(0.075, 0.82, 0.165, 1), color 300ms, font-size 300ms;
 }
 .card-container .card {
   width: calc(var(--rad-s) * 2);
@@ -55,8 +64,6 @@ body {
   position: absolute;
   z-index: 1;
   cursor: pointer;
-  outline: 1px dashed red;
-  outline-offset: 200px;
 }
 .card-container .card img {
   width: 100%;
@@ -65,6 +72,7 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
   transition: scale 300ms ease-in, opacity 150ms ease-in;
+  border: 3px solid #fff;
 }
 .card-container .card .card-contents {
   position: absolute;
@@ -144,4 +152,26 @@ body {
 .card-container:hover .card:nth-of-type(8) .card-thumb {
   --degrees: 8 * 360deg / 8;
   opacity: 1;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 6px;
+  width: 40px;
+  border-radius: 3px;
+  transition: opacity 300ms;
+}
+
+.hamburger::before {
+  content: "";
+  margin-top: -12px;
+}
+
+.hamburger::after {
+  content: "";
+  margin-top: 12px;
 }/*# sourceMappingURL=index.css.map */
