@@ -1,3 +1,4 @@
+@use "sass:math";
 *,
 ::before,
 ::after {
@@ -23,12 +24,14 @@ body {
   --rad-l: 120px;
   --rad-s: 60px;
   --offset: calc(var(--rad-l) * 2);
-  --degrees: 0;
+  --angle: 0;
+  --border-clr: #fff;
+  --border-rad: 50%;
 
   width: calc(var(--rad-l) * 5);
   aspect-ratio: 1;
   border: 1px dashed #333;
-  border-radius: 50%;
+  border-radius: var(--border-rad);
   display: grid;
   place-items: center;
   position: relative;
@@ -36,7 +39,7 @@ body {
 
   & * {
     aspect-ratio: 1;
-    border-radius: 50%;
+    border-radius: inherit;
     display: grid;
     place-items: center;
   }
@@ -50,90 +53,107 @@ body {
       opacity: 0;
     }
   }
-  .card-mask {
-    width: calc(var(--rad-l));
-    font-size: 6rem;
-    outline: 1px solid #ddd;
-    transition: outline-offset 1500ms cubic-bezier(0.075, 0.82, 0.165, 1),
-      color 300ms, font-size 300ms;
-  }
-  .card {
-    width: calc(var(--rad-s) * 2);
-    position: absolute;
-    z-index: 1;
-    cursor: pointer;
-
-    img {
-      width: 100%;
-      object-fit: cover;
-      transition: scale 300ms ease-in, opacity 150ms ease-in;
-      border: 3px solid #fff;
-    }
-    .card-contents {
-      position: absolute;
-      width: calc(var(--rad-l) * 2);
-      height: calc(var(--rad-l) * 2);
-      opacity: 0;
-      transition: opacity 300ms ease-in;
-      z-index: 3;
-
-      img {
-        scale: 0;
-      }
-    }
-    .card-thumb {
-      width: calc(var(--rad-s) * 2);
-      background-color: var(--body-bg);
-      position: absolute;
-      opacity: 0;
-      z-index: -1;
-      transition: transform 1500ms cubic-bezier(0.075, 0.82, 0.165, 1),
-        opacity 300ms;
-
-      img {
-        opacity: 0.5;
-      }
-      &:hover img {
-        opacity: 1;
-      }
-    }
-    &:hover .card-contents {
-      opacity: 1;
-    }
-    &:hover .card-contents img {
-      scale: 1;
-    }
-  }
-
   &:hover .card .card-thumb {
     transform: translate(
-      calc(cos(var(--degrees)) * var(--offset)),
-      calc(sin(var(--degrees)) * var(--offset))
+      calc(cos(var(--angle)) * var(--offset)),
+      calc(sin(var(--angle)) * var(--offset))
     );
-  }
-}
-$total: 8;
-// $colors: red, orange, yellow, green, blue, purple, teal, pink;
-// @function getColor($colors, $pos) {
-//   @return nth($colors, $pos);
-// }
-
-@for $i from 1 through ($total) {
-  .card-container:hover .card:nth-of-type(#{$i}) .card-thumb {
-    --degrees: #{$i} * 360deg / #{$total};
     opacity: 1;
   }
-  .card:nth-of-type(#{$i}) .card-contents {
-    // background-color: getColor($colors, $i);
+}
+.card-mask {
+  width: calc(var(--rad-l));
+  font-size: 6rem;
+  outline: 1px solid #ddd;
+  transition: outline-offset 1500ms cubic-bezier(0.075, 0.82, 0.165, 1),
+    color 300ms, font-size 300ms;
+}
+.card {
+  width: calc(var(--rad-s) * 2);
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    transition: scale 300ms ease-in, opacity 150ms ease-in;
+    border: 3px solid var(--border-clr);
+  }
+  &:hover .card-contents {
+    opacity: 1;
+  }
+  &:hover::before {
+    animation: reveal-bar 300ms ease-out forwards;
+  }
+  &:hover .card-contents img {
+    scale: 1;
+  }
+  &::before {
+    content: "";
+    background: var(--border-clr);
+    width: 5px;
+    height: 0;
+    border-radius: 0;
+    transform: rotate(var(--rotate)) translateY(var(--rad-l));
+  }
+}
+.card-contents {
+  position: absolute;
+  width: calc(var(--rad-l) * 2);
+  height: calc(var(--rad-l) * 2);
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+  z-index: 3;
+
+  & img {
+    scale: 0;
+  }
+}
+.card-thumb {
+  width: calc(var(--rad-s) * 2);
+  background-color: var(--body-bg);
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  transition: transform 1500ms cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 300ms;
+
+  // just to see it - remove when ready
+  //   transform: translate(
+  //     calc(cos(var(--angle)) * var(--offset)),
+  //     calc(sin(var(--angle)) * var(--offset))
+  //   );
+  //   opacity: 1;
+
+  img {
+    opacity: 0.5;
   }
 
-  //   .card-thumb:nth-of-type(#{$i + 1}):hover {
-  //     background-color: black;
-  //   }
-  //   .card:nth-of-type(#{$i + 1}):has(.card-thumb:hover) .card-contents {
-  //     background-color: red;
-  //     opacity: 1;
-  //   }
+  &:hover img {
+    opacity: 1;
+  }
+}
+
+$total: 8;
+$colors: red, orange, yellow, green, blue, purple, teal, pink;
+@function getColor($colors, $pos) {
+  @return nth($colors, $pos);
+}
+
+@function toDegrees($val) {
+  @return math.div($val, total);
+}
+
+@for $i from 1 through ($total) {
+  $deg: calc($i * 360deg / $total);
+  $rotate: $deg - 90;
+  $clr: getColor($colors, $i);
+  .card-container .card:nth-of-type(#{$i}) {
+    --angle: #{$deg};
+    --rotate: #{$rotate};
+    //--border-clr: #{$clr};
+  }
 }
 
 .hamburger,
@@ -155,4 +175,12 @@ $total: 8;
 .hamburger::after {
   content: "";
   margin-top: 12px;
+}
+@keyframes reveal-bar {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--rad-l);
+  }
 }

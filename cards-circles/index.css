@@ -26,11 +26,13 @@ body {
   --rad-l: 120px;
   --rad-s: 60px;
   --offset: calc(var(--rad-l) * 2);
-  --degrees: 0;
+  --angle: 0;
+  --border-clr: #fff;
+  --border-rad: 50%;
   width: calc(var(--rad-l) * 5);
   aspect-ratio: 1;
   border: 1px dashed #333;
-  border-radius: 50%;
+  border-radius: var(--border-rad);
   display: grid;
   place-items: center;
   position: relative;
@@ -38,7 +40,7 @@ body {
 }
 .card-container * {
   aspect-ratio: 1;
-  border-radius: 50%;
+  border-radius: inherit;
   display: grid;
   place-items: center;
 }
@@ -51,26 +53,50 @@ body {
 .card-container:hover .card-mask .hamburger {
   opacity: 0;
 }
-.card-container .card-mask {
+.card-container:hover .card .card-thumb {
+  transform: translate(calc(cos(var(--angle)) * var(--offset)), calc(sin(var(--angle)) * var(--offset)));
+  opacity: 1;
+}
+
+.card-mask {
   width: calc(var(--rad-l));
   font-size: 6rem;
   outline: 1px solid #ddd;
   transition: outline-offset 1500ms cubic-bezier(0.075, 0.82, 0.165, 1), color 300ms, font-size 300ms;
 }
-.card-container .card {
+
+.card {
   width: calc(var(--rad-s) * 2);
   position: absolute;
   z-index: 1;
   cursor: pointer;
 }
-.card-container .card img {
+.card img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   transition: scale 300ms ease-in, opacity 150ms ease-in;
-  border: 3px solid #fff;
+  border: 3px solid var(--border-clr);
 }
-.card-container .card .card-contents {
+.card:hover .card-contents {
+  opacity: 1;
+}
+.card:hover::before {
+  animation: reveal-bar 300ms ease-out forwards;
+}
+.card:hover .card-contents img {
+  scale: 1;
+}
+.card::before {
+  content: "";
+  background: var(--border-clr);
+  width: 5px;
+  height: 0;
+  border-radius: 0;
+  transform: rotate(var(--rotate)) translateY(var(--rad-l));
+}
+
+.card-contents {
   position: absolute;
   width: calc(var(--rad-l) * 2);
   height: calc(var(--rad-l) * 2);
@@ -78,10 +104,11 @@ body {
   transition: opacity 300ms ease-in;
   z-index: 3;
 }
-.card-container .card .card-contents img {
+.card-contents img {
   scale: 0;
 }
-.card-container .card .card-thumb {
+
+.card-thumb {
   width: calc(var(--rad-s) * 2);
   background-color: var(--body-bg);
   position: absolute;
@@ -89,60 +116,51 @@ body {
   z-index: -1;
   transition: transform 1500ms cubic-bezier(0.075, 0.82, 0.165, 1), opacity 300ms;
 }
-.card-container .card .card-thumb img {
+.card-thumb img {
   opacity: 0.5;
 }
-.card-container .card .card-thumb:hover img {
-  opacity: 1;
-}
-.card-container .card:hover .card-contents {
-  opacity: 1;
-}
-.card-container .card:hover .card-contents img {
-  scale: 1;
-}
-.card-container:hover .card .card-thumb {
-  transform: translate(calc(cos(var(--degrees)) * var(--offset)), calc(sin(var(--degrees)) * var(--offset)));
-}
-
-.card-container:hover .card:nth-of-type(1) .card-thumb {
-  --degrees: 1 * 360deg / 8;
+.card-thumb:hover img {
   opacity: 1;
 }
 
-.card-container:hover .card:nth-of-type(2) .card-thumb {
-  --degrees: 2 * 360deg / 8;
-  opacity: 1;
+.card-container .card:nth-of-type(1) {
+  --angle: 45deg;
+  --rotate: -45deg;
 }
 
-.card-container:hover .card:nth-of-type(3) .card-thumb {
-  --degrees: 3 * 360deg / 8;
-  opacity: 1;
+.card-container .card:nth-of-type(2) {
+  --angle: 90deg;
+  --rotate: 0deg;
 }
 
-.card-container:hover .card:nth-of-type(4) .card-thumb {
-  --degrees: 4 * 360deg / 8;
-  opacity: 1;
+.card-container .card:nth-of-type(3) {
+  --angle: 135deg;
+  --rotate: 45deg;
 }
 
-.card-container:hover .card:nth-of-type(5) .card-thumb {
-  --degrees: 5 * 360deg / 8;
-  opacity: 1;
+.card-container .card:nth-of-type(4) {
+  --angle: 180deg;
+  --rotate: 90deg;
 }
 
-.card-container:hover .card:nth-of-type(6) .card-thumb {
-  --degrees: 6 * 360deg / 8;
-  opacity: 1;
+.card-container .card:nth-of-type(5) {
+  --angle: 225deg;
+  --rotate: 135deg;
 }
 
-.card-container:hover .card:nth-of-type(7) .card-thumb {
-  --degrees: 7 * 360deg / 8;
-  opacity: 1;
+.card-container .card:nth-of-type(6) {
+  --angle: 270deg;
+  --rotate: 180deg;
 }
 
-.card-container:hover .card:nth-of-type(8) .card-thumb {
-  --degrees: 8 * 360deg / 8;
-  opacity: 1;
+.card-container .card:nth-of-type(7) {
+  --angle: 315deg;
+  --rotate: 225deg;
+}
+
+.card-container .card:nth-of-type(8) {
+  --angle: 360deg;
+  --rotate: 270deg;
 }
 
 .hamburger,
@@ -165,4 +183,13 @@ body {
 .hamburger::after {
   content: "";
   margin-top: 12px;
+}
+
+@keyframes reveal-bar {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--rad-l);
+  }
 }/*# sourceMappingURL=index.css.map */
