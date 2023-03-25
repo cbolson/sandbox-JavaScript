@@ -30,7 +30,7 @@ body {
 
   width: calc(var(--rad-l) * 5);
   aspect-ratio: 1;
-  border: 1px dashed #333;
+  //   border: 1px dashed #333;
   border-radius: var(--border-rad);
   display: grid;
   place-items: center;
@@ -84,7 +84,7 @@ body {
     opacity: 1;
   }
   &:hover::before {
-    animation: reveal-bar 300ms ease-out forwards;
+    animation: reveal-bar 500ms 300ms ease-out forwards;
   }
   &:hover .card-contents img {
     scale: 1;
@@ -95,7 +95,8 @@ body {
     width: 5px;
     height: 0;
     border-radius: 0;
-    transform: rotate(var(--rotate)) translateY(var(--rad-l));
+    z-index: -1;
+    transform: rotate(var(--rotate)) translate(0, calc(var(--rad-s) * 2));
   }
 }
 .card-contents {
