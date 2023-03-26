@@ -22,6 +22,19 @@ body {
   place-items: center;
 }
 
+svg {
+  font-size: 6rem;
+}
+
+path {
+  fill: transparent;
+}
+
+text {
+  fill: #ff9800;
+  width: 100%;
+}
+
 .card-container {
   --rad-l: 120px;
   --rad-s: 60px;
@@ -81,17 +94,28 @@ body {
   opacity: 1;
 }
 .card:hover::before {
-  animation: reveal-bar 500ms 300ms ease-out forwards;
+  animation: reveal-bar 300ms 300ms ease-out forwards;
+}
+.card:hover::after {
+  animation: reveal-title 300ms 300ms ease-out forwards;
 }
 .card:hover .card-contents img {
   scale: 1;
 }
+.card::after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  font-size: 2rem;
+  background-color: var(--body-bg);
+  padding: 0.5rem;
+}
 .card::before {
   content: "";
-  background: var(--border-clr);
-  width: 5px;
+  background-color: var(--border-clr);
+  width: 3px;
   height: 0;
-  border-radius: 0;
+  border-radius: 5px;
   z-index: -1;
   transform: rotate(var(--rotate)) translate(0, calc(var(--rad-s) * 2));
 }
@@ -123,44 +147,68 @@ body {
   opacity: 1;
 }
 
-.card-container .card:nth-of-type(1) {
+.card:nth-of-type(1) {
   --angle: 45deg;
   --rotate: -45deg;
 }
+.card:nth-of-type(1)::after {
+  content: attr(data-title);
+}
 
-.card-container .card:nth-of-type(2) {
+.card:nth-of-type(2) {
   --angle: 90deg;
   --rotate: 0deg;
 }
+.card:nth-of-type(2)::after {
+  content: attr(data-title);
+}
 
-.card-container .card:nth-of-type(3) {
+.card:nth-of-type(3) {
   --angle: 135deg;
   --rotate: 45deg;
 }
+.card:nth-of-type(3)::after {
+  content: attr(data-title);
+}
 
-.card-container .card:nth-of-type(4) {
+.card:nth-of-type(4) {
   --angle: 180deg;
   --rotate: 90deg;
 }
+.card:nth-of-type(4)::after {
+  content: attr(data-title);
+}
 
-.card-container .card:nth-of-type(5) {
+.card:nth-of-type(5) {
   --angle: 225deg;
   --rotate: 135deg;
 }
+.card:nth-of-type(5)::after {
+  content: attr(data-title);
+}
 
-.card-container .card:nth-of-type(6) {
+.card:nth-of-type(6) {
   --angle: 270deg;
   --rotate: 180deg;
 }
+.card:nth-of-type(6)::after {
+  content: attr(data-title);
+}
 
-.card-container .card:nth-of-type(7) {
+.card:nth-of-type(7) {
   --angle: 315deg;
   --rotate: 225deg;
 }
+.card:nth-of-type(7)::after {
+  content: attr(data-title);
+}
 
-.card-container .card:nth-of-type(8) {
+.card:nth-of-type(8) {
   --angle: 360deg;
   --rotate: 270deg;
+}
+.card:nth-of-type(8)::after {
+  content: attr(data-title);
 }
 
 .hamburger,
@@ -191,5 +239,11 @@ body {
   }
   to {
     height: var(--rad-l);
+  }
+}
+@keyframes reveal-title {
+  to {
+    transform: translateY(calc(-1 * (var(--rad-l) + var(--rad-s) / 2)));
+    opacity: 1;
   }
 }/*# sourceMappingURL=index.css.map */

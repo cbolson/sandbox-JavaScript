@@ -20,6 +20,17 @@ body {
   display: grid;
   place-items: center;
 }
+svg {
+  font-size: 6rem;
+}
+path {
+  fill: transparent;
+}
+
+text {
+  fill: #ff9800;
+  width: 100%;
+}
 .card-container {
   --rad-l: 120px;
   --rad-s: 60px;
@@ -84,17 +95,28 @@ body {
     opacity: 1;
   }
   &:hover::before {
-    animation: reveal-bar 500ms 300ms ease-out forwards;
+    animation: reveal-bar 300ms 300ms ease-out forwards;
+  }
+  &:hover::after {
+    animation: reveal-title 300ms 300ms ease-out forwards;
   }
   &:hover .card-contents img {
     scale: 1;
   }
+  &::after {
+    content: "";
+    position: absolute;
+    opacity: 0;
+    font-size: 2rem;
+    background-color: var(--body-bg);
+    padding: 0.5rem;
+  }
   &::before {
     content: "";
-    background: var(--border-clr);
-    width: 5px;
+    background-color: var(--border-clr);
+    width: 3px;
     height: 0;
-    border-radius: 0;
+    border-radius: 5px;
     z-index: -1;
     transform: rotate(var(--rotate)) translate(0, calc(var(--rad-s) * 2));
   }
@@ -150,10 +172,14 @@ $colors: red, orange, yellow, green, blue, purple, teal, pink;
   $deg: calc($i * 360deg / $total);
   $rotate: $deg - 90;
   $clr: getColor($colors, $i);
-  .card-container .card:nth-of-type(#{$i}) {
+  .card:nth-of-type(#{$i}) {
     --angle: #{$deg};
     --rotate: #{$rotate};
+
     //--border-clr: #{$clr};
+    &::after {
+      content: attr(data-title);
+    }
   }
 }
 
@@ -183,5 +209,13 @@ $colors: red, orange, yellow, green, blue, purple, teal, pink;
   }
   to {
     height: var(--rad-l);
+  }
+}
+@keyframes reveal-title {
+  to {
+    transform: translateY(
+      calc(-1 * calc(var(--rad-l) + calc(var(--rad-s) / 2)))
+    );
+    opacity: 1;
   }
 }
