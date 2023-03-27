@@ -11,9 +11,9 @@ CSS only animated nav (desktop only as it requires :hover)
 - Hamburger menu - when you mouseover the nav options aniamte out around the center circle.
 - Hover over each nav option to reveal it's title and main image in the center
 
-(Codepen demo)[https://codepen.io/cbolson/pen/MWqxgQL]
+[Codepen demo](https://codepen.io/cbolson/pen/MWqxgQL)
 
 ## Sources & inspiration
 
-- Using math to locate elements around a circle (Kevin Powel)[https://www.youtube.com/watch?v=eO33Rh3GFGk]
-- Images
+- Using math to locate elements around a circle [Kevin Powel](https://www.youtube.com/watch?v=eO33Rh3GFGk)
+- Images [Unspash](https://unsplash.com)
