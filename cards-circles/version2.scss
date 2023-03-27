@@ -21,7 +21,10 @@ body {
   display: grid;
   place-items: center;
 }
-
+a {
+  color: #fff;
+  text-decoration: none;
+}
 .card-container {
   --rad-l: 120px;
   --rad-s: 60px;
@@ -54,12 +57,16 @@ body {
       opacity: 0;
     }
   }
-  &:hover .card-thumb {
+  &:hover .card-link {
     transform: translate(
       calc(cos(var(--angle)) * var(--offset)),
       calc(sin(var(--angle)) * var(--offset))
     );
     opacity: 1;
+    background-color: var(--body-bg);
+  }
+  &:hover .card-link a {
+    scale: 1;
   }
 }
 .card-mask {
@@ -84,22 +91,11 @@ body {
   &:hover .card-contents {
     opacity: 1;
   }
-  &:hover::before {
-    animation: reveal-bar 300ms 300ms ease-out forwards;
-  }
-  &:hover::after {
-    animation: reveal-title 300ms 300ms ease-out forwards;
-  }
   &:hover .card-contents img {
     scale: 1;
   }
-  &::after {
-    content: "";
-    position: absolute;
-    opacity: 0;
-    font-size: 1.6rem;
-    background-color: var(--body-bg);
-    padding: 0.5rem;
+  &:hover::before {
+    animation: reveal-bar 150ms 300ms ease-out forwards;
   }
   &::before {
     content: "";
@@ -118,39 +114,33 @@ body {
   opacity: 0;
   transition: opacity 300ms ease-in;
   z-index: 3;
-
   & img {
     scale: 0;
   }
 }
-.card-thumb {
+.card-link {
   width: calc(var(--rad-s) * 2);
-  background-color: var(--body-bg);
+  background-color: transparent;
   border: 3px solid var(--border-clr);
   position: absolute;
-  opacity: 0;
   font-size: 1.4rem;
   z-index: -1;
   transition: transform 1500ms cubic-bezier(0.075, 0.82, 0.165, 1),
     opacity 300ms;
-  img {
-    opacity: 0.5;
-  }
-  &:hover img {
-    opacity: 1;
+  & a {
+    transition: 300ms ease-out 300ms;
+    scale: 0;
   }
 }
 
 $total: 8;
-$colors: red, orange, yellow, green, blue, purple, teal, pink;
+$colors: red, orange, blue, yellow, green, purple, teal, pink;
 @function getColor($colors, $pos) {
   @return nth($colors, $pos);
 }
-
 @function toDegrees($val) {
   @return math.div($val, total);
 }
-
 @for $i from 1 through ($total) {
   $deg: calc($i * 360deg / $total);
   $rotate: $deg - 90;
@@ -158,11 +148,7 @@ $colors: red, orange, yellow, green, blue, purple, teal, pink;
   .card:nth-of-type(#{$i}) {
     --angle: #{$deg};
     --rotate: #{$rotate};
-
-    --border-clr: #{$clr};
-    &::after {
-      content: attr(data-title);
-    }
+    //--border-clr: #{$clr};
   }
 }
 
@@ -192,13 +178,5 @@ $colors: red, orange, yellow, green, blue, purple, teal, pink;
   }
   to {
     height: var(--rad-l);
-  }
-}
-@keyframes reveal-title {
-  to {
-    transform: translateY(
-      calc(-1 * calc(var(--rad-l) + calc(var(--rad-s) / 2)))
-    );
-    opacity: 1;
   }
 }
