@@ -1,12 +1,15 @@
 const slider = document.querySelector(".slider-container");
 const slides = [...slider.querySelectorAll(".slide")];
-console.log(slides);
+const slideNav = document.querySelectorAll("[slide-nav]");
+//console.log(slideNav);
+
 let isDragging = false;
 let startPos = 0;
 let currentTranslate = 0;
 let prevTranslate = 0;
 let animationID = 0;
 let currentIndex = 0;
+const totSlides = slides.length;
 
 slides.forEach((slide, index) => {
   //const slideImage = slide.querySelector("img");
@@ -25,11 +28,28 @@ slides.forEach((slide, index) => {
   slide.addEventListener("mouseleave", touchEnd);
   slide.addEventListener("mousemove", touchMove);
 });
+
+slideNav.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const direction = btn.getAttribute("slide-nav");
+    console.log(direction);
+    if (direction == "prev") {
+      currentIndex = currentIndex - 1;
+      if (currentIndex < 0) currentIndex = totSlides - 1;
+    } else {
+      currentIndex = currentIndex + 1;
+      if (currentIndex == totSlides) currentIndex = 0;
+    }
+    console.log(currentIndex);
+    setPositionByIndex();
+  });
+});
+
 // disable context menu
 window.oncontextmenu = function (e) {
-  //e.preventDefault();
-  //e.stopPropagation();
-  //return false;
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
 };
 
 function touchStart(index) {

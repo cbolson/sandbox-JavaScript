@@ -18,7 +18,7 @@ body {
   line-height: 1.6;
 }
 .slider-container {
-  height: 100vh;
+  height: 60vh;
   display: inline-flex;
   overflow: hidden;
   transform: translateX(0);
