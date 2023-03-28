@@ -12,8 +12,6 @@ let currentIndex = 0;
 const totSlides = slides.length;
 
 slides.forEach((slide, index) => {
-  //const slideImage = slide.querySelector("img");
-
   // prevent img drag
   slide.addEventListener("dragstart", (e) => e.preventDefault());
 
@@ -28,28 +26,28 @@ slides.forEach((slide, index) => {
   slide.addEventListener("mouseleave", touchEnd);
   slide.addEventListener("mousemove", touchMove);
 });
-
+// slider nav button
 slideNav.forEach((btn) => {
   btn.addEventListener("click", () => {
-    const direction = btn.getAttribute("slide-nav");
-    console.log(direction);
-    if (direction == "prev") {
-      currentIndex = currentIndex - 1;
-      if (currentIndex < 0) currentIndex = totSlides - 1;
-    } else {
-      currentIndex = currentIndex + 1;
-      if (currentIndex == totSlides) currentIndex = 0;
-    }
-    console.log(currentIndex);
-    setPositionByIndex();
+    navSlide(btn.getAttribute("slide-nav"));
   });
 });
 
+function navSlide(direction) {
+  if (direction == "prev") {
+    currentIndex = currentIndex - 1;
+    if (currentIndex < 0) currentIndex = totSlides - 1;
+  } else {
+    currentIndex = currentIndex + 1;
+    if (currentIndex == totSlides) currentIndex = 0;
+  }
+  setPositionByIndex();
+}
 // disable context menu
 window.oncontextmenu = function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-  return false;
+  // e.preventDefault();
+  // e.stopPropagation();
+  // return false;
 };
 
 function touchStart(index) {
