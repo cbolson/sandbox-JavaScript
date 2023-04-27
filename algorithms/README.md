@@ -1,5 +1,0 @@
-# Alorithms
-
-## Description
-
-Algorithm tests

@@ -1,0 +1,42 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+:root{
+ --body-bg: hsl(0, 0%, 10%);
+ --body-clr: hsl(255 100% 100%);
+}
+body{
+  background-color: var(--body-bg);
+  color: var(--body-clr);
+  font-size:1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height:1.5rem;
+  height: 100vh;
+  padding:0;
+  margin:0;
+}
+.countdown{
+  width: 200px;
+  height:200px;
+  border:1px solid green;
+  margin: 10vh auto 1rem;
+  font-size:4rem;
+  display:grid;
+  place-items:center;
+  font-family:monospace;
+  border-radius: 50%
+}
+.controls{
+
+    margin: 0 auto;
+display: flex;
+  justify-content: center;
+}
+button{
+border: 1px solid #666;
+  border-radius: 3px;
+  background: #ccc;
+  padding: 0.5rem 1rem;
+}
