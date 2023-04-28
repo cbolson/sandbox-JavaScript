@@ -1,0 +1,40 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+:root {
+  --body-bg: hsl(0, 0%, 10%);
+  --body-clr: hsl(255 100% 100%);
+}
+body {
+  background-color: var(--body-bg);
+  color: var(--body-clr);
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5rem;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+main{
+    width:30vw;
+    border:1px solid royalblue;
+    padding:1rem 2rem;
+    margin:10vh auto;
+}
+h1{
+    font-size: 1.2rem;
+    text-align: center;
+    border-bottom: 1px solid royalblue;
+    padding: 0 0 1rem;
+    margin-bottom: 2rem;
+}
+ul {
+  display: flex;
+  list-style: none;
+  gap:.25rem;
+  flex-wrap:wrap;
+  margin:0;
+  padding:0;
+}
