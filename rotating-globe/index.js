@@ -10,5 +10,5 @@ window.addEventListener("scroll", () => {
   if (moveVal == 0) moveVal = 1;
   const numPic = moveVal.toString().padStart(3, "0");
   //console.log(moveVal);
-  globe.setAttribute("src", `./globe/frame_${numPic}_delay-0.01s.gif`);
+  globe.setAttribute("src", `./globes/frame_${numPic}_delay-0.01s.webp`);
 });
