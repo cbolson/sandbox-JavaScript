@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: sytem-ui;
+  font-size: 1.125rem;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 0fr 1fr 1fr 0fr;
+  grid-gap: 20px;
+  width: 80vw;
+  place-content: center;
+  margin: auto;
+}
+
+.box {
+  grid-row: span 2;
+}
+.box__inner {
+  padding: 1rem 2rem;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+
+  transition: height 300ms ease-out;
+}
+.box p {
+  margin: 0;
+}
+#box-1,
+#box-4 {
+  grid-column: 1;
+}
+#box-2,
+#box-5 {
+  grid-column: 2;
+}
+#box-3,
+#box-6 {
+  grid-column: 3;
+}
+
+.box.hidden {
+  grid-row: 4 / span 1;
+}
+.box.hidden .box__inner {
+  height: 0;
+}
+.box.expand {
+  grid-row: 1 / span 3;
+}
+.box.expand .box__inner {
+  height: 100%;
+}
+
+.box p.title {
+  font-size: 20px;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.box button {
+  margin: auto auto 0;
+  padding: 0.25rem 2rem;
+  display: block;
+}
