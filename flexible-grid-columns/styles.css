@@ -1,6 +1,10 @@
 * {
   box-sizing: border-box;
 }
+:root {
+  --box-height: 340px;
+  --box-spacing: 20px;
+}
 body {
   font-family: sytem-ui;
   font-size: 1.125rem;
@@ -9,7 +13,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 0fr 1fr 1fr 0fr;
-  grid-gap: 20px;
+  grid-gap: var(--box-spacing);
   width: 80vw;
   place-content: center;
   margin: auto;
@@ -17,10 +21,12 @@ body {
 
 .box {
   grid-row: span 2;
+  border: 1px dashed red;
+  background: #eee;
 }
 .box__inner {
   padding: 1rem 2rem;
-  height: 320px;
+  height: var(--box-height);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -46,17 +52,27 @@ body {
   grid-column: 3;
 }
 
+.box.overlap {
+  grid-row: 1 / -1;
+}
+
 .box.hidden {
-  grid-row: 4 / span 1;
+  /* position: absolute; */
+  /* grid-row: 4 / span 1; */
+  /* display:none; */
 }
 .box.hidden .box__inner {
   height: 0;
+  padding: 0;
+  border: none;
 }
 .box.expand {
-  grid-row: 1 / span 3;
+  z-index: 2;
+  background: pink;
+  /* grid-row: 1 / span 4; */
 }
 .box.expand .box__inner {
-  height: 100%;
+  height: calc(calc(var(--box-height) * 2) + var(--box-spacing));
 }
 
 .box p.title {

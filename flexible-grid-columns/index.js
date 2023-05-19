@@ -10,7 +10,7 @@ boxes.forEach((thisBox) => {
     //   box.classList.remove("hidden", "expand");
     // });
 
-    thisBox.classList.toggle("expand");
-    otherBox.classList.toggle("hidden");
+    thisBox.classList.add("overlap","expand");
+    otherBox.classList.add("overlap", "hidden");
   });
 });
