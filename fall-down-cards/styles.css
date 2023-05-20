@@ -1,0 +1,63 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+:root {
+  --body-bg: hsl(0, 0%, 10%);
+  --body-clr: hsl(255 100% 100%);
+}
+body {
+  background-color: var(--body-bg);
+  color: var(--body-clr);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+.cards {
+  width: 600px;
+  perspective:200px;
+  position: relative;
+
+  display: grid;
+}
+.card{
+    --speed: 500ms;
+    background: linear-gradient(45deg, purple, pink);
+    width: 100%;
+    aspect-ratio: 10 / 4;
+    padding:2rem 4rem;
+    border-radius: 20px;
+    grid-area: 1 / 1 ;
+    transition: 
+        opacity var(--speed) ease-in,
+        transform var(--speed) ease-in,
+        translate var(--speed) ease-in,
+        scale var(--speed) ease-in
+    ;
+}
+
+.card:last-child{
+    /* scale: 0.9;
+    opacity: .5;
+    translate: 0 -50px;
+    */
+}
+
+/* .card:hover{
+    scale: 1.2;
+    transform: rotate3d(-1, 0, 0, 13deg);
+     translate: 0 150px;
+     opacity: 0;
+     z-index:-1;
+} */
+@keyframes dropCards{
+    /* 10%{
+
+    }
+} */
