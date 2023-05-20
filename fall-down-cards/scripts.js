@@ -39,7 +39,7 @@ cards.forEach((card, idx) => {
   setStyles(card, styles);
 
   const transitionStyles = {
-    opacity: 0,
+    opacity: "0",
     offsetY: 100,
     scale: 1.02,
     transform: "rotate3d(-1, 0, 0, 5deg)",
@@ -53,39 +53,25 @@ cards.forEach((card, idx) => {
     cards.splice(idx, 1);
 
     //update remaining cards - scale, position and opacity
-    cards.forEach((card2, idx2) => {
-      const compStyles = window.getComputedStyle(card2);
-      // console.log(compStyles);
-      // console.log(
-      //     `CARD CURRENT ${idx2}:
-      //     opacity: ${compStyles.getPropertyValue("opacity")}
-      //     scale: ${compStyles.getPropertyValue("scale")}
-      //     translate: ${compStyles.getPropertyValue("translate")}
-      //     `
-      //   );
+    // cards.forEach((card2, idx2) => {
+    //   const compStyles = window.getComputedStyle(card2);
+    //   const currentY = compStyles
+    //     .getPropertyValue("translate")
+    //     .split(" ")[1]
+    //     .split("px")[0];
+    //   const newOpacity =
+    //     Number(compStyles.getPropertyValue("opacity")) + opacityDiff;
+    //   const newScale = Number(compStyles.getPropertyValue("scale")) + scaleDiff;
+    //   const newPos = Number(currentY) + offsetYDiff;
 
-      const currentY = compStyles
-        .getPropertyValue("translate")
-        .split(" ")[1]
-        .split("px")[0];
-      console.log(currentY);
-
-      const newOpacity =
-        Number(compStyles.getPropertyValue("opacity")) + opacityDiff;
-      const newScale = Number(compStyles.getPropertyValue("scale")) + scaleDiff;
-      const newPos = Number(currentY) + offsetYDiff;
-      console.log(`CARD MOD ${idx2}:
-          ${currentY} : ${newPos}
-          `);
-
-      const updateStyles = {
-        opacity: newOpacity,
-        translate: newPos,
-        scale: newScale,
-        transform: "",
-      };
-      setStyles(card2, updateStyles);
-    });
+    //   const updateStyles = {
+    //     opacity: newOpacity,
+    //     translate: newPos,
+    //     scale: newScale,
+    //     transform: "",
+    //   };
+    //   setStyles(card2, updateStyles);
+    // });
     // console.log(counter, numCards);
     counter++;
     //console.log(counter, numCards);
