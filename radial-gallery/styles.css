@@ -1,0 +1,308 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+:root {
+  --body-bg: hsl(0, 0%, 10%);
+  --body-clr: hsl(255 100% 100%);
+}
+body {
+  background-color: var(--body-bg);
+  color: var(--body-clr);
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5rem;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 50vw;
+  height: 50vw;
+}
+.img {
+  --reveal-speed: 500ms;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  marign: auto;
+  border-radius: 50%;
+  clip-path: inset(1px);
+  overflow: hidden;
+  clip-path: polygon(
+    50% 50%,
+    50% 0%,
+    100% 0%,
+    100% 0%,
+    100% 0%,
+    100% 0%,
+    100% 0%,
+    100% 0%,
+    100% 0%,
+    100% 0%
+  );
+  transform: rotate(var(--deg));
+  cursor: pointer;
+}
+.img::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: var(--i);
+  background-size: 100% 100%;
+  z-index: -1;
+  border-radius: 50%;
+  transform: rotate(calc(-1 * var(--deg)));
+}
+
+.img:hover {
+  animation: reveal var(--reveal-speed) forwards;
+  animation-timing-function: linear;
+  z-index: 1;
+}
+@keyframes reveal {
+  0% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%
+    );
+  }
+  14% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%
+    );
+  }
+  28% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%
+    );
+  }
+  42% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%
+    );
+  }
+  56% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0% 100%,
+      0% 100%,
+      0% 100%,
+      0% 100%
+    );
+  }
+  70% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0% 100%,
+      0% 50%,
+      0% 50%,
+      0% 50%
+    );
+  }
+  84% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0% 100%,
+      0% 50%,
+      0% 0%,
+      0% 0%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0% 100%,
+      0% 50%,
+      0% 0%,
+      50% 0%
+    );
+  }
+}
+
+/* test to reverse animate on hover out - requires JS - NOT WORKING YET */
+.img.rotate-out {
+  animation: reveal-reverse 300ms forwards;
+  animation-timing-function: ease-out;
+  z-index: 1;
+}
+@keyframes reveal-reverse {
+  100% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%
+    );
+  }
+  84% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%
+    );
+  }
+  70% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%
+    );
+  }
+  56% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%
+    );
+  }
+  42% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0% 100%,
+      0% 100%,
+      0% 100%,
+      0% 100%
+    );
+  }
+  28% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0% 100%,
+      0% 50%,
+      0% 50%,
+      0% 50%
+    );
+  }
+  14% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0% 100%,
+      0% 50%,
+      0% 0%,
+      0% 0%
+    );
+  }
+  0% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      100% 0%,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0% 100%,
+      0% 50%,
+      0% 0%,
+      50% 0%
+    );
+  }
+}
