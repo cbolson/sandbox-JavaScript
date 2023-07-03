@@ -34,12 +34,11 @@ function renderRepos(repos) {
   const elRepos = document.querySelector("#repos");
 
   repos.forEach((repo) => {
-    const repoEl = document.createElement("a");
-    repoEl.classList.add("repo");
-    repoEl.href = repo.html_url;
-    repoEl.target = "_blank";
-    repoEl.innerText = repo.name;
-    elRepos.appendChild(repoEl);
+    const elRepo = document.createElement("a");
+    elRepo.href = repo.html_url;
+    elRepo.target = "_blank";
+    elRepo.innerText = repo.name;
+    elRepos.appendChild(elRepo);
   });
 }
 
@@ -75,4 +74,4 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-getUser("cbolson");
+//getUser("cbolson");

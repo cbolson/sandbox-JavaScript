@@ -103,7 +103,7 @@ input::placeholder {
     gap: .5rem;
     flex-wrap: wrap;
 }
-.repo {
+.repos a{
   background-color: #3d3972;
   border-radius: 5px;
   display: inline-block;
@@ -113,7 +113,7 @@ input::placeholder {
   text-decoration: none;
   transition: all 300ms ease-in;
 }
-.repo:hover{
+.repos a:hover{
     background: white;
     color: #3d3972;
 }
